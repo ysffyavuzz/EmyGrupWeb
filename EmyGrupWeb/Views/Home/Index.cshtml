@@ -19,14 +19,16 @@
 
         <!-- Gıda Ürünleri → FMCG -->
         <a asp-action="FMCG" asp-controller="Home" class="product-box">
-            <img src="https://cdn-icons-png.flaticon.com/512/3515/3515102.png" alt="Gıda" />
-            <h2>Gıda Ürünleri</h2>
+            <img src="~/images/index_foto_tasarim.png" alt="Gıda" />
         </a>
 
         <!-- Oyuncak Ürünleri → Partners -->
-        <a asp-action="Partners" asp-controller="Home" class="product-box">
-            <img src="https://cdn-icons-png.flaticon.com/512/3006/3006876.png" alt="Oyuncak" />
-            <h2>Oyuncak Ürünleri</h2>
+        <a asp-action="Partners" asp-controller="Home" class="product-box product-box--video">
+            <video class="product-video" autoplay muted loop playsinline preload="metadata">
+                
+                    <source src="~/images/video/fmcg%20v%c4%b0deo.mp4" type="video/mp4" />
+            </video>ype="video/mp4" />
+             
         </a>
 
     </div>
@@ -908,13 +910,13 @@
         background: white;
         border-radius: 18px;
         box-shadow: 0 8px 20px rgba(0,0,0,.12);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        overflow: hidden; /* Taşan görseli keser */
         text-decoration: none;
         transition: transform .3s ease, box-shadow .3s ease;
+        display: block; /* flex yerine block */
+        position: relative;
     }
+
 
         .product-box:hover {
             transform: scale(1.03);
@@ -922,14 +924,30 @@
         }
 
         .product-box img {
-            width: 130px;
-            margin-bottom: 20px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Kartı kırpmadan doldurur */
+            display: block;
         }
 
-        .product-box h2 {
-            font-size: 26px;
-            color: #333;
-        }
+    /* Video kartı kaplasın */
+    .product-box--video .product-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    @@media (max-width: 768px) {
+        .product-box
+
+    {
+        width: 100%;
+        height: 300px;
+    }
+
+    }
+
 
     /* Slider */
     .brand-slider-window {
