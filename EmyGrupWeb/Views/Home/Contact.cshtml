@@ -1,0 +1,420 @@
+﻿@{
+    ViewData["Title"] = "İletişim";
+}
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> L
+
+<!-- ========================================= -->
+<!-- 1) OFİS FOTOĞRAFI (FULL SCREEN HERO IMAGE) -->
+<!-- ========================================= -->
+<section class="office-hero">
+    <div class="office-overlay"></div>
+    <img src="~/images/nish1..jpg" class="office-image" alt="Ofis Fotoğrafı" />
+
+    <!-- ✅ HERO TEXT OVERLAY -->
+    <div class="hero-caption">
+        <h1 class="hero-title">EMY Grup</h1>
+        <p class="hero-location">
+            <i class="bi bi-geo-alt-fill"></i> Nish İstanbul
+        </p>
+    </div>
+</section>
+
+<!-- ============================ -->
+<!-- GOOGLE MAP — Nish İstanbul   -->
+<!-- FULL SCREEN (navbar hariç)  -->
+<!-- ============================ -->
+<section class="contact-map">
+    <iframe src="https://www.google.com/maps?q=Nish%20%C4%B0stanbul&hl=tr&z=17&output=embed"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</section>
+
+<!-- ========================================= -->
+<!-- 3) FULL PAGE İLETİŞİM TASARIMI            -->
+<!-- ========================================= -->
+<section id="contactForm" class="contact-hero spacer-section">
+
+    <div class="contact-overlay"></div>
+
+    <div class="container contact-container">
+
+        <!-- SOL TARAF -->
+        <div class="contact-info">
+
+            <h1 class="contact-title">
+                @L["Index_Iletisim_Baslik"]
+            </h1>
+
+            <p class="contact-subtitle">
+                @L["Contact_AltYazi"]
+            </p>
+
+            <div class="info-list">
+                <p><i class="bi bi-envelope"></i> info@emygrup.com</p>
+                <p><i class="bi bi-telephone"></i> +90 545 376 25 35</p>
+                <p>
+                    <i class="bi bi-geo-alt"></i> @L["Contact_Adres"]
+                </p>
+            </div>
+
+            <!-- Sosyal ikonlar -->
+            <div class="social-icons mt-4">
+                <a href="https://www.instagram.com/emygruptr/" class="social-item instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://wa.me/905453765235" class="social-item whatsapp"><i class="bi bi-whatsapp"></i></a>
+                <a href="https://www.linkedin.com/company/emygruptr?trk=public_profile_topcard-current-company" class="social-item linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+
+        </div>
+
+        <!-- SAĞ TARAF — FORM -->
+        <div class="contact-form-wrapper">
+
+            <form class="contact-form">
+
+                <h3 class="form-title">
+                    @L["Index_Iletisim_Form"]
+                </h3>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="@L["Contact_AdSoyad"]" required />
+                </div>
+
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="@L["Contact_Eposta"]" required />
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="@L["Contact_Konu"]" required />
+                </div>
+
+                <div class="form-group">
+                    <textarea class="form-control" rows="5" placeholder="@L["Contact_Mesaj"]" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-light btn-lg w-100">
+                    @L["Contact_Gonder"]
+                </button>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<style>
+    :root {
+        --navbar-height: 92px; /* sabit navbar yüksekliğin */
+    }
+
+    /* 100vw kullanınca yatay scroll oluşmasın */
+    html, body {
+        overflow-x: hidden;
+    }
+
+    /* =================================================== */
+    /* FULL-BLEED: container/max-width/padding etkisini kır */
+    /* =================================================== */
+    .office-hero,
+    .contact-map,
+    .contact-hero {
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+    }
+
+    /* ========================================= */
+    /* 1) OFİS FOTOĞRAFI - FULL SCREEN HERO      */
+    /* ========================================= */
+    .office-hero {
+        position: relative;
+        height: calc(100vh - var(--navbar-height));
+        margin-top: var(--navbar-height);
+        overflow: hidden;
+    }
+
+    .office-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .office-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.35);
+        z-index: 1;
+    }
+
+    /* ========================================= */
+    /* HERO TEXT OVERLAY (MODERN GLASS DESIGN)    */
+    /* ========================================= */
+    .hero-caption {
+        position: absolute;
+        left: 50%;
+        bottom: 48px; /* orta-alt */
+        transform: translateX(-50%);
+        z-index: 5;
+        width: min(680px, 92%);
+        padding: 22px 28px;
+        text-align: center;
+        /* Glassmorphism */
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(14px);
+        border-radius: 22px;
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
+        outline: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* küçük üst label */
+    .hero-badge {
+        display: inline-block;
+        padding: 7px 14px;
+        margin-bottom: 12px;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.92);
+        background: rgba(255,255,255,0.14);
+        border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    /* Ana başlık */
+    .hero-title {
+        margin: 0;
+        font-size: clamp(2rem, 3vw, 3rem);
+        font-weight: 800;
+        letter-spacing: 1.2px;
+        background: linear-gradient(90deg, #ffffff, #d6ecff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 12px 28px rgba(0,0,0,0.28);
+    }
+
+    /* Lokasyon satırı */
+    .hero-location {
+        margin-top: 10px;
+        margin-bottom: 0;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: rgba(255,255,255,0.92);
+        opacity: 0.95;
+        letter-spacing: 0.3px;
+    }
+
+        .hero-location i {
+            margin-right: 8px;
+            color: rgba(255,255,255,0.95);
+        }
+
+    /* ========================================= */
+    /* 2) MAP - FULL SCREEN (navbar hariç)       */
+    /* ========================================= */
+    .contact-map {
+        position: relative;
+        overflow: hidden;
+    }
+
+        .contact-map iframe {
+            width: 100%;
+            height: calc(100vh - var(--navbar-height));
+            display: block;
+            border: 0;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+    /* ========================================= */
+    /* 3) FULL PAGE CONTACT TASARIM              */
+    /* ========================================= */
+    .contact-hero {
+        position: relative;
+        padding: 120px 0;
+        min-height: calc(100vh - var(--navbar-height));
+        background: linear-gradient(135deg, #274472, #446D96, #5D8BB0);
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .contact-overlay {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top right, rgba(255,255,255,0.28), transparent 60%);
+        opacity: 0.35;
+    }
+
+    .contact-container {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: space-between;
+        gap: 60px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .contact-info {
+        flex: 1;
+        color: white;
+        max-width: 500px;
+    }
+
+    .contact-title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    .contact-subtitle {
+        font-size: 1.15rem;
+        opacity: 0.9;
+        margin-bottom: 25px;
+        line-height: 1.7;
+    }
+
+    .info-list p {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+
+    .info-list i {
+        margin-right: 8px;
+        font-size: 1.2rem;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 18px;
+    }
+
+    .social-item {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.18);
+        backdrop-filter: blur(6px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s ease;
+        font-size: 26px;
+        color: white;
+    }
+
+        .social-item:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: rgba(255,255,255,0.35);
+        }
+
+    .instagram:hover {
+        color: #E1306C;
+    }
+
+    .whatsapp:hover {
+        color: #25D366;
+    }
+
+    .linkedin:hover {
+        color: #0077B5;
+    }
+
+    .contact-form-wrapper {
+        flex: 1;
+        max-width: 500px;
+    }
+
+    .contact-form {
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(12px);
+        padding: 35px;
+        border-radius: 20px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .form-title {
+        color: white;
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .form-control {
+        background: rgba(255,255,255,0.25);
+        border: none;
+        padding: 14px;
+        color: #fff;
+        border-radius: 12px;
+        margin-bottom: 15px;
+        font-size: 1rem;
+    }
+
+        .form-control::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+    .btn-light {
+        font-weight: 600;
+        padding: 12px;
+        border-radius: 14px;
+    }
+
+    /* Hash ile gelince sabit navbar altında kalmasın */
+    #contactForm {
+        scroll-margin-top: var(--navbar-height);
+    }
+
+
+    /* Mobil düzenleme */
+    @@media (max-width: 992px) {
+        .contact-container {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .hero-caption {
+            bottom: 20px;
+            padding: 16px 18px;
+            border-radius: 18px;
+        }
+
+        .hero-location {
+            font-size: 0.95rem;
+        }
+
+        .contact-title {
+            font-size: 2.1rem;
+        }
+    }
+</style>
+
+
+<script>
+    (function () {
+      if (location.hash === "#contactForm") {
+        // Görseller/iframe yüklenmesi yüzünden layout kayıyorsa,
+        // küçük bir gecikmeyle hedefe tekrar kaydırıyoruz.
+        const go = () => {
+          const el = document.getElementById("contactForm");
+          if (!el) return;
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        };
+
+        // 1) İlk deneme
+        requestAnimationFrame(go);
+        // 2) Layout oturunca garanti
+        window.addEventListener("load", () => setTimeout(go, 50), { once: true });
+      }
+    })();
+</script>

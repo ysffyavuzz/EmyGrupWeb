@@ -1,0 +1,239 @@
+﻿@{
+    ViewData["Title"] = "Hakkımızda";
+}
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> L
+
+
+<section class="about-mosaic spacer-section">
+    <div class="split-bg"></div>
+
+    <div class="container py-5">
+        <div class="mosaic">
+
+            <!-- 1) Misyon -->
+            <article class="tile tile-text">
+                <div class="tile-icon">
+                    <i class="bi bi-bullseye"></i>
+                </div>
+                <h3 class="tile-title">
+                    @L["About_Misyon_Baslik"]
+                </h3>
+                <p class="tile-textbody">
+                    @L["About_Misyon_Icerik"]
+                </p>
+            </article>
+
+            <!-- 2) Üst orta foto -->
+            <figure class="tile tile-photo">
+                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=70"
+                     alt="Konteyner ve ihracat lojistiği"
+                     loading="lazy" />
+                <div class="photo-overlay"></div>
+            </figure>
+
+            <!-- 3) Vizyon -->
+            <article class="tile tile-text">
+                <div class="tile-icon">
+                    <i class="bi bi-compass"></i>
+                </div>
+                <h3 class="tile-title">
+                    @L["About_Vizyon_Baslik"]
+                </h3>
+                <p class="tile-textbody">
+                    @L["About_Vizyon_Icerik"]
+                </p>
+            </article>
+
+            <!-- 4) Alt sol foto (İhracat) -->
+            <figure class="tile tile-photo">
+                <img src="~/images/ihrac.jpg" />
+                     alt="Konteyner limanı ve ihracat operasyonu"
+                     loading="lazy" />
+                <div class="photo-overlay"></div>
+            </figure>
+
+
+
+            <!-- 5) Hakkımızda -->
+            <article class="tile tile-text">
+                <div class="tile-icon">
+                    <i class="bi bi-building"></i>
+                </div>
+                <h3 class="tile-title">
+                    @L["About_Hakkimizda_Baslik"]
+                </h3>
+                <p class="tile-textbody">
+                    @L["About_Hakkimizda_Icerik"]
+                </p>
+            </article>
+
+            <!-- 6) Alt sağ foto -->
+            <figure class="tile tile-photo">
+                <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1400&q=70"
+                     alt="Liman konteyner vinçleri"
+                     loading="lazy" />
+                <div class="photo-overlay"></div>
+            </figure>
+
+        </div>
+    </div>
+</section>
+
+
+<style>
+    /* FULL PAGE SPLIT BACKGROUND */
+    .split-bg {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(90deg, #2f3230 0 50%, #d7d9db 50% 100%);
+    }
+
+    /* Navbar boşluğu */
+    .spacer-section {
+        margin-top: 120px;
+    }
+
+    @@media (max-width:768px) {
+        .spacer-section {
+            margin-top: 90px;
+        }
+    }
+
+    :root {
+        --card: #ffffff;
+        --muted: rgba(15,23,42,.72);
+        --shadow: 0 18px 55px rgba(2,6,23,.14);
+    }
+
+    /* ✅ SATIR YÜKSEKLİĞİ: AUTO
+           - Hakkımızda uzunsa 2. satır büyür
+           - O satırdaki fotoğraflar da aynı yükseklikte büyür
+        */
+    .mosaic {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: auto; /* ✅ kritik */
+        gap: 0;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+    }
+
+    /* ✅ Her tile bulunduğu satırı TAM doldurur */
+    .tile {
+        position: relative;
+        height: 100%;
+        min-height: 0;
+        background: var(--card);
+        overflow: hidden;
+    }
+
+    /* TEXT TILE */
+    .tile-text {
+        padding: 26px 24px 24px;
+        border-right: 1px solid rgba(0,0,0,.06);
+        border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+
+    .tile-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(15,23,42,.06);
+        border: 1px solid rgba(15,23,42,.10);
+        color: rgba(15,23,42,.55);
+        font-size: 1.15rem;
+        margin-bottom: 14px;
+    }
+
+    .tile-title {
+        margin: 0 0 10px;
+        font-weight: 800;
+        color: #111827;
+        letter-spacing: .2px;
+        font-size: 1.12rem;
+        font-family: 'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;
+    }
+
+    /* ✅ hiçbir yazı kesilmez */
+    .tile-textbody {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.85;
+        font-size: .98rem;
+        overflow: visible;
+        max-height: none;
+        -webkit-line-clamp: unset;
+        display: block;
+    }
+
+    /* PHOTO TILE */
+    .tile-photo {
+        background: #111;
+        height: 100%;
+    }
+
+        .tile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+/*             filter: grayscale(100%) contrast(1.05);
+ */            transform: scale(1.02);
+            transition: transform .35s ease;
+        }
+
+        .tile-photo:hover img {
+            transform: scale(1.08);
+        }
+
+    .photo-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%);
+        pointer-events: none;
+        opacity: .9;
+    }
+
+    /* Grid çizgileri */
+    .mosaic > :nth-child(1),
+    .mosaic > :nth-child(2),
+    .mosaic > :nth-child(3) {
+        border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+
+    .mosaic > :nth-child(1),
+    .mosaic > :nth-child(2),
+    .mosaic > :nth-child(4),
+    .mosaic > :nth-child(5) {
+        border-right: 1px solid rgba(0,0,0,.06);
+    }
+
+    /* Responsive */
+    @@media (max-width: 992px) {
+        .mosaic {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .mosaic {
+            grid-template-columns: 1fr;
+        }
+        /* mobilde foto sabit güzel dursun */
+        .tile-photo {
+            height: 240px;
+        }
+
+        .tile {
+            height: auto;
+        }
+
+        .tile-text {
+            padding: 20px 18px;
+        }
+    }
+</style>

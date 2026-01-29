@@ -1,0 +1,52 @@
+﻿########################################
+# ASP.NET Core / Visual Studio
+########################################
+
+## Build results
+bin/
+obj/
+
+## Visual Studio files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## VS Code (isteğe bağlı)
+.vscode/
+
+## Rider / IntelliJ (isteğe bağlı)
+.idea/
+
+## NuGet
+*.nupkg
+# packages/   # (eski .NET Framework projeleri içindi, genelde gerekmez)
+
+## Logs
+*.log
+
+## OS files
+.DS_Store
+Thumbs.db
+
+########################################
+# Secrets / Local-only config
+########################################
+
+# Local development settings (şifre/conn string olabiliyor)
+appsettings.Development.json
+
+# User Secrets dosyaları (bazı senaryolarda)
+secrets.json
+
+# Sertifika / private key dosyaları (ASLA repoya koyma)
+*.pfx
+*.pem
+*.key
+
+########################################
+# Publish çıktıları (opsiyonel)
+########################################
+publish/
+**/publish/
