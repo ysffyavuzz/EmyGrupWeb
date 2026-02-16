@@ -1,420 +1,501 @@
-﻿@{
+@{
     ViewData["Title"] = "İletişim";
 }
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> L
 
-<!-- ========================================= -->
-<!-- 1) OFİS FOTOĞRAFI (FULL SCREEN HERO IMAGE) -->
-<!-- ========================================= -->
-<section class="office-hero">
-    <div class="office-overlay"></div>
-    <img src="~/images/Nish1.jpg" class="office-image" alt="Ofis Fotoğrafı" />
-
-    <!-- ✅ HERO TEXT OVERLAY -->
-    <div class="hero-caption">
-        <h1 class="hero-title">EMY Grup</h1>
-        <p class="hero-location">
-            <i class="bi bi-geo-alt-fill"></i> Nish İstanbul
-        </p>
-    </div>
-</section>
-
-<!-- ============================ -->
-<!-- GOOGLE MAP — Nish İstanbul   -->
-<!-- FULL SCREEN (navbar hariç)  -->
-<!-- ============================ -->
-<section class="contact-map">
-    <iframe src="https://www.google.com/maps?q=Nish%20%C4%B0stanbul&hl=tr&z=17&output=embed"
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-</section>
-
-<!-- ========================================= -->
-<!-- 3) FULL PAGE İLETİŞİM TASARIMI            -->
-<!-- ========================================= -->
-<section id="contactForm" class="contact-hero spacer-section">
-
-    <div class="contact-overlay"></div>
-
-    <div class="container contact-container">
-
-        <!-- SOL TARAF -->
-        <div class="contact-info">
-
-            <h1 class="contact-title">
-                @L["Index_Iletisim_Baslik"]
-            </h1>
-
-            <p class="contact-subtitle">
-                @L["Contact_AltYazi"]
-            </p>
-
-            <div class="info-list">
-                <p><i class="bi bi-envelope"></i> info@emygrup.com</p>
-                <p><i class="bi bi-telephone"></i> +90 545 376 25 35</p>
-                <p>
-                    <i class="bi bi-geo-alt"></i> @L["Contact_Adres"]
-                </p>
-            </div>
-
-            <!-- Sosyal ikonlar -->
-            <div class="social-icons mt-4">
-                <a href="https://www.instagram.com/emygruptr/" class="social-item instagram"><i class="bi bi-instagram"></i></a>
-                <a href="https://wa.me/905453765235" class="social-item whatsapp"><i class="bi bi-whatsapp"></i></a>
-                <a href="https://www.linkedin.com/company/emygruptr?trk=public_profile_topcard-current-company" class="social-item linkedin"><i class="bi bi-linkedin"></i></a>
-            </div>
-
-        </div>
-
-        <!-- SAĞ TARAF — FORM -->
-        <div class="contact-form-wrapper">
-
-            <form class="contact-form">
-
-                <h3 class="form-title">
-                    @L["Index_Iletisim_Form"]
-                </h3>
-
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="@L["Contact_AdSoyad"]" required />
-                </div>
-
-                <div class="form-group">
-                    <input type="email" class="form-control" placeholder="@L["Contact_Eposta"]" required />
-                </div>
-
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="@L["Contact_Konu"]" required />
-                </div>
-
-                <div class="form-group">
-                    <textarea class="form-control" rows="5" placeholder="@L["Contact_Mesaj"]" required></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-light btn-lg w-100">
-                    @L["Contact_Gonder"]
-                </button>
-
-
-            </form>
-
-        </div>
-
-    </div>
-
-</section>
-
 <style>
     :root {
-        --navbar-height: 92px; /* sabit navbar yüksekliğin */
-    }
-
-    /* 100vw kullanınca yatay scroll oluşmasın */
-    html, body {
-        overflow-x: hidden;
-    }
-
-    /* =================================================== */
-    /* FULL-BLEED: container/max-width/padding etkisini kır */
-    /* =================================================== */
-    .office-hero,
-    .contact-map,
-    .contact-hero {
-        width: 100vw;
-        margin-left: calc(50% - 50vw);
-        margin-right: calc(50% - 50vw);
+        --navbar-height: 70px;
     }
 
     /* ========================================= */
-    /* 1) OFİS FOTOĞRAFI - FULL SCREEN HERO      */
+    /* CONTACT PAGE - MODERN CLEAN DESIGN       */
     /* ========================================= */
-    .office-hero {
-        position: relative;
-        height: calc(100vh - var(--navbar-height));
+    .contact-page {
         margin-top: var(--navbar-height);
+        background: #f8fafc;
+        min-height: calc(100vh - var(--navbar-height));
+    }
+
+    /* Hero Section */
+    .contact-hero-section {
+        position: relative;
+        height: 45vh;
+        min-height: 320px;
+        max-height: 450px;
         overflow: hidden;
     }
 
-    .office-image {
+    .contact-hero-section img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        display: block;
     }
 
-    .office-overlay {
+    .contact-hero-overlay {
         position: absolute;
         inset: 0;
-        background: rgba(0,0,0,0.35);
-        z-index: 1;
+        background: linear-gradient(180deg, rgba(39, 68, 114, 0.7) 0%, rgba(15, 23, 42, 0.85) 100%);
     }
 
-    /* ========================================= */
-    /* HERO TEXT OVERLAY (MODERN GLASS DESIGN)    */
-    /* ========================================= */
-    .hero-caption {
-        position: absolute;
-        left: 50%;
-        bottom: 48px; /* orta-alt */
-        transform: translateX(-50%);
-        z-index: 5;
-        width: min(680px, 92%);
-        padding: 22px 28px;
-        text-align: center;
-        /* Glassmorphism */
-        background: rgba(255, 255, 255, 0.14);
-        border: 1px solid rgba(255, 255, 255, 0.22);
-        backdrop-filter: blur(2px);
-        -webkit-backdrop-filter: blur(14px);
-        border-radius: 22px;
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
-        outline: 1px solid rgba(255,255,255,0.08);
-    }
-
-    /* küçük üst label */
-    .hero-badge {
-        display: inline-block;
-        padding: 7px 14px;
-        margin-bottom: 12px;
-        border-radius: 999px;
-        font-size: 0.85rem;
-        font-weight: 600;
-        letter-spacing: 0.6px;
-        text-transform: uppercase;
-        color: rgba(255,255,255,0.92);
-        background: rgba(255,255,255,0.14);
-        border: 1px solid rgba(255,255,255,0.18);
-    }
-
-    /* Ana başlık */
-    .hero-title {
-        margin: 0;
-        font-size: clamp(2rem, 3vw, 3rem);
-        font-weight: 800;
-        letter-spacing: 1.2px;
-        background: linear-gradient(90deg, #ffffff, #d6ecff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 0 12px 28px rgba(0,0,0,0.28);
-    }
-
-    /* Lokasyon satırı */
-    .hero-location {
-        margin-top: 10px;
-        margin-bottom: 0;
-        font-size: 1.05rem;
-        font-weight: 600;
-        color: rgba(255,255,255,0.92);
-        opacity: 0.95;
-        letter-spacing: 0.3px;
-    }
-
-        .hero-location i {
-            margin-right: 8px;
-            color: rgba(255,255,255,0.95);
-        }
-
-    /* ========================================= */
-    /* 2) MAP - FULL SCREEN (navbar hariç)       */
-    /* ========================================= */
-    .contact-map {
-        position: relative;
-        overflow: hidden;
-    }
-
-        .contact-map iframe {
-            width: 100%;
-            height: calc(100vh - var(--navbar-height));
-            display: block;
-            border: 0;
-            border-radius: 0;
-            box-shadow: none;
-        }
-
-    /* ========================================= */
-    /* 3) FULL PAGE CONTACT TASARIM              */
-    /* ========================================= */
-    .contact-hero {
-        position: relative;
-        padding: 120px 0;
-        min-height: calc(100vh - var(--navbar-height));
-        background: linear-gradient(135deg, #274472, #446D96, #5D8BB0);
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-    }
-
-    .contact-overlay {
+    .contact-hero-content {
         position: absolute;
         inset: 0;
-        background: radial-gradient(circle at top right, rgba(255,255,255,0.28), transparent 60%);
-        opacity: 0.35;
-    }
-
-    .contact-container {
-        position: relative;
-        z-index: 2;
         display: flex;
-        justify-content: space-between;
-        gap: 60px;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-
-    .contact-info {
-        flex: 1;
-        color: white;
-        max-width: 500px;
-    }
-
-    .contact-title {
-        font-size: 3rem;
-        font-weight: 700;
-        margin-bottom: 20px;
-    }
-
-    .contact-subtitle {
-        font-size: 1.15rem;
-        opacity: 0.9;
-        margin-bottom: 25px;
-        line-height: 1.7;
-    }
-
-    .info-list p {
-        font-size: 1.1rem;
-        margin-bottom: 10px;
-    }
-
-    .info-list i {
-        margin-right: 8px;
-        font-size: 1.2rem;
-    }
-
-    .social-icons {
-        display: flex;
-        gap: 18px;
-    }
-
-    .social-item {
-        width: 55px;
-        height: 55px;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.18);
-        backdrop-filter: blur(6px);
-        display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        transition: 0.3s ease;
-        font-size: 26px;
-        color: white;
+        text-align: center;
+        padding: 20px;
     }
 
-        .social-item:hover {
-            transform: translateY(-5px) scale(1.1);
-            background: rgba(255,255,255,0.35);
-        }
-
-    .instagram:hover {
-        color: #E1306C;
+    .contact-hero-title {
+        color: #ffffff;
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        margin-bottom: 12px;
+        letter-spacing: -0.02em;
     }
 
-    .whatsapp:hover {
-        color: #25D366;
+    .contact-hero-subtitle {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 1.125rem;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
 
-    .linkedin:hover {
-        color: #0077B5;
+    .contact-hero-subtitle i {
+        color: #5D8BB0;
     }
 
-    .contact-form-wrapper {
-        flex: 1;
-        max-width: 500px;
+    /* Main Content */
+    .contact-main {
+        padding: 60px 0 80px;
     }
 
-    .contact-form {
-        background: rgba(255,255,255,0.15);
-        backdrop-filter: blur(12px);
-        padding: 35px;
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 40px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    /* Info Cards */
+    .contact-info-section h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 8px;
+    }
+
+    .contact-info-section > p {
+        color: #64748b;
+        font-size: 1rem;
+        margin-bottom: 32px;
+        line-height: 1.6;
+    }
+
+    .info-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .info-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 16px;
+        border: 1px solid #e2e8f0;
+        transition: all 0.2s ease;
+    }
+
+    .info-card:hover {
+        border-color: #cbd5e1;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .info-card-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #446D96 0%, #274472 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .info-card-icon i {
+        color: #ffffff;
+        font-size: 1.25rem;
+    }
+
+    .info-card-content h4 {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #64748b;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .info-card-content p {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #0f172a;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    .info-card-content a {
+        color: #0f172a;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .info-card-content a:hover {
+        color: #446D96;
+    }
+
+    /* Social Links */
+    .social-section {
+        margin-top: 32px;
+    }
+
+    .social-section h4 {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #64748b;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 12px;
+    }
+
+    .social-link {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #475569;
+        font-size: 1.25rem;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+
+    .social-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .social-link.instagram:hover {
+        background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        color: #ffffff;
+        border-color: transparent;
+    }
+
+    .social-link.whatsapp:hover {
+        background: #25D366;
+        color: #ffffff;
+        border-color: transparent;
+    }
+
+    .social-link.linkedin:hover {
+        background: #0077B5;
+        color: #ffffff;
+        border-color: transparent;
+    }
+
+    /* Contact Form */
+    .contact-form-section {
+        background: #ffffff;
         border-radius: 20px;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        padding: 36px;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     }
 
-    .form-title {
-        color: white;
-        font-size: 1.6rem;
+    .contact-form-section h3 {
+        font-size: 1.375rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 24px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #374151;
+        margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 14px 16px;
+        font-size: 1rem;
+        color: #0f172a;
+        background: #f8fafc;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        transition: all 0.2s ease;
+        outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        border-color: #446D96;
+        background: #ffffff;
+        box-shadow: 0 0 0 4px rgba(68, 109, 150, 0.1);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+        color: #94a3b8;
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 16px 24px;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #ffffff;
+        background: linear-gradient(135deg, #446D96 0%, #274472 100%);
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(68, 109, 150, 0.35);
+    }
+
+    .submit-btn:active {
+        transform: translateY(0);
+    }
+
+    /* Map Section */
+    .map-section {
+        margin-top: 60px;
+    }
+
+    .map-section h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #0f172a;
         margin-bottom: 20px;
         text-align: center;
     }
 
-    .form-control {
-        background: rgba(255,255,255,0.25);
-        border: none;
-        padding: 14px;
-        color: #fff;
-        border-radius: 12px;
-        margin-bottom: 15px;
-        font-size: 1rem;
+    .map-container {
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        border: 1px solid #e2e8f0;
     }
 
-        .form-control::placeholder {
-            color: rgba(255,255,255,0.7);
+    .map-container iframe {
+        width: 100%;
+        height: 350px;
+        display: block;
+        border: 0;
+    }
+
+    /* Responsive */
+    @@media (max-width: 992px) {
+        .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 32px;
         }
 
-    .btn-light {
-        font-weight: 600;
-        padding: 12px;
-        border-radius: 14px;
-    }
-
-    /* Hash ile gelince sabit navbar altında kalmasın */
-    #contactForm {
-        scroll-margin-top: var(--navbar-height);
-    }
-
-
-    /* Mobil düzenleme */
-    @@media (max-width: 992px) {
-        .contact-container {
-            flex-direction: column;
-            text-align: center;
+        .contact-main {
+            padding: 40px 0 60px;
         }
     }
 
     @@media (max-width: 576px) {
-        .hero-caption {
-            bottom: 20px;
-            padding: 16px 18px;
-            border-radius: 18px;
+        .contact-hero-section {
+            height: 35vh;
+            min-height: 250px;
         }
 
-        .hero-location {
-            font-size: 0.95rem;
+        .contact-form-section {
+            padding: 24px;
         }
 
-        .contact-title {
-            font-size: 2.1rem;
+        .info-card {
+            padding: 16px;
+        }
+
+        .map-container iframe {
+            height: 280px;
         }
     }
 </style>
 
+<!-- Contact Page -->
+<div class="contact-page">
+
+    <!-- Hero Section -->
+    <section class="contact-hero-section">
+        <img src="~/images/Nish1.jpg" alt="EMY Grup Ofis" />
+        <div class="contact-hero-overlay"></div>
+        <div class="contact-hero-content">
+            <h1 class="contact-hero-title">@L["Index_Iletisim_Baslik"]</h1>
+            <p class="contact-hero-subtitle">
+                <i class="bi bi-geo-alt-fill"></i> Nish İstanbul
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="contact-main">
+        <div class="container">
+            <div class="contact-grid">
+
+                <!-- Left: Info -->
+                <div class="contact-info-section">
+                    <h2>@L["Index_Iletisim_Baslik"]</h2>
+                    <p>@L["Contact_AltYazi"]</p>
+
+                    <div class="info-cards">
+                        <!-- Email -->
+                        <div class="info-card">
+                            <div class="info-card-icon">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            <div class="info-card-content">
+                                <h4>E-posta</h4>
+                                <p><a href="mailto:info@emygrup.com">info@emygrup.com</a></p>
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="info-card">
+                            <div class="info-card-icon">
+                                <i class="bi bi-telephone"></i>
+                            </div>
+                            <div class="info-card-content">
+                                <h4>Telefon</h4>
+                                <p><a href="tel:+905453762535">+90 545 376 25 35</a></p>
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="info-card">
+                            <div class="info-card-icon">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <div class="info-card-content">
+                                <h4>Adres</h4>
+                                <p>@L["Contact_Adres"]</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="social-section">
+                        <h4>Bizi Takip Edin</h4>
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/emygruptr/" class="social-link instagram" target="_blank">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                            <a href="https://wa.me/905453765235" class="social-link whatsapp" target="_blank">
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/company/emygruptr" class="social-link linkedin" target="_blank">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Form -->
+                <div class="contact-form-section" id="contactForm">
+                    <h3>@L["Index_Iletisim_Form"]</h3>
+                    <form>
+                        <div class="form-group">
+                            <label>@L["Contact_AdSoyad"]</label>
+                            <input type="text" placeholder="@L["Contact_AdSoyad"]" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label>@L["Contact_Eposta"]</label>
+                            <input type="email" placeholder="ornek@email.com" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label>@L["Contact_Konu"]</label>
+                            <input type="text" placeholder="@L["Contact_Konu"]" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label>@L["Contact_Mesaj"]</label>
+                            <textarea rows="5" placeholder="@L["Contact_Mesaj"]" required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            @L["Contact_Gonder"] <i class="bi bi-send ms-2"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- Map Section -->
+            <div class="map-section">
+                <h3><i class="bi bi-pin-map me-2"></i>Konumumuz</h3>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps?q=Nish%20%C4%B0stanbul&hl=tr&z=15&output=embed"
+                        allowfullscreen
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</div>
 
 <script>
     (function () {
-      if (location.hash === "#contactForm") {
-        // Görseller/iframe yüklenmesi yüzünden layout kayıyorsa,
-        // küçük bir gecikmeyle hedefe tekrar kaydırıyoruz.
-        const go = () => {
-          const el = document.getElementById("contactForm");
-          if (!el) return;
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        };
-
-        // 1) İlk deneme
-        requestAnimationFrame(go);
-        // 2) Layout oturunca garanti
-        window.addEventListener("load", () => setTimeout(go, 50), { once: true });
-      }
+        if (location.hash === "#contactForm") {
+            const go = () => {
+                const el = document.getElementById("contactForm");
+                if (!el) return;
+                el.scrollIntoView({ behavior: "smooth", block: "start" });
+            };
+            requestAnimationFrame(go);
+            window.addEventListener("load", () => setTimeout(go, 50), { once: true });
+        }
     })();
 </script>

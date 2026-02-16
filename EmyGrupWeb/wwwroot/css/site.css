@@ -1,22 +1,939 @@
-html {
-  font-size: 14px;
+/* ============================================
+   EMY GRUP - MODERN DESIGN SYSTEM 2025
+   Bento Grid + Glassmorphism + Premium UX
+   ============================================ */
+
+:root {
+    /* Primary Colors - KORUNUYOR */
+    --primary: #446D96;
+    --primary-dark: #274472;
+    --primary-light: #5D8BB0;
+    --primary-subtle: rgba(68, 109, 150, 0.08);
+    --primary-glow: rgba(68, 109, 150, 0.25);
+
+    /* Neutral Colors */
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --bg-elevated: rgba(255, 255, 255, 0.8);
+    --bg-dark: #0f172a;
+    --bg-dark-elevated: #1e293b;
+
+    /* Text Colors */
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    --text-inverse: #f8fafc;
+
+    /* Shadows - Premium */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+    --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.16);
+    --shadow-glow: 0 0 60px var(--primary-glow);
+    --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
+    --shadow-card-hover: 0 12px 40px rgba(0,0,0,0.12);
+
+    /* Borders */
+    --border-light: rgba(0, 0, 0, 0.06);
+    --border-medium: rgba(0, 0, 0, 0.1);
+    --border-glass: rgba(255, 255, 255, 0.2);
+
+    /* Radius - Modern Rounded */
+    --radius-sm: 12px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+    --radius-2xl: 40px;
+    --radius-full: 9999px;
+
+    /* Transitions */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: 0.15s var(--ease-out);
+    --transition-normal: 0.3s var(--ease-out);
+    --transition-slow: 0.5s var(--ease-out);
+
+    /* Spacing */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 40px;
+    --space-2xl: 64px;
+    --space-3xl: 96px;
 }
 
-@media (min-width: 768px) {
-  html {
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
     font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  margin-bottom: 60px;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', Roboto, sans-serif;
+    color: var(--text-primary);
+    background: var(--bg-main);
+    line-height: 1.6;
+    letter-spacing: -0.011em;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   TYPOGRAPHY - Modern Apple Style
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: var(--text-primary);
+}
+
+h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+}
+
+h2 {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+h3 {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 1.0625rem;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ============================================
+   BUTTONS - Premium Design
+   ============================================ */
+
+.btn {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    border-radius: var(--radius-md);
+    padding: 14px 28px;
+    font-size: 0.9375rem;
+    transition: all var(--transition-normal);
+    border: none;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    pointer-events: none;
+}
+
+.btn:hover::after {
+    opacity: 1;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    box-shadow: 0 4px 16px rgba(68, 109, 150, 0.35);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(68, 109, 150, 0.45);
+    color: white;
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-glass {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: white;
+}
+
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    color: white;
+}
+
+.btn:focus, .btn:active:focus {
+    box-shadow: 0 0 0 4px var(--primary-subtle);
+    outline: none;
+}
+
+/* ============================================
+   CARDS - Glassmorphism + Clean Design
+   ============================================ */
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    transition: all var(--transition-normal);
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.card-glass {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.card-glass-dark {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-inverse);
+}
+
+/* ============================================
+   FORM CONTROLS
+   ============================================ */
+
+.form-control {
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    font-size: 1rem;
+    transition: all var(--transition-fast);
+    background: var(--bg-card);
+}
+
+.form-control:hover {
+    border-color: var(--border-medium);
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-subtle);
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+/* ============================================
+   SECTION STYLES
+   ============================================ */
+
+.section {
+    padding: var(--space-3xl) 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+}
+
+.section-title h2 {
+    margin-bottom: var(--space-md);
+}
+
+.section-title p {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Section Badge */
+.section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--primary-subtle);
+    color: var(--primary-dark);
+    border-radius: var(--radius-full);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-md);
+}
+
+/* ============================================
+   BENTO GRID SYSTEM
+   ============================================ */
+
+.bento-grid {
+    display: grid;
+    gap: var(--space-lg);
+}
+
+.bento-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.bento-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.bento-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 992px) {
+    .bento-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .bento-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .bento-grid-2,
+    .bento-grid-3,
+    .bento-grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+.bento-item {
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    position: relative;
+    transition: all var(--transition-normal);
+    border: 1px solid var(--border-light);
+}
+
+.bento-item:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: var(--shadow-xl);
+}
+
+.bento-item.span-2 {
+    grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+    .bento-item.span-2 {
+        grid-column: span 1;
+    }
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.7s var(--ease-out) forwards;
+}
+
+.animate-scaleIn {
+    animation: scaleIn 0.6s var(--ease-out) forwards;
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Staggered Animation */
+.stagger-item {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.stagger-item.visible {
+    animation: fadeInUp 0.6s var(--ease-out) forwards;
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0.05s; }
+.stagger-item:nth-child(2) { animation-delay: 0.1s; }
+.stagger-item:nth-child(3) { animation-delay: 0.15s; }
+.stagger-item:nth-child(4) { animation-delay: 0.2s; }
+.stagger-item:nth-child(5) { animation-delay: 0.25s; }
+
+/* ============================================
+   SCROLLBAR - Modern
+   ============================================ */
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.25);
+    background-clip: padding-box;
+}
+
+/* ============================================
+   SELECTION
+   ============================================ */
+
+::selection {
+    background: var(--primary);
+    color: white;
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+.text-balance {
+    text-wrap: balance;
+}
+
+.backdrop-blur {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.gradient-border {
+    position: relative;
+}
+
+.gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    border-radius: inherit;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+/* Responsive container */
+.container-modern {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+}
+
+@media (max-width: 768px) {
+    .container-modern {
+        padding: 0 var(--space-md);
+    }
+}
+
+/* Hide on mobile/desktop */
+@media (max-width: 768px) {
+    .hide-mobile { display: none !important; }
+}
+
+@media (min-width: 769px) {
+    .hide-desktop { display: none !important; }
+}
+
+/* ============================================
+   LOADING SKELETON
+   ============================================ */
+
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: var(--radius-md);
+}
+
+/* ============================================
+   FOCUS STATES - Accessibility
+   ============================================ */
+
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* ============================================
+   NAVBAR - Clean Modern Design 2025 (AÇIK TEMA)
+   ============================================ */
+.navbar-toggler {
+    background: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 1px solid rgba(39, 68, 114, 0.15) !important;
+    transition: all 0.2s ease;
+}
+
+.navbar-toggler:hover {
+    background: rgba(39, 68, 114, 0.08) !important;
+    border-color: rgba(39, 68, 114, 0.25) !important;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(39, 68, 114, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    width: 24px;
+    height: 24px;
+}
+
+/* ============================================
+   OFFCANVAS MENU - Clean Design
+   ============================================ */
+.offcanvas-modern {
+    background: #ffffff !important;
+    border-left: none;
+    box-shadow: -20px 0 60px rgba(0, 0, 0, 0.1);
+}
+
+.offcanvas-modern-header {
+    padding: 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background: transparent;
+}
+
+.offcanvas-modern-title {
+    margin: 0;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+    color: #94a3b8;
+}
+
+.offcanvas-modern-body {
+    padding: 12px 16px 32px;
+}
+
+.offcanvas-modern-list .list-group-item {
+    border: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    margin-bottom: 4px;
+}
+
+.offcanvas-link {
+    display: flex;
+    align-items: center;
+    padding: 14px 18px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #1e293b;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+    background: transparent;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.offcanvas-link:hover {
+    background: #f1f5f9;
+    color: #0f172a;
+}
+
+.offcanvas-link.is-active {
+    background: linear-gradient(135deg, #446D96 0%, #274472 100%);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.offcanvas-link.is-active:hover {
+    background: linear-gradient(135deg, #3d6289 0%, #1f3a5f 100%);
+    color: #ffffff;
+}
+
+/* ITEM STAGGER FADE-IN */
+.offcanvas-modern-list .list-group-item {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.offcanvas.is-open .offcanvas-modern-list .list-group-item {
+    animation: offcanvasItemIn .35s ease forwards;
+}
+
+.offcanvas.is-open .offcanvas-modern-list .list-group-item:nth-child(1) { animation-delay: .03s; }
+.offcanvas.is-open .offcanvas-modern-list .list-group-item:nth-child(2) { animation-delay: .06s; }
+.offcanvas.is-open .offcanvas-modern-list .list-group-item:nth-child(3) { animation-delay: .09s; }
+.offcanvas.is-open .offcanvas-modern-list .list-group-item:nth-child(4) { animation-delay: .12s; }
+.offcanvas.is-open .offcanvas-modern-list .list-group-item:nth-child(5) { animation-delay: .15s; }
+.offcanvas.is-open .offcanvas-modern-list .list-group-item:nth-child(6) { animation-delay: .18s; }
+.offcanvas.is-open .offcanvas-modern-list .list-group-item:nth-child(7) { animation-delay: .21s; }
+
+@keyframes offcanvasItemIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   LANGUAGE DROPDOWN - Modern Select (AÇIK TEMA)
+   ============================================ */
+.lang-dropdown {
+    position: relative;
+}
+
+.lang-dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: rgba(39, 68, 114, 0.06);
+    border: 1px solid rgba(39, 68, 114, 0.12);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #274472;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.lang-dropdown-toggle:hover {
+    background: rgba(39, 68, 114, 0.1);
+    border-color: rgba(39, 68, 114, 0.2);
+}
+
+.lang-dropdown-toggle img {
+    width: 22px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.lang-dropdown-toggle .lang-text {
+    font-size: 0.875rem;
+    letter-spacing: 0.01em;
+}
+
+.lang-dropdown-toggle i {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    transition: transform 0.2s ease;
+    color: #274472;
+}
+
+.lang-dropdown.show .lang-dropdown-toggle i {
+    transform: rotate(180deg);
+}
+
+.lang-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 160px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    padding: 6px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 1000;
+}
+
+.lang-dropdown.show .lang-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.lang-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: #1e293b;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.15s ease;
+}
+
+.lang-dropdown-item:hover {
+    background: #f1f5f9;
+    color: #0f172a;
+}
+
+.lang-dropdown-item.active {
+    background: linear-gradient(135deg, #446D96 0%, #274472 100%);
+    color: #ffffff;
+}
+
+.lang-dropdown-item img {
+    width: 22px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* ============================================
+   NAVBAR - Clean Modern Design (AÇIK TEMA)
+   ============================================ */
+.custom-navbar {
+    background: rgba(235, 238, 243, 0.98) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    height: 76px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.06);
+    z-index: 999;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Navbar Logo - BÜYÜK */
+.navbar-brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+}
+
+.navbar-brand-logo img {
+    height: 56px;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand-logo:hover img {
+    transform: scale(1.03);
+}
+
+.navbar-brand-text {
+    color: #274472;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+#navbarLogo {
+    height: 56px;
+    opacity: 0;
+    transform: translateY(10px);
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#navbarLogo.instant-visible,
+#navbarLogo.animate-visible,
+#navbarLogo.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.offcanvas-end {
+    width: 320px !important;
+    max-width: 90vw;
+}
+
+/* ============================================
+   FOOTER - Modern Design
+   ============================================ */
+.footer-custom {
+    background: linear-gradient(180deg, #0f172a 0%, #0a0f1a 100%);
+    padding: 28px 0;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    margin-top: auto;
+    font-size: 0.875rem;
+    letter-spacing: 0.01em;
+}
+
+.footer-custom .footer-center {
+    opacity: 0.7;
+    font-weight: 400;
+}
+
+.footer-custom .footer-right {
+    opacity: 0.4;
+    font-size: 0.75rem;
+}
+
+/* ============================================
+   RESPONSIVE - Layout
+   ============================================ */
+@media (max-width: 768px) {
+    .custom-navbar {
+        height: 66px;
+    }
+
+    .navbar-brand-logo img,
+    #navbarLogo {
+        height: 46px;
+    }
+
+    .navbar-brand-text {
+        font-size: 1.25rem;
+    }
+
+    .lang-dropdown-toggle {
+        padding: 8px 12px;
+    }
+
+    .lang-dropdown-toggle .lang-text {
+        display: none;
+    }
+
+    .navbar-toggler {
+        width: 42px;
+        height: 42px;
+    }
+
+    .footer-custom {
+        padding: 20px 0;
+        font-size: 0.8125rem;
+    }
+
+    .offcanvas-end {
+        width: 85% !important;
+    }
 }

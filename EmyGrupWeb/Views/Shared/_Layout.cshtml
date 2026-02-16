@@ -1,4 +1,4 @@
-﻿@using EmyGrupWeb
+@using EmyGrupWeb
 @using System.Globalization
 
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> L
@@ -13,7 +13,6 @@
         controller = controller.ToLower();
         action = action.ToLower();
 
-        // Home/Index için hem "/" hem "/home" hem "/home/index" yakala
         if (controller == "home" && action == "index")
         {
             return path == "/" || path == "/home" || path == "/home/index" ||
@@ -23,7 +22,6 @@
         return currentController == controller && currentAction == action;
     }
 }
-
 
 <!DOCTYPE html>
 <html lang="tr">
@@ -35,330 +33,61 @@
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
-    <style>
-        /* Navbar hamburger ikonunun etrafındaki siyah kutuyu kaldır */
-        .navbar-toggler {
-            background: transparent !important;
-            box-shadow: none !important;
-            outline: none !important;
-        }
-
-            /* Tıklanınca çıkan focus halkası */
-            .navbar-toggler:focus,
-            .navbar-toggler:active,
-            .navbar-toggler:focus-visible {
-                outline: none !important;
-                box-shadow: none !important;
-            }
-
-        /* Bootstrap'in varsayılan arka plan efektini sıfırla */
-        .navbar-toggler-icon {
-            background-image: var(--bs-navbar-toggler-icon-bg);
-            filter: brightness(5);
-        }
-
-
-
-
-
-
-        .offcanvas-modern {
-            background: rgba(255,255,255,0.92) !important;
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border-left: 1px solid rgba(0,0,0,0.08);
-            box-shadow: -18px 0 40px rgba(0,0,0,0.18);
-        }
-
-        .offcanvas-modern-header {
-            padding: 18px 18px;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-        }
-
-        .offcanvas-modern-title {
-            margin: 0;
-            font-size: 1.05rem;
-            font-weight: 600;
-            letter-spacing: .5px;
-            font-family: 'Helvetica Neue','Segoe UI',Roboto,system-ui,-apple-system,sans-serif;
-            color: #111;
-        }
-
-        .offcanvas-modern-body {
-            padding: 16px 14px 18px;
-        }
-
-        /* Liste satırlarını “kart” hissine yaklaştır */
-        .offcanvas-modern-list .list-group-item {
-            border: 0 !important;
-            padding: 0 !important;
-            background: transparent !important;
-            margin-bottom: 10px;
-        }
-
-        .offcanvas-link {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 14px;
-            border-radius: 14px;
-            text-decoration: none;
-            color: #1b1b1b;
-            font-size: 0.98rem;
-            font-weight: 500;
-            letter-spacing: .2px;
-            font-family: 'Helvetica Neue','Segoe UI',Roboto,system-ui,-apple-system,sans-serif;
-            background: rgba(255,255,255,0.75);
-            border: 1px solid rgba(0,0,0,0.06);
-            box-shadow: 0 8px 22px rgba(0,0,0,0.08);
-            transition: transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-            /* Hafif ışık çizgisi */
-            .offcanvas-link::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background: radial-gradient(circle at 15% 0%, rgba(68,109,150,0.18), transparent 55%);
-                opacity: 0;
-                transition: opacity .22s ease;
-                pointer-events: none;
-            }
-
-            .offcanvas-link:hover {
-                transform: translateY(-2px);
-                background: rgba(255,255,255,0.95);
-                border-color: rgba(68,109,150,0.28);
-                box-shadow: 0 14px 28px rgba(0,0,0,0.14);
-                color: #0b0b0b;
-            }
-
-                .offcanvas-link:hover::before {
-                    opacity: 1;
-                }
-
-            .offcanvas-link:active {
-                transform: translateY(0);
-                box-shadow: 0 10px 22px rgba(0,0,0,0.12);
-            }
-
-            /* =============================== */
-            /* ✅ AKTİF MENÜ ÖĞESİ VURGUSU      */
-            /* =============================== */
-            .offcanvas-link.is-active {
-                background: linear-gradient( 135deg, rgba(68,109,150,0.18), rgba(68,109,150,0.08) );
-                border-color: rgba(68,109,150,0.35);
-                color: #0b0b0b;
-                font-weight: 600;
-                box-shadow: 0 10px 26px rgba(68,109,150,0.18);
-            }
-
-                .offcanvas-link.is-active:hover {
-                    background: linear-gradient( 135deg, rgba(68,109,150,0.22), rgba(68,109,150,0.12) );
-                    transform: none;
-                }
-
-                
-
-
-        /* =============================== */
-        /* ✅ ITEM'LARA STAGGER FADE-IN     */
-        /* =============================== */
-        .offcanvas-modern-list .list-group-item {
-            opacity: 0;
-            transform: translateY(10px);
-        }
-
-        .offcanvas.is-open .offcanvas-modern-list .list-group-item {
-            animation: offcanvasItemIn .42s ease forwards;
-        }
-
-            .offcanvas.is-open .offcanvas-modern-list .list-group-item:nth-child(1) {
-                animation-delay: .06s;
-            }
-
-            .offcanvas.is-open .offcanvas-modern-list .list-group-item:nth-child(2) {
-                animation-delay: .10s;
-            }
-
-            .offcanvas.is-open .offcanvas-modern-list .list-group-item:nth-child(3) {
-                animation-delay: .14s;
-            }
-
-            .offcanvas.is-open .offcanvas-modern-list .list-group-item:nth-child(4) {
-                animation-delay: .18s;
-            }
-
-            .offcanvas.is-open .offcanvas-modern-list .list-group-item:nth-child(5) {
-                animation-delay: .22s;
-            }
-
-            .offcanvas.is-open .offcanvas-modern-list .list-group-item:nth-child(6) {
-                animation-delay: .26s;
-            }
-
-            .offcanvas.is-open .offcanvas-modern-list .list-group-item:nth-child(7) {
-                animation-delay: .30s;
-            }
-
-        @@keyframes offcanvasItemIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Mobilde menü daha geniş olsun (okunabilirlik) */
-        @@media (max-width: 768px) {
-            .offcanvas-end {
-                width: 86% !important; /* sende %30 vardı, mobilde çok dar kalır */
-            }
-        }
-
-        .lang-flag img {
-            width: 26px;
-            height: 18px;
-            object-fit: cover;
-            border-radius: 3px;
-            display: block;
-        }
-
-        .lang-flag {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2px;
-            border-radius: 4px;
-            border: 1px solid transparent;
-            cursor: pointer;
-            transition: 0.2s ease;
-        }
-
-            .lang-flag:hover {
-                border-color: rgba(255,255,255,0.7);
-                background: rgba(255,255,255,0.12);
-            }
-
-            .lang-flag.active {
-                border-color: #fff;
-                background: rgba(255,255,255,0.22);
-            }
-
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-            background: #C0C7CF;
-            overflow-x: hidden;
-        }
-
-        main {
-            flex: 1;
-        }
-
-        /* ========================== */
-        /* NAVBAR TASARIMI */
-        /* ========================== */
-        .custom-navbar {
-            background-color: #446D96 !important;
-            min-height: 95px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 4px 18px rgba(0,0,0,.25);
-            z-index: 99;
-        }
-
-        /* Navbar logosu başlangıçta görünmez */
-        #navbarLogo {
-            height: 58px;
-            opacity: 0;
-            transform: translateY(15px);
-        }
-
-            /* Index dışı: Animasyonsuz direkt görünür */
-            #navbarLogo.instant-visible {
-                opacity: 1 !important;
-                transform: translateY(0) !important;
-                transition: none !important;
-            }
-
-            /* Index: Preloader sonrası animasyonlu görünüm */
-            #navbarLogo.animate-visible {
-                opacity: 1 !important;
-                transform: translateY(0) !important;
-                transition: opacity .7s ease, transform .7s ease;
-            }
-
-        .navbar-toggler {
-            border: none;
-            filter: brightness(5);
-            transform: scale(1.3);
-        }
-
-        .offcanvas-end {
-            width: 25% !important;
-        }
-
-        footer {
-            background: #293241;
-            padding: 20px 0;
-            color: white;
-            text-align: center;
-            margin-top: auto;
-        }
-    </style>
-
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/EmyGrupWeb.styles.css" asp-append-version="true" />
 </head>
 
 <body>
 
-    <!-- ========================== -->
-    <!--           NAVBAR           -->
-    <!-- ========================== -->
+    <!-- NAVBAR -->
     <nav class="navbar custom-navbar fixed-top">
-        <div class="container-fluid d-flex justify-content-between align-items-center">
+        <div class="container-fluid d-flex justify-content-between align-items-center px-3">
 
-            <!-- Sol taraf yazı -->
-            <a class="text-white fw-bold fs-4 ms-2" asp-controller="Home" asp-action="Index">
-                EMY Grup
-            </a>
-
-            <!-- ORTADA LOGO -->
-            <a asp-controller="Home" asp-action="Index">
+            <!-- Sol: Logo + Marka -->
+            <a class="navbar-brand-logo" asp-controller="Home" asp-action="Index">
                 <img src="/images/emy-transparan-logo.png" id="navbarLogo" />
+                <span class="navbar-brand-text">EMY Grup</span>
             </a>
 
-            <!-- Sağ taraf: Dil bayrakları + Menü butonu -->
-            <div class="d-flex align-items-center gap-2 me-2">
+            <!-- Sağ: Dil Dropdown + Menü -->
+            <div class="d-flex align-items-center gap-3">
 
-                <!-- Türkçe -->
-                <a asp-controller="Language"
-                   asp-action="SetLanguage"
-                   asp-route-culture="tr-TR"
-                   asp-route-returnUrl="@($"{Context.Request.Path}{Context.Request.QueryString}")"
-                   class="lang-flag @(CultureInfo.CurrentUICulture.Name.StartsWith("tr") ? "active" : "")">
-                    <img src="/images/Flags/tr.png" alt="Türkçe" />
-                </a>
+                <!-- Dil Seçimi Dropdown -->
+                <div class="lang-dropdown" id="langDropdown">
+                    <div class="lang-dropdown-toggle" onclick="toggleLangDropdown()">
+                        @if (CultureInfo.CurrentUICulture.Name.StartsWith("tr"))
+                        {
+                            <img src="/images/Flags/tr.png" alt="TR" />
+                            <span class="lang-text">Türkçe</span>
+                        }
+                        else
+                        {
+                            <img src="/images/Flags/uk.png" alt="EN" />
+                            <span class="lang-text">English</span>
+                        }
+                        <i class="bi bi-chevron-down"></i>
+                    </div>
+                    <div class="lang-dropdown-menu">
+                        <a asp-controller="Language"
+                           asp-action="SetLanguage"
+                           asp-route-culture="tr-TR"
+                           asp-route-returnUrl="@($"{Context.Request.Path}{Context.Request.QueryString}")"
+                           class="lang-dropdown-item @(CultureInfo.CurrentUICulture.Name.StartsWith("tr") ? "active" : "")">
+                            <img src="/images/Flags/tr.png" alt="Türkçe" />
+                            <span>Türkçe</span>
+                        </a>
+                        <a asp-controller="Language"
+                           asp-action="SetLanguage"
+                           asp-route-culture="en-US"
+                           asp-route-returnUrl="@($"{Context.Request.Path}{Context.Request.QueryString}")"
+                           class="lang-dropdown-item @(CultureInfo.CurrentUICulture.Name.StartsWith("en") ? "active" : "")">
+                            <img src="/images/Flags/uk.png" alt="English" />
+                            <span>English</span>
+                        </a>
+                    </div>
+                </div>
 
-                <!-- İngilizce -->
-                <a asp-controller="Language"
-                   asp-action="SetLanguage"
-                   asp-route-culture="en-US"
-                   asp-route-returnUrl="@($"{Context.Request.Path}{Context.Request.QueryString}")"
-                   class="lang-flag @(CultureInfo.CurrentUICulture.Name.StartsWith("en") ? "active" : "")">
-                    <img src="/images/Flags/uk.png" alt="English" />
-                </a>
-
-                <!-- Menü -->
+                <!-- Menü Butonu -->
                 <button class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#sideMenu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -367,7 +96,7 @@
         </div>
     </nav>
 
-    @* SIDEMENU *@
+    <!-- SIDEMENU -->
     <div class="offcanvas offcanvas-end bg-light offcanvas-modern" id="sideMenu" tabindex="-1">
         <div class="offcanvas-header offcanvas-modern-header">
             <h5 class="offcanvas-title offcanvas-modern-title">Menü</h5>
@@ -430,20 +159,14 @@
         </div>
     </div>
 
-
-
-    <!-- ========================== -->
-    <!--         İÇERİK             -->
-    <!-- ========================== -->
+    <!-- İÇERİK -->
     <main style="margin-top:2px;">
         <div class="container">
             @RenderBody()
         </div>
     </main>
 
-    <!-- ========================== -->
-    <!--          FOOTER            -->
-    <!-- ========================== -->
+    <!-- FOOTER -->
     <footer class="footer-custom">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <span class="footer-left"></span>
@@ -455,48 +178,45 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- ============================= -->
-    <!-- LOGO GÖRÜNME KONTROL SCRIPT  -->
-    <!-- ============================= -->
+    <!-- LANGUAGE DROPDOWN SCRIPT -->
     <script>
-        window.addEventListener("load", () => {
+        function toggleLangDropdown() {
+            const dropdown = document.getElementById('langDropdown');
+            dropdown.classList.toggle('show');
+        }
 
-            const logo = document.querySelector("#navbarLogo");
-            const path = window.location.pathname.toLowerCase();
-
-            /* ========================
-               INDEX SAYFASI → ANİMASYONLU
-               ======================== */
-            if (path === "/" || path === "/home" || path === "/home/index") {
-
-                logo.style.opacity = "0";
-                logo.style.transform = "translateY(25px)";
-
-                /* Preloader toplam animasyon süresi = 3.4 saniye */
-                setTimeout(() => {
-                    logo.classList.add("animate-visible");
-                }, 3400);
+        document.addEventListener('click', function(e) {
+            const dropdown = document.getElementById('langDropdown');
+            if (dropdown && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('show');
             }
-
-            /* ========================
-               DİĞER SAYFALAR → ANİMASYONSUZ
-               ======================== */
-            else {
-                logo.classList.add("instant-visible");
-            }
-
         });
     </script>
 
-    <!-- =========================================== -->
-    <!-- ✅ SIDE MENU: AKTİF ÖĞE + FADE-IN ANİMASYON -->
-    <!-- =========================================== -->
+    <!-- LOGO GÖRÜNME KONTROL SCRIPT -->
+    <script>
+        window.addEventListener("load", () => {
+            const logo = document.querySelector("#navbarLogo");
+            const path = window.location.pathname.toLowerCase();
+
+            if (path === "/" || path === "/home" || path === "/home/index") {
+                logo.style.opacity = "0";
+                logo.style.transform = "translateY(25px)";
+                setTimeout(() => {
+                    logo.classList.add("animate-visible");
+                }, 3400);
+            } else {
+                logo.classList.add("instant-visible");
+            }
+        });
+    </script>
+
+    <!-- SIDE MENU: AKTİF ÖĞE + FADE-IN ANİMASYON -->
     <script>
         (function () {
             const sideMenuEl = document.getElementById('sideMenu');
             if (!sideMenuEl) return;
 
-            // 1) Aktif menü öğesini vurgula (URL'e göre)
             const currentPath = window.location.pathname.toLowerCase().replace(/\/$/, "");
             const links = sideMenuEl.querySelectorAll('a.offcanvas-link');
 
@@ -504,7 +224,6 @@
                 const href = (a.getAttribute('href') || "").toLowerCase().replace(/\/$/, "");
                 if (!href) return;
 
-                // Home için özel durum ("/" gibi)
                 const isHomePath = (currentPath === "" || currentPath === "/");
                 const isHomeHref = (href === "" || href === "/" || href.endsWith("/home") || href.endsWith("/home/index"));
 
@@ -516,9 +235,7 @@
                 if (match) a.classList.add("is-active");
             });
 
-            // 2) Menü açılınca item'lara fade-in (stagger)
             sideMenuEl.addEventListener('show.bs.offcanvas', () => {
-                // her açılışta animasyon reset
                 sideMenuEl.classList.remove('is-open');
                 requestAnimationFrame(() => sideMenuEl.classList.add('is-open'));
             });

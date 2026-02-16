@@ -1,1442 +1,1053 @@
-﻿@{
+@{
     ViewData["Title"] = "Emy Grup | Ana Sayfa";
 }
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> L
 
-
 <!-- ========================================= -->
-<!--  PRELOADER - Açılış Animasyonu            -->
+<!--  PRELOADER                                -->
 <!-- ========================================= -->
 <div id="preloader">
-    <img src="/images/emy-logo2.jpeg" id="preloaderLogo" />
+    <div class="preloader-content">
+        <img src="/images/emy-logo2.jpeg" id="preloaderLogo" alt="Emy Grup" />
+        <div class="preloader-progress">
+            <div class="preloader-bar"></div>
+        </div>
+    </div>
 </div>
 
 <!-- ========================================= -->
-<!--   OPENING PRODUCTS (Başlangıç iki kutu)   -->
+<!--  HERO SECTION - İki Büyük Görsel          -->
 <!-- ========================================= -->
-<section class="opening-products animate spacer-section">
-    <div class="products-wrapper">
-
-        <!-- Gıda Ürünleri → FMCG -->
-        <a asp-action="FMCG" asp-controller="Home" class="product-box">
-            <img src="~/images/Index_foto_tasarim.png" alt="Gıda" />
+<section class="hero-section">
+    <div class="hero-bento">
+        <!-- Sol Kart - FMCG Görseli -->
+        <a asp-action="FMCG" asp-controller="Home" class="hero-card">
+            <div class="hero-card-media">
+                <img src="~/images/Index_foto_tasarim.png" alt="FMCG" />
+            </div>
+            <div class="hero-card-overlay">
+                <span class="hero-card-badge">FMCG</span>
+                <div class="hero-card-arrow">
+                    <i class="bi bi-arrow-right"></i>
+                </div>
+            </div>
         </a>
 
-        <!-- Oyuncak Ürünleri → Partners -->
-        <a asp-action="Partners" asp-controller="Home" class="product-box product-box--video">
-            <video class="product-video" autoplay muted loop playsinline preload="metadata">
-                
+        <!-- Sağ Kart - Video -->
+        <a asp-action="Partners" asp-controller="Home" class="hero-card">
+            <div class="hero-card-media">
+                <video autoplay muted loop playsinline preload="metadata">
                     <source src="~/images/Video/fmcgVideo.mp4" type="video/mp4" />
-            </video>ype="video/mp4" />
-             
+                </video>
+            </div>
+            <div class="hero-card-overlay">
+                <span class="hero-card-badge">İş Ortaklarımız</span>
+                <div class="hero-card-arrow">
+                    <i class="bi bi-arrow-right"></i>
+                </div>
+            </div>
         </a>
-
     </div>
 </section>
 
-
 <!-- ========================================= -->
-<!--  STATS SECTION – 5 KART TEK SATIR         -->
+<!--  STATS SECTION                            -->
 <!-- ========================================= -->
-<section id="stats" class="py-5 text-center animate spacer-section">
+<section class="stats-section">
     <div class="container">
-
-        <div class="stats-row">
-
-            <!-- 1. Kart -->
-            <div class="stats-card animate">
-                <div class="card shadow-sm border-0 py-5 stats-premium">
-                    <img src="~/images/index_stats/düz_dünya.png"   width="70" class="mb-3 mx-auto" />
-                    <h3 class="counter fw-bold display-5" data-target="60" style="color:#333333;">0</h3>
-                    <p class="fw-semibold">
-                        @L["Index_Stats_AktifUlke"]
-                    </p>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <img src="~/images/index_stats/düz_dünya.png" alt="Ülkeler" />
                 </div>
+                <div class="stat-number counter" data-target="60">0</div>
+                <div class="stat-label">@L["Index_Stats_AktifUlke"]</div>
             </div>
-
-            <!-- 2. Kart -->
-            <div class="stats-card animate">
-                <div class="card shadow-sm border-0 py-5 stats-premium">
-                    <img src="~/images/index_stats/bayilik_sayisi.png"  width="70" class="mb-3 mx-auto" />
-                    <h3 class="counter fw-bold display-5" data-target="30" style="color:#333333;">0</h3>
-                    <p class="fw-semibold">
-                        @L["Index_Stats_AktifBayilik"]
-                    </p>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <img src="~/images/index_stats/bayilik_sayisi.png" alt="Bayilik" />
                 </div>
+                <div class="stat-number counter" data-target="30">0</div>
+                <div class="stat-label">@L["Index_Stats_AktifBayilik"]</div>
             </div>
-
-            <!-- 3. Kart -->
-            <div class="stats-card animate">
-                <div class="card shadow-sm border-0 py-5 stats-premium">
-                    <img src="~/images/index_stats/location.png"  width="70" class="mb-3 mx-auto" />
-                    <h3 class="counter fw-bold display-5" data-target="120000" style="color:#333333;">0</h3>
-                    <p class="fw-semibold">
-                        @L["Index_Stats_Nokta"]
-                    </p>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <img src="~/images/index_stats/location.png" alt="Nokta" />
                 </div>
+                <div class="stat-number counter" data-target="120000">0</div>
+                <div class="stat-label">@L["Index_Stats_Nokta"]</div>
             </div>
-
-            <!-- 4. Kart -->
-            <div class="stats-card animate">
-                <div class="card shadow-sm border-0 py-5 stats-premium">
-                    <img src="~/images/index_stats/warehouse.png" width="70" class="mb-3 mx-auto" />
-                    <h3 class="counter fw-bold display-5" data-target="6000" style="color:#333333;">0</h3>
-                    <p class="fw-semibold">
-                        @L["Index_Stats_Depolama"]
-                    </p>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <img src="~/images/index_stats/warehouse.png" alt="Depolama" />
                 </div>
+                <div class="stat-number counter" data-target="6000">0</div>
+                <div class="stat-label">@L["Index_Stats_Depolama"]</div>
             </div>
-
-            <!-- 5. Kart -->
-            <div class="stats-card animate">
-                <div class="card shadow-sm border-0 py-5 stats-premium">
-                    <img src="~/images/index_stats/barcode.png" width="70" class="mb-3 mx-auto" />
-                    <h3 class="counter fw-bold display-5" data-target="1500" style="color:#333333;">0</h3>
-                    <p class="fw-semibold">
-                        @L["Index_Stats_Cesit"]
-                    </p>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <img src="~/images/index_stats/barcode.png" alt="Çeşit" />
                 </div>
+                <div class="stat-number counter" data-target="1500">0</div>
+                <div class="stat-label">@L["Index_Stats_Cesit"]</div>
             </div>
-
-        </div>
-
-    </div>
-</section>
-
-
-<!-- ========================================= -->
-<!--   4'LÜ OTOMATİK FOTOĞRAF KAYDIRMA BÖLÜMÜ  -->
-<!-- ========================================= -->
-<section id="auto-galleries" class="py-5 animate spacer-section">
-    <div class="container text-center">
-
-        <!-- Başlık -->
-        <h2 class="section-title-apple">
-            @L["Side_Menu_SahadaBiz"]
-        </h2>
-
-        <!-- Galeri Row -->
-        <div class="gallery-row">
-
-            <!-- 1. GALERİ -->
-            <div class="gallery-card">
-                <div class="gallery-inner" id="gallery1">
-                    <img src="/images/Saha/RafGorselleri/raf1.jpeg" />
-                    <img src="/images/Saha/Fuar/fr1.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk1.jpeg" />
-                    <img src="/images/Saha/Kibris/kibris11.jpg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf5.jpeg" />
-                    <img src="/images/Saha/Fuar/fr5.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk5.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf9.jpeg" />
-                    <img src="/images/Saha/Fuar/fr9.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk9.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf13.jpeg" />
-                    <img src="/images/Saha/Fuar/fr13.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk13.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf17.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk1.jpeg" />
-                    <img src="/images/Saha/Kibris/kibris11.jpg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf21.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk5.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf25.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk9.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf29.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk13.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf33.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf37.jpeg" />
-                </div>
-            </div>
-
-            <!-- 2. GALERİ -->
-            <div class="gallery-card">
-                <div class="gallery-inner" id="gallery2">
-                    <img src="/images/Saha/RafGorselleri/raf2.jpeg" />
-                    <img src="/images/Saha/Fuar/fr2.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk2.jpeg" />
-                    <img src="/images/Saha/Kibris/kibris12.jpg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf6.jpeg" />
-                    <img src="/images/Saha/Fuar/fr6.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk6.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf10.jpeg" />
-                    <img src="/images/Saha/Fuar/fr10.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk10.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf14.jpeg" />
-                    <img src="/images/Saha/Fuar/fr14.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk14.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf18.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk2.jpeg" />
-                    <img src="/images/Saha/Kibris/kibris12.jpg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf22.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk6.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf26.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk10.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf30.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk14.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf34.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf38.jpeg" />
-                </div>
-            </div>
-
-            <!-- 3. GALERİ -->
-            <div class="gallery-card">
-                <div class="gallery-inner" id="gallery3">
-                    <img src="/images/Saha/RafGorselleri/raf3.jpeg" />
-                    <img src="/images/Saha/Fuar/fr3.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk3.jpeg" />
-                    <img src="/images/Saha/Kibris/kibris13.jpg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf7.jpeg" />
-                    <img src="/images/Saha/Fuar/fr7.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk7.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf11.jpeg" />
-                    <img src="/images/Saha/Fuar/fr11.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk11.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf15.jpeg" />
-                    <img src="/images/Saha/Fuar/fr15.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk15.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf19.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk3.jpeg" />
-                    <img src="/images/Saha/Kibris/kibris13.jpg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf23.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk7.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf27.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk11.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf31.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk15.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf35.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf39.jpeg" />
-                </div>
-            </div>
-
-            <!-- 4. GALERİ -->
-            <div class="gallery-card">
-                <div class="gallery-inner" id="gallery4">
-                    <img src="/images/Saha/RafGorselleri/raf4.jpeg" />
-                    <img src="/images/Saha/Fuar/fr4.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk4.jpeg" />
-                    <img src="/images/Saha/Kibris/kibris14.jpg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf8.jpeg" />
-                    <img src="/images/Saha/Fuar/fr8.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk8.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf12.jpeg" />
-                    <img src="/images/Saha/Fuar/fr12.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk12.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf16.jpeg" />
-                    <img src="/images/Saha/Fuar/fr16.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk16.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf20.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk4.jpeg" />
-                    <img src="/images/Saha/Kibris/kibris14.jpg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf24.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk8.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf28.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk12.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf32.jpeg" />
-                    <img src="/images/Saha/HelloKitty/hk16.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf36.jpeg" />
-
-                    <img src="/images/Saha/RafGorselleri/raf40.jpeg" />
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-@* <!-- ========================================= -->
-<!--  ABOUT SECTION                     buraya raf görselleri gelecek üç farklı fotoğraf kaydıracı yan yana -->
-<!-- =========================================  tıklamadan kayacak -->
-<section id="about" class="py-5 bg-light animate spacer-section">
-    <div class="container text-center">
-        <h2 class="fw-bold mb-4 text-primary">Biz Kimiz?</h2>
-        <p class="text-muted mx-auto" style="max-width:750px;">
-            Emy Grup olarak gıda, oyuncak ve endüstriyel ürünlerde geniş ürün yelpazemizle
-            dünyanın dört bir yanındaki müşterilerimize güvenilir, kaliteli ve hızlı tedarik çözümleri sunuyoruz.
-        </p>
-    </div>
-</section> *@
-
-<!-- ========================================= -->
-<!--  MARKA SLIDER                             -->
-<!-- ========================================= -->
-<section id="brands" class="py-5 bg-light text-center animate spacer-section">
-    <h2 class="fw-bold mb-4">
-        @L["Index_Slider_Markalarımız"]
-    </h2>
-
-    <div class="brand-slider-window">
-        <div class="brand-slider" id="brandSlider">
-            <div class="brand-item"><img src="/images/Markalar/HELLO KITTY.png" /></div>
-            <div class="brand-item"><img src="/images/Markalar/KUROMI.png" /></div>
-            <div class="brand-item"><img src="/images/Markalar/MY LITTLE PONY.png" /></div>
-            <div class="brand-item"><img src="/images/Markalar/PJ MASKS.png" /></div>
-            <div class="brand-item"><img src="/images/Markalar/TRANSFORMERS.png" /></div>
-            <div class="brand-item"><img src="/images/Markalar/STEPY.png" /></div>
-            <div class="brand-item"><img src="/images/Markalar/BEŞEM GIDA.png" /></div>
-            <div class="brand-item"><img src="/images/Markalar/KIVA KOZMETİK.png" /></div>
-        </div>
-    </div>
-</section>
-
-
-<!-- ========================================= -->
-<!--  MARKA SLIDER 2 (YENİ EKLENDİ)            -->
-<!-- ========================================= -->
-<section id="brands2" class="py-5 bg-light text-center animate spacer-section">
-    <h2 class="fw-bold mb-4">
-        @L["Side_Menu_Fmcg"]
-    </h2>
-
-    <div class="brand-slider-window">
-        <div class="brand-slider" id="brandSlider2">
-            <div class="brand-item"><img src="/images/FMCG/P&G.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/UNILEVER.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/COLGATE PALMOLIVE.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/NIVEA.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/HENKEL.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/LOREAL.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/JOHNSON & JOHNSON.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/RECKITT BENCKISER.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/SLEEPY.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/ECZACIBAŞI.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/EVYAP.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/HAYAT KİMYA.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/ABC.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/NESTLE.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/MILKA.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/RED BULL.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/HARIBO.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/ALGIDA.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/FERRERO.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/KINDER.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/MONDELEZ.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/PEPSICO.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/FRITO LAY.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/BARILLA.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/KELLOG'S.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/DANONE.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/VIVIDENT.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/LİPTON.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/DR. OETKER.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/MONSTER.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/BEBETO.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/ÜLKER.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/ETİ.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/KENT.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/KURUKAHVECİ MEHMET EFENDİ.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/FİLİZ.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/TADIM.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/KAHVE DÜNYASI.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/ŞÖLEN.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/TORKU.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/ELVAN.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/KOSKA.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/TAT.png" /></div>
-            <div class="brand-item"><img src="/images/FMCG/PEYMAN.png" /></div>
         </div>
     </div>
 </section>
 
 <!-- ========================================= -->
-<!-- CTA -->
+<!--  SERVICES / NAVIGATION CARDS              -->
 <!-- ========================================= -->
-<section class="cta-modern text-center text-white animate spacer-section">
-    <div class="cta-content">
+<section class="services-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-badge"><i class="bi bi-grid-3x3-gap"></i> Hizmetlerimiz</span>
+            <h2 class="section-title">Neler Yapıyoruz?</h2>
+            <p class="section-desc">FMCG sektöründe güvenilir çözümler sunuyoruz</p>
+        </div>
 
-        <h2 class="fw-bold mb-3">
-            @L["Index_Iletisim_Baslik"]
-        </h2>
-        <p class="mb-4">
-            @L["Index_Iletisim_AltYazi"]
-        </p>
-
-        <a href="/Home/Contact#contactForm" class="btn btn-light btn-lg px-5 mb-4">
-            @L["Index_Iletisim_Form"]
-        </a>
-
-        <!-- Sosyal medya ikonları -->
-        <div class="social-icons d-flex justify-content-center gap-4">
-
-            <a href="https://www.instagram.com/emygruptr/" target="_blank" class="social-item instagram">
-                <i class="bi bi-instagram"></i>
+        <div class="services-grid">
+            <!-- Hakkımızda -->
+            <a asp-action="About" asp-controller="Home" class="service-card">
+                <div class="service-icon">
+                    <i class="bi bi-building"></i>
+                </div>
+                <h3>Hakkımızda</h3>
+                <p>EMY Grup'u yakından tanıyın</p>
+                <span class="service-link">
+                    Detaylar <i class="bi bi-arrow-right"></i>
+                </span>
             </a>
 
-            <a href="https://wa.me/905453765235" target="_blank" class="social-item whatsapp">
-                <i class="bi bi-whatsapp"></i>
+            <!-- Sahada Biz -->
+            <a asp-action="Field" asp-controller="Home" class="service-card">
+                <div class="service-icon">
+                    <i class="bi bi-camera"></i>
+                </div>
+                <h3>Sahada Biz</h3>
+                <p>Türkiye'nin her yerindeyiz</p>
+                <span class="service-link">
+                    Galeri <i class="bi bi-arrow-right"></i>
+                </span>
             </a>
 
-            <a href="https://www.linkedin.com/company/emygruptr?trk=public_profile_topcard-current-company" target="_blank" class="social-item linkedin">
-                <i class="bi bi-linkedin"></i>
+            <!-- Kataloglar -->
+            <a asp-action="Products" asp-controller="Home" class="service-card">
+                <div class="service-icon">
+                    <i class="bi bi-journal-richtext"></i>
+                </div>
+                <h3>Kataloglar</h3>
+                <p>Ürün kataloglarımızı inceleyin</p>
+                <span class="service-link">
+                    İncele <i class="bi bi-arrow-right"></i>
+                </span>
             </a>
 
+            <!-- İletişim -->
+            <a asp-action="Contact" asp-controller="Home" class="service-card">
+                <div class="service-icon">
+                    <i class="bi bi-envelope"></i>
+                </div>
+                <h3>İletişim</h3>
+                <p>Bizimle iletişime geçin</p>
+                <span class="service-link">
+                    İletişim <i class="bi bi-arrow-right"></i>
+                </span>
+            </a>
         </div>
-
     </div>
 </section>
 
 <!-- ========================================= -->
-<!-- ✅ SABİT WHATSAPP İKONU (FLOATING BUTTON)  -->
+<!--  BRANDS SLIDER                            -->
 <!-- ========================================= -->
-<a class="whatsapp-float"
-   href="https://wa.me/905453765235"
-   target="_blank"
-   rel="noopener"
-   aria-label="WhatsApp ile iletişime geç">
+<section class="brands-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-badge"><i class="bi bi-award"></i> Markalar</span>
+            <h2 class="section-title">@L["Index_Slider_Markalarımız"]</h2>
+        </div>
+
+        <div class="brands-slider-wrapper">
+            <div class="brands-fade brands-fade--left"></div>
+            <div class="brands-fade brands-fade--right"></div>
+            <div class="brands-track" id="brandSlider">
+                <div class="brand-item"><img src="/images/Markalar/HELLO KITTY.png" alt="Hello Kitty" /></div>
+                <div class="brand-item"><img src="/images/Markalar/KUROMI.png" alt="Kuromi" /></div>
+                <div class="brand-item"><img src="/images/Markalar/MY LITTLE PONY.png" alt="My Little Pony" /></div>
+                <div class="brand-item"><img src="/images/Markalar/PJ MASKS.png" alt="PJ Masks" /></div>
+                <div class="brand-item"><img src="/images/Markalar/TRANSFORMERS.png" alt="Transformers" /></div>
+                <div class="brand-item"><img src="/images/Markalar/STEPY.png" alt="Stepy" /></div>
+                <div class="brand-item"><img src="/images/Markalar/BEŞEM GIDA.png" alt="Besem Gida" /></div>
+                <div class="brand-item"><img src="/images/Markalar/KIVA KOZMETİK.png" alt="Kiva Kozmetik" /></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================= -->
+<!--  FMCG BRANDS SLIDER                       -->
+<!-- ========================================= -->
+<section class="brands-section brands-section--alt">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-badge"><i class="bi bi-box-seam"></i> FMCG</span>
+            <h2 class="section-title">@L["Side_Menu_Fmcg"]</h2>
+        </div>
+
+        <div class="brands-slider-wrapper">
+            <div class="brands-fade brands-fade--left"></div>
+            <div class="brands-fade brands-fade--right"></div>
+            <div class="brands-track brands-track--reverse" id="brandSlider2">
+                <div class="brand-item"><img src="/images/FMCG/P&G.png" alt="P&G" /></div>
+                <div class="brand-item"><img src="/images/FMCG/UNILEVER.png" alt="Unilever" /></div>
+                <div class="brand-item"><img src="/images/FMCG/NESTLE.png" alt="Nestle" /></div>
+                <div class="brand-item"><img src="/images/FMCG/FERRERO.png" alt="Ferrero" /></div>
+                <div class="brand-item"><img src="/images/FMCG/MONDELEZ.png" alt="Mondelez" /></div>
+                <div class="brand-item"><img src="/images/FMCG/PEPSICO.png" alt="Pepsico" /></div>
+                <div class="brand-item"><img src="/images/FMCG/ÜLKER.png" alt="Ülker" /></div>
+                <div class="brand-item"><img src="/images/FMCG/ETİ.png" alt="Eti" /></div>
+                <div class="brand-item"><img src="/images/FMCG/LOREAL.png" alt="Loreal" /></div>
+                <div class="brand-item"><img src="/images/FMCG/NIVEA.png" alt="Nivea" /></div>
+            </div>
+        </div>
+
+        <div class="brands-cta">
+            <a asp-action="FMCG" asp-controller="Home" class="brands-cta-btn">
+                Tüm Markaları Gör <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================= -->
+<!--  CTA SECTION                              -->
+<!-- ========================================= -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-card">
+            <div class="cta-content">
+                <span class="cta-badge">
+                    <i class="bi bi-envelope"></i>
+                    İletişim
+                </span>
+                <h2 class="cta-title">@L["Index_Iletisim_Baslik"]</h2>
+                <p class="cta-desc">@L["Index_Iletisim_AltYazi"]</p>
+                <a asp-action="Contact" asp-controller="Home" class="cta-btn">
+                    <span>@L["Index_Iletisim_Form"]</span>
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <div class="cta-social">
+                <a href="https://www.instagram.com/emygruptr/" target="_blank" class="social-btn social-btn--instagram">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="https://wa.me/905453765235" target="_blank" class="social-btn social-btn--whatsapp">
+                    <i class="bi bi-whatsapp"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/emygruptr" target="_blank" class="social-btn social-btn--linkedin">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================= -->
+<!--  WHATSAPP FAB                             -->
+<!-- ========================================= -->
+<a class="whatsapp-fab" href="https://wa.me/905453765235" target="_blank" rel="noopener" aria-label="WhatsApp">
     <i class="bi bi-whatsapp"></i>
+    <span class="whatsapp-pulse"></span>
 </a>
 
+<!-- ========================================= -->
+<!--  STYLES                                   -->
+<!-- ========================================= -->
+<style>
+    :root {
+        --navbar-height: 70px;
+    }
 
-<!-- ====================================================== -->
-<!-- JS : COUNTER + SCROLL ANIM + SLIDER + PRELOADER LOGIC -->
-<!-- ====================================================== -->
+    body {
+        background: #f8fafc !important;
+        overflow: hidden;
+    }
+
+    body.page-loaded {
+        overflow: auto;
+    }
+
+    /* ============================================
+       PRELOADER
+       ============================================ */
+    #preloader {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    .preloader-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+    }
+
+    #preloaderLogo {
+        width: min(350px, 65vw);
+        filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.08));
+        animation: preloaderLogo 2.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .preloader-progress {
+        width: 180px;
+        height: 4px;
+        background: rgba(68, 109, 150, 0.1);
+        border-radius: 100px;
+        overflow: hidden;
+    }
+
+    .preloader-bar {
+        width: 0;
+        height: 100%;
+        background: linear-gradient(90deg, #446D96, #274472);
+        border-radius: 100px;
+        animation: preloaderBar 2.3s ease-out forwards;
+    }
+
+    @@keyframes preloaderLogo {
+        0% { opacity: 0; transform: scale(0.9) translateY(20px); }
+        20% { opacity: 1; transform: scale(1) translateY(0); }
+        80% { opacity: 1; transform: scale(1) translateY(0); }
+        100% { opacity: 0; transform: scale(0.95) translateY(-20px); }
+    }
+
+    @@keyframes preloaderBar {
+        0% { width: 0; }
+        100% { width: 100%; }
+    }
+
+    body.page-loaded #preloader {
+        animation: preloaderHide 0.4s ease forwards;
+    }
+
+    @@keyframes preloaderHide {
+        to { opacity: 0; visibility: hidden; pointer-events: none; }
+    }
+
+    /* ============================================
+       HERO SECTION - İki Büyük Görsel
+       ============================================ */
+    .hero-section {
+        padding: 90px 24px 40px;
+        background: #f8fafc;
+    }
+
+    .hero-bento {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .hero-card {
+        position: relative;
+        height: 520px;
+        border-radius: 28px;
+        overflow: hidden;
+        text-decoration: none;
+        display: block;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-card:hover {
+        transform: translateY(-10px) scale(1.01);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+    }
+
+    .hero-card-media {
+        position: absolute;
+        inset: 0;
+    }
+
+    .hero-card-media img,
+    .hero-card-media video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-card:hover .hero-card-media img,
+    .hero-card:hover .hero-card-media video {
+        transform: scale(1.06);
+    }
+
+    .hero-card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg,
+            transparent 0%,
+            transparent 30%,
+            rgba(255, 255, 255, 0.4) 60%,
+            rgba(255, 255, 255, 0.85) 100%) !important;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding: 32px;
+        opacity: 1 !important;
+        transition: background 0.4s ease;
+    }
+
+    .hero-card:hover .hero-card-overlay {
+        background: linear-gradient(180deg,
+            transparent 0%,
+            transparent 20%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(255, 255, 255, 0.95) 100%) !important;
+    }
+
+    .hero-card-badge {
+        background: linear-gradient(135deg, #446D96 0%, #274472 100%);
+        color: #ffffff;
+        padding: 12px 24px;
+        border-radius: 100px;
+        font-weight: 600;
+        font-size: 0.9375rem;
+        letter-spacing: 0.02em;
+        box-shadow: 0 4px 16px rgba(68, 109, 150, 0.3);
+    }
+
+    .hero-card-arrow {
+        width: 52px;
+        height: 52px;
+        background: linear-gradient(135deg, #446D96 0%, #274472 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        color: #ffffff;
+        transform: translateX(0);
+        opacity: 1;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 4px 16px rgba(68, 109, 150, 0.3);
+    }
+
+    .hero-card:hover .hero-card-arrow {
+        transform: scale(1.1);
+        box-shadow: 0 6px 24px rgba(68, 109, 150, 0.4);
+    }
+
+    @@media (max-width: 992px) {
+        .hero-card {
+            height: 420px;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .hero-section {
+            padding: 80px 16px 32px;
+        }
+
+        .hero-bento {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .hero-card {
+            height: 300px;
+            border-radius: 20px;
+        }
+
+        .hero-card-overlay {
+            opacity: 1 !important;
+            background: linear-gradient(180deg,
+                transparent 0%,
+                transparent 20%,
+                rgba(255, 255, 255, 0.5) 50%,
+                rgba(255, 255, 255, 0.95) 100%) !important;
+        }
+
+        .hero-card-arrow {
+            opacity: 1;
+            transform: translateX(0);
+            width: 44px;
+            height: 44px;
+        }
+
+        .hero-card-badge {
+            padding: 10px 18px;
+            font-size: 0.875rem;
+        }
+    }
+
+    /* ============================================
+       STATS SECTION
+       ============================================ */
+    .stats-section {
+        padding: 60px 20px;
+        background: #ffffff;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 24px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .stat-card {
+        text-align: center;
+        padding: 24px 16px;
+    }
+
+    .stat-icon {
+        margin-bottom: 12px;
+    }
+
+    .stat-icon img {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #0f172a;
+        letter-spacing: -0.02em;
+        margin-bottom: 4px;
+    }
+
+    .stat-label {
+        font-size: 0.8125rem;
+        color: #64748b;
+        font-weight: 500;
+    }
+
+    @@media (max-width: 992px) {
+        .stats-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .stat-card {
+            padding: 16px 12px;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+        }
+
+        .stat-icon img {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    /* ============================================
+       SECTION HEADER
+       ============================================ */
+    .section-header {
+        text-align: center;
+        margin-bottom: 48px;
+    }
+
+    .section-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: rgba(68, 109, 150, 0.08);
+        color: #274472;
+        border-radius: 50px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        margin-bottom: 16px;
+    }
+
+    .section-title {
+        font-size: clamp(1.75rem, 4vw, 2.25rem);
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 8px;
+        letter-spacing: -0.02em;
+    }
+
+    .section-desc {
+        color: #64748b;
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    /* ============================================
+       SERVICES SECTION
+       ============================================ */
+    .services-section {
+        padding: 70px 20px;
+        background: #ffffff;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .service-card {
+        position: relative;
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 28px;
+        border: 1px solid #e2e8f0;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        overflow: hidden;
+    }
+
+    .service-card:hover {
+        border-color: #446D96;
+        box-shadow: 0 12px 40px rgba(68, 109, 150, 0.12);
+        transform: translateY(-6px);
+    }
+
+    .service-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #446D96 0%, #274472 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+        color: #ffffff;
+        font-size: 1.375rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 6px;
+    }
+
+    .service-card p {
+        font-size: 0.875rem;
+        color: #64748b;
+        margin-bottom: 14px;
+        line-height: 1.5;
+    }
+
+    .service-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: #446D96;
+        transition: gap 0.2s ease;
+    }
+
+    .service-card:hover .service-link {
+        gap: 10px;
+    }
+
+    @@media (max-width: 992px) {
+        .services-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .services-section {
+            padding: 50px 20px;
+        }
+
+        .services-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .service-card {
+            padding: 24px;
+        }
+    }
+
+    /* ============================================
+       BRANDS SECTION
+       ============================================ */
+    .brands-section {
+        padding: 80px 20px;
+        background: #ffffff;
+    }
+
+    .brands-section--alt {
+        padding-top: 40px;
+        background: #f8fafc;
+    }
+
+    .brands-slider-wrapper {
+        position: relative;
+        max-width: 1000px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 16px;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        padding: 20px 0;
+    }
+
+    .brands-section--alt .brands-slider-wrapper {
+        background: #ffffff;
+    }
+
+    .brands-fade {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 60px;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .brands-fade--left {
+        left: 0;
+        background: linear-gradient(90deg, #ffffff 0%, transparent 100%);
+    }
+
+    .brands-fade--right {
+        right: 0;
+        background: linear-gradient(270deg, #ffffff 0%, transparent 100%);
+    }
+
+    .brands-track {
+        display: flex;
+        animation: scrollBrands 20s linear infinite;
+    }
+
+    .brands-track--reverse {
+        animation-direction: reverse;
+    }
+
+    @@keyframes scrollBrands {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    .brand-item {
+        flex: 0 0 auto;
+        width: 160px;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .brand-item img {
+        max-width: 120px;
+        max-height: 60px;
+        object-fit: contain;
+        filter: grayscale(30%);
+        opacity: 0.8;
+        transition: all 0.3s ease;
+    }
+
+    .brand-item:hover img {
+        filter: grayscale(0%);
+        opacity: 1;
+    }
+
+    .brands-cta {
+        text-align: center;
+        margin-top: 32px;
+    }
+
+    .brands-cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        background: transparent;
+        border: 2px solid #274472;
+        color: #274472;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 0.9375rem;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+
+    .brands-cta-btn:hover {
+        background: #274472;
+        color: #ffffff;
+    }
+
+    @@media (max-width: 768px) {
+        .brands-section {
+            padding: 60px 20px;
+        }
+
+        .brand-item {
+            width: 120px;
+        }
+
+        .brand-item img {
+            max-width: 80px;
+            max-height: 45px;
+        }
+    }
+
+    /* ============================================
+       CTA SECTION
+       ============================================ */
+    .cta-section {
+        padding: 80px 20px;
+        background: #f8fafc;
+    }
+
+    .cta-card {
+        max-width: 900px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, #274472 0%, #1a3259 100%);
+        border-radius: 24px;
+        padding: 60px 48px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cta-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -30%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+        border-radius: 50%;
+    }
+
+    .cta-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .cta-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50px;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.8125rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .cta-title {
+        color: #ffffff;
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    .cta-desc {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1rem;
+        margin-bottom: 28px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 32px;
+        background: #ffffff;
+        color: #274472;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .cta-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        color: #274472;
+    }
+
+    .cta-social {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 40px;
+    }
+
+    .social-btn {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 1.25rem;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+
+    .social-btn:hover {
+        transform: translateY(-3px);
+        color: #ffffff;
+    }
+
+    .social-btn--instagram:hover { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+    .social-btn--whatsapp:hover { background: #25D366; }
+    .social-btn--linkedin:hover { background: #0077B5; }
+
+    @@media (max-width: 768px) {
+        .cta-section {
+            padding: 60px 20px;
+        }
+
+        .cta-card {
+            padding: 40px 24px;
+        }
+    }
+
+    /* ============================================
+       WHATSAPP FAB
+       ============================================ */
+    .whatsapp-fab {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        width: 60px;
+        height: 60px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff !important;
+        font-size: 28px;
+        text-decoration: none;
+        z-index: 9998;
+        box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
+        transition: all 0.3s ease;
+    }
+
+    .whatsapp-fab:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 32px rgba(37, 211, 102, 0.5);
+        color: #ffffff;
+    }
+
+    .whatsapp-pulse {
+        position: absolute;
+        inset: -6px;
+        border-radius: 20px;
+        background: rgba(37, 211, 102, 0.3);
+        animation: waPulse 2s ease-out infinite;
+        pointer-events: none;
+    }
+
+    @@keyframes waPulse {
+        0% { transform: scale(1); opacity: 0.6; }
+        100% { transform: scale(1.25); opacity: 0; }
+    }
+
+    @@media (max-width: 768px) {
+        .whatsapp-fab {
+            width: 52px;
+            height: 52px;
+            font-size: 24px;
+            right: 16px;
+            bottom: 16px;
+        }
+    }
+</style>
+
+<!-- ========================================= -->
+<!--  SCRIPTS                                  -->
+<!-- ========================================= -->
 <script>
-        /* Scroll Animasyonları */
-    const animatedItems = document.querySelectorAll(".animate");
+    // Preloader
+    window.addEventListener("load", () => {
+        setTimeout(() => {
+            document.body.classList.add("page-loaded");
+            document.querySelector("#navbarLogo")?.classList.add("visible");
+        }, 2600);
+    });
 
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-            }
-        });
-    }, { threshold: 0.2 });
-
-    animatedItems.forEach(item => observer.observe(item));
-
-    /* SAYI ANİMASYONU — yalnızca görünce başlar */
-    const counterItems = document.querySelectorAll(".counter");
+    // Counter Animation
+    const counters = document.querySelectorAll(".counter");
     let countersStarted = false;
 
     function startCounters() {
-        counterItems.forEach(counter => {
-            const target = +counter.getAttribute("data-target");
+        counters.forEach(counter => {
+            const target = +counter.dataset.target;
             let count = 0;
-
             const update = () => {
-                const increment = target / 80;
-
+                const increment = target / 50;
                 if (count < target) {
                     count += increment;
-
-                    // ⭐ BINLIK FORMAT BURADA UYGULANIYOR
-                    counter.innerText = Math.ceil(count).toLocaleString("tr-TR");
-
+                    counter.textContent = Math.ceil(count).toLocaleString("tr-TR");
                     requestAnimationFrame(update);
                 } else {
-                    // ⭐ SON HALİ DE BINLIK FORMATTA
-                    counter.innerText = target.toLocaleString("tr-TR") + "+";
+                    counter.textContent = target.toLocaleString("tr-TR") + "+";
                 }
             };
-
             update();
         });
     }
 
-    const counterObserver = new IntersectionObserver(entries => {
+    const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !countersStarted) {
                 countersStarted = true;
                 startCounters();
             }
         });
-    }, { threshold: 0.4 });
+    }, { threshold: 0.3 });
 
-    counterItems.forEach(item => counterObserver.observe(item));
+    counters.forEach(c => counterObserver.observe(c));
 
-
-
-    // =========================================
-    //  SLIDERLAR: AŞAĞI GELİNCE BAŞLA + TEK TIMER İLE SENKRON
-    // =========================================
-    const intervalMs = 2000;
-
+    // Clone brand items for infinite scroll
     const slider1 = document.getElementById("brandSlider");
     const slider2 = document.getElementById("brandSlider2");
 
-    let masterTimer = null;
-    let masterTimeout = null;
-
-    let inViewBrands = false;
-    let inViewBrands2 = false;
-
-    // Preloader varken/scroll kilitliyken başlamasın diye
-    let userScrolled = false;
-    window.addEventListener("scroll", () => { userScrolled = true; }, { once: true });
-
-        function slideStepOne(sliderEl) {
-        if (!sliderEl) return;
-
-        // 1 item = %20 (çünkü brand-item flex: 0 0 20%)
-        sliderEl.style.transition = "transform 0.6s ease-in-out";
-        sliderEl.style.transform = "translateX(-20%)";
-
-        setTimeout(() => {
-            sliderEl.style.transition = "none";
-            sliderEl.appendChild(sliderEl.firstElementChild);
-            sliderEl.style.transform = "translateX(0)";
-        }, 600);
+    if (slider1) {
+        slider1.innerHTML += slider1.innerHTML;
     }
-
-    function slideStepFive(sliderEl) {
-        if (!sliderEl) return;
-
-        const moveCount = 5;
-        const children = sliderEl.children.length;
-
-        // eleman azsa tekli devam etsin (fallback)
-        if (children <= moveCount) {
-            slideStepOne(sliderEl);
-            return;
-        }
-
-        // 5 item = 5 * %20 = %100
-        sliderEl.style.transition = "transform 0.6s ease-in-out";
-        sliderEl.style.transform = "translateX(-100%)";
-
-        setTimeout(() => {
-            sliderEl.style.transition = "none";
-
-            // ilk 5 elemanı sona at
-            for (let i = 0; i < moveCount; i++) {
-                sliderEl.appendChild(sliderEl.firstElementChild);
-            }
-
-            sliderEl.style.transform = "translateX(0)";
-        }, 600);
+    if (slider2) {
+        slider2.innerHTML += slider2.innerHTML;
     }
-
-    function masterTick() {
-        // sadece görünürde olanları kaydır
-        if (inViewBrands)  slideStepOne(slider1);   // MARKALARIMIZ → tekli
-        if (inViewBrands2) slideStepFive(slider2);  // FMCG → 5'li
-    }
-
-
-    function startMasterClock() {
-        if (masterTimer || masterTimeout) return;
-
-        // page-loaded gelmeden (preloader bitmeden) başlatma
-        if (!document.body.classList.contains("page-loaded")) return;
-
-        // kullanıcı scroll etmeden başlatma (büyük ekranda section görünse bile)
-        if (!userScrolled) return;
-
-        // Tick'i interval’e hizala (senkron hissi daha iyi)
-        const now = Date.now();
-        const delayToNext = (intervalMs - (now % intervalMs)) % intervalMs;
-
-        masterTimeout = setTimeout(() => {
-            masterTick();
-            masterTimer = setInterval(masterTick, intervalMs);
-        }, delayToNext);
-    }
-
-    function stopMasterClockIfIdle() {
-        // İki section da görünürde değilse tamamen durdur
-        if (inViewBrands || inViewBrands2) return;
-
-        if (masterTimeout) {
-            clearTimeout(masterTimeout);
-            masterTimeout = null;
-        }
-        if (masterTimer) {
-            clearInterval(masterTimer);
-            masterTimer = null;
-        }
-    }
-
-    // Bölüm görünür olunca flag set et
-    const sliderObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.target.id === "brands")  inViewBrands  = entry.isIntersecting;
-            if (entry.target.id === "brands2") inViewBrands2 = entry.isIntersecting;
-        });
-
-        // Her değişimde başlat/durdur kontrolü
-        if (inViewBrands || inViewBrands2) startMasterClock();
-        else stopMasterClockIfIdle();
-
-    }, {
-        threshold: 0.35,
-        // Daha "aşağı gelince" başlasın istiyorsan bunu aç:
-        // rootMargin: "0px 0px -20% 0px"
-    });
-
-    const brandsSection1 = document.getElementById("brands");
-    const brandsSection2 = document.getElementById("brands2");
-
-    if (brandsSection1) sliderObserver.observe(brandsSection1);
-    if (brandsSection2) sliderObserver.observe(brandsSection2);
-
-
-        /* PRELOADER BİTİNCE NAVBAR LOGOSUNU AÇ */
-    window.addEventListener("load", () => {
-        setTimeout(() => {
-            document.querySelector("#navbarLogo").classList.add("visible");
-            document.body.classList.add("page-loaded");
-        }, 3400); // 2s bekleme + 1.4s küçülme → 3.4s sonrası
-    });
-
-
-        /* ========================================= */
-    /*   4’LÜ OTOMATİK FOTOĞRAF KAYDIRMA         */
-    /* ========================================= */
-        function startGallerySlider(galleryId) {
-        const container = document.getElementById(galleryId);
-        if (!container) return;
-
-        const images = container.querySelectorAll("img");
-        const total = images.length;
-        if (total === 0) return;
-
-        let index = 0;
-
-        // Başlangıçta sadece ilk fotoğrafı göster
-        images.forEach((img, i) => {
-            img.style.opacity = (i === 0 ? "1" : "0");
-        });
-
-        function cycle() {
-            // Sıradaki index
-            index = (index + 1) % total;
-
-            // Sadece o indexteki fotoğrafı göster
-            images.forEach((img, i) => {
-                img.style.opacity = (i === index ? "1" : "0");
-            });
-
-            // 1.5 saniye sonra tekrar çağır
-            setTimeout(cycle, 1500);
-        }
-
-        // Döngüyü başlat
-        setTimeout(cycle, 2000);
-    }
-
-
-    // 4 galeri için slider başlat
-    startGallerySlider("gallery1");
-    startGallerySlider("gallery2");
-    startGallerySlider("gallery3");
-    startGallerySlider("gallery4");
-
-
-    /* ========================================= */
-    /*   BLUR / FADE-OUT GÖRÜNÜRLÜK ANİMASYONU   */
-    /* ========================================= */
-
-    const galleryCards = document.querySelectorAll(".gallery-card");
-
-    function handleGalleryFade() {
-        const triggerStart = window.innerHeight * 0.10;
-        const triggerEnd   = window.innerHeight * 0.70;
-
-        galleryCards.forEach(card => {
-            const rect = card.getBoundingClientRect();
-            const center = rect.top + rect.height / 2;
-
-            if (center < triggerStart || center > triggerEnd) {
-                card.classList.add("fade-out");
-            } else {
-                card.classList.remove("fade-out");
-            }
-        });
-    }
-
-    window.addEventListener("scroll", handleGalleryFade);
-    window.addEventListener("load", handleGalleryFade);
-
-       (function () {
-        const btn = document.querySelector(".whatsapp-float");
-        if (!btn) return;
-
-        const gap = 20; // footer ile buton arasında boşluk
-
-        function findFooter() {
-            // Layout'ta footer hangi element olursa olsun yakalamaya çalışıyoruz
-            return document.querySelector(
-                "footer, .footer, #footer, .site-footer, .footer-area, .footer-bar, .main-footer"
-            );
-        }
-
-        function adjust() {
-            const footer = findFooter();
-            if (!footer) {
-                // footer hâlâ yoksa (veya selector uymuyorsa) shift sıfır kalsın
-                btn.style.setProperty("--wa-shift", "0px");
-                return;
-            }
-
-            const footerRect = footer.getBoundingClientRect();
-
-            // Footer ekranda değilse
-            if (footerRect.top >= window.innerHeight) {
-                btn.style.setProperty("--wa-shift", "0px");
-                return;
-            }
-
-            // Footer ekrana girdiyse: butonu yukarı it
-            const overlap = window.innerHeight - footerRect.top;
-            const shift = Math.max(0, overlap + gap);
-
-            btn.style.setProperty("--wa-shift", shift + "px");
-        }
-
-        window.addEventListener("scroll", adjust, { passive: true });
-        window.addEventListener("resize", adjust);
-        window.addEventListener("load", adjust);
-        document.addEventListener("DOMContentLoaded", adjust);
-
-        // İlk hesap
-        adjust();
-    })();
-
 </script>
-
-<!-- ========================================= -->
-<!-- CSS – Animasyonlar, Spacing, Preloader    -->
-<!-- ========================================= -->
-<style>
-
-    .gallery-card {
-        opacity: 1;
-        transition: opacity 0.6s ease-out;
-    }
-
-        /* Scroll ile görünürlüğü kaybolurken */
-        .gallery-card.fade-out {
-            opacity: 0;
-        }
-
-
-
-    /* ========================== */
-    /*   STATS – 5 KART GRID      */
-    /* ========================== */
-
-    .stats-row {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 25px;
-    }
-
-    .stats-card {
-        width: 100%;
-    }
-
-    /* Mobil (tekli) */
-    @@media (max-width: 576px) {
-        .stats-row {
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-    }
-
-    /* Tablet (ikili) */
-    @@media (min-width: 577px) and (max-width: 768px) {
-        .stats-row {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-    }
-
-    /* Küçük laptop (üçlü) */
-    @@media (min-width: 769px) and (max-width: 992px) {
-        .stats-row {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-    }
-
-
-
-
-    /* ====================== */
-    /*   BÖLÜMLER ARASI BOŞLUK */
-    /* ====================== */
-    .spacer-section {
-        margin-top: 120px;
-    }
-
-    .opening-products.spacer-section {
-        margin-top: 140px;
-    }
-
-    @@media (max-width:768px) {
-        .spacer-section {
-            margin-top: 80px !important;
-        }
-
-        .opening-products.spacer-section {
-            margin-top: 100px !important;
-        }
-    }
-
-    /* Üst arkaplan + açılışta scroll kilidi */
-    body {
-        background: #C0C7CF !important;
-        overflow: hidden;
-    }
-
-        body.page-loaded {
-            overflow: auto;
-        }
-
-    /* PRELOADER */
-    #preloader {
-        position: fixed;
-        inset: 0;
-        background: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        overflow: hidden;
-    }
-
-        /* LOGO İLK 2 SANİYE EKRANDA DURUR */
-        #preloader img {
-            width: 770px;
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            animation: logoHold 2s ease forwards, logoMove 1.4s ease forwards 2s, logoFade 0.6s ease forwards 3.4s;
-        }
-
-    @@keyframes logoHold {
-        from {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-        }
-
-        to {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-        }
-    }
-
-    @@keyframes logoMove {
-        0% {
-            transform: translateY(0) scale(1);
-        }
-
-        100% {
-            transform: translateY(-220px) scale(0.32);
-        }
-    }
-
-    @@keyframes logoFade {
-        from {
-            opacity: 1;
-        }
-
-        to {
-            opacity: 0;
-        }
-    }
-
-    @@keyframes preloaderHide {
-        to {
-            opacity: 0;
-            visibility: hidden;
-        }
-    }
-
-    body.page-loaded #preloader {
-        animation: preloaderHide .6s ease forwards;
-    }
-
-
-    /* Scroll animasyonları */
-    .animate {
-        opacity: 0;
-        transform: translateY(35px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-        .animate.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-    /* Opening Products */
-    .opening-products {
-        padding: 5% 5% 0 5%;
-    }
-
-    .products-wrapper {
-        display: flex;
-        justify-content: space-between;
-        gap: 5%;
-    }
-
-    .product-box {
-        width: 50%;
-        height: 500px;
-        background: white;
-        border-radius: 18px;
-        box-shadow: 0 8px 20px rgba(0,0,0,.12);
-        overflow: hidden; /* Taşan görseli keser */
-        text-decoration: none;
-        transition: transform .3s ease, box-shadow .3s ease;
-        display: block; /* flex yerine block */
-        position: relative;
-    }
-
-
-        .product-box:hover {
-            transform: scale(1.03);
-            box-shadow: 0 12px 30px rgba(0,0,0,.18);
-        }
-
-        .product-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Kartı kırpmadan doldurur */
-            display: block;
-        }
-
-    /* Video kartı kaplasın */
-    .product-box--video .product-video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-
-    @@media (max-width: 768px) {
-        .product-box{
-           width: 100%;
-           height: 300px;
-        }
-
-        .products-wrapper {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-    }
-
-
-    /* Slider */
-    .brand-slider-window {
-        max-width: 1100px;
-        margin: auto;
-        overflow: hidden;
-    }
-
-    .brand-slider {
-        display: flex;
-    }
-
-    .brand-item {
-        flex: 0 0 20%;
-        padding: 15px;
-    }
-
-        .brand-item img {
-            width: 100%;
-            max-width: 160px;
-            background: white;
-            padding: 10px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,.1);
-            transition: transform .3s ease, box-shadow .3s ease;
-        }
-
-            .brand-item img:hover {
-                transform: scale(1.08);
-                box-shadow: 0 6px 18px rgba(0,0,0,.2);
-            }
-
-    /* Cards */
-    .card {
-        border-radius: 1rem;
-        transition: transform .3s ease, box-shadow .3s ease;
-    }
-
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 20px rgba(0,0,0,.1);
-        }
-
-    /* Responsive */
-    @@media (max-width:768px) {
-        .products-wrapper {
-            flex-direction: column;
-        }
-
-        .product-box {
-            width: 100%;
-            height: 300px;
-        }
-    }
-
-    /* Modern CTA alanı */
-    .cta-modern {
-        padding: 90px 20px;
-        background: linear-gradient(135deg, #274472, #446D96, #5D8BB0);
-        border-radius: 0;
-        position: relative;
-        overflow: hidden;
-    }
-
-        .cta-modern::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at top right, rgba(255,255,255,0.25), transparent 60%);
-            opacity: 0.35;
-        }
-
-    .cta-content {
-        position: relative;
-        z-index: 2;
-    }
-
-    /* Sosyal ikonlar */
-    .social-item {
-        width: 55px;
-        height: 55px;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.15);
-        backdrop-filter: blur(6px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: 0.3s ease;
-        font-size: 26px;
-        color: white;
-    }
-
-        .social-item:hover {
-            transform: translateY(-5px) scale(1.1);
-            background: rgba(255,255,255,0.35);
-        }
-
-    .instagram:hover {
-        color: #E1306C;
-    }
-
-    .whatsapp:hover {
-        color: #25D366;
-    }
-
-    .linkedin:hover {
-        color: #0077B5;
-    }
-
-
-    /* ========================================= */
-    /*   4'LÜ OTOMATİK SLIDER (SAHADA BİZ)       */ 
-    /* ========================================= */
-
-    .gallery-row {
-        display: flex;
-        justify-content: space-between;
-        gap: 25px;
-    }
-
-    /* Kart */
-    .gallery-card {
-        flex: 0 0 calc(25% - 20px);
-        height: 380px;
-        background: white;
-        border-radius: 18px;
-        overflow: hidden;
-        box-shadow: 0 8px 20px rgba(0,0,0,.12);
-        position: relative; /* ✅ resimleri yaymak için */
-        opacity: 1;
-        transition: opacity 0.5s ease-out;
-    }
-
-        /* Scroll blur/fade animasyonu için */
-        .gallery-card.fade-out {
-            opacity: 0;
-        }
-
-    /* İç katman karta tamamen yayılır */
-    .gallery-inner {
-        position: absolute; /* ✅ flex sorunlarını tamamen çözer */
-        inset: 0;
-    }
-
-        /* Dönen resimler */
-        .gallery-inner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity .5s ease;
-        }
-
-    /* Başlangıçta ilk resim JS ile 1 yapılacak ama
-       bazen FOUC olmasın diye ilkini görünür bırakmak istersen:
-       .gallery-inner img:first-child { opacity: 1; }
-    */
-
-    /* Tablet: 2'li */
-    @@media (max-width: 992px) {
-        .gallery-row {
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .gallery-card {
-            flex: 0 0 calc(50% - 10px);
-            height: 300px;
-        }
-    }
-
-    /* ✅ Mobil: 2x2 grid (4 kart aynı anda) + oran sabit */
-    @@media (max-width: 768px) {
-        .gallery-row {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .gallery-card {
-            flex: unset;
-            width: 100%;
-            height: auto; /* ✅ sabit height kalktı */
-            aspect-ratio: 7 / 10; /* ✅ en-boy oranı sabit */
-            border-radius: 14px;
-        }
-    }
-
-    /* Çok küçük ekranlarda boşluk biraz daha sıkı */
-    @@media (max-width: 420px) {
-        .gallery-row {
-            gap: 10px;
-        }
-    }
-
-
-
-    .section-title-apple {
-        font-size: 2.8rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 6px;
-        font-family: 'Helvetica Neue', 'Segoe UI', Roboto, sans-serif;
-        background: linear-gradient(180deg, #1d1d1d 0%, #000 90%);
-        -webkit-background-clip: text;
-        color: transparent;
-        padding-bottom: 14px;
-        margin-bottom: 55px;
-        display: inline-block;
-        filter: drop-shadow(0 3px 8px rgba(0,0,0,0.18));
-    }
-
-        .section-title-apple::after {
-            content: "";
-            display: block;
-            width: 130px;
-            height: 2px;
-            margin: 14px auto 0;
-            border-radius: 10px;
-            background: linear-gradient( 90deg, rgba(0,0,0,0), rgba(0,0,0,0.8), rgba(0,0,0,0) );
-            opacity: 0.45;
-        }
-
-    /* ========================================= */
-    /* ✅ SABİT WHATSAPP FLOAT BUTON (SAĞ ALT)    */
-    /* Footer’a gelince yukarı çıkar (binmez)    */
-    /* ========================================= */
-    .whatsapp-float {
-        position: fixed;
-        /* ✅ Safe-area dahil sağ alt konum */
-        right: calc(22px + env(safe-area-inset-right));
-        bottom: calc(22px + env(safe-area-inset-bottom));
-        width: 62px;
-        height: 62px;
-        border-radius: 50%;
-        background: #25D366;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        color: #fff !important;
-        font-size: 34px;
-        line-height: 1;
-        z-index: 9998;
-        box-shadow: 0 12px 28px rgba(0,0,0,.25);
-        /* ✅ JS bu değeri artırınca buton yukarı çıkar */
-        --wa-shift: 0px;
-        /* ✅ footer yaklaşınca translate ile yukarı itilir */
-        transform: translate3d(0, calc(-1 * var(--wa-shift)), 0);
-        /* ✅ geçiş yumuşak */
-        transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
-    }
-
-        .whatsapp-float:hover {
-            filter: brightness(1.02);
-            box-shadow: 0 16px 34px rgba(0,0,0,.30);
-        }
-
-        .whatsapp-float:active {
-            transform: translate3d(0, calc(-1 * var(--wa-shift)), 0) scale(0.99);
-        }
-
-    /* Mobil */
-    @@media (max-width: 768px) {
-        .whatsapp-float {
-            width: 56px;
-            height: 56px;
-            font-size: 32px;
-            right: calc(18px + env(safe-area-inset-right));
-            bottom: calc(18px + env(safe-area-inset-bottom));
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-    /* ===================================================== */
-    /* ✅ PREMIUM LOOK: Slider1 + Slider2 (ÖLÇÜLER DEĞİŞMEZ)  */
-    /* - max-width aynı                                      */
-    /* - brand-item padding aynı                              */
-    /* - img max-width/padding aynı                           */
-    /* - JS ve zamanlama aynı                                 */
-    /* ===================================================== */
-
-    /* Section başlıklarını daha premium göster (ölçü değiştirmez) */
-    #brands h2, #brands2 h2 {
-        letter-spacing: .18em;
-        text-transform: uppercase;
-        font-weight: 700;
-        color: rgba(15, 23, 42, .92);
-    }
-
-    /* Slider penceresine cam-panel hissi ver (ölçüleri değiştirmez) */
-    #brands .brand-slider-window,
-    #brands2 .brand-slider-window {
-        /* mevcut: max-width:1100px, margin:auto, overflow:hidden -> aynen */
-        position: relative;
-        /* sadece görünüm */
-        background: rgba(255,255,255,0.55);
-        border: 1px solid rgba(15, 23, 42, 0.08);
-        border-radius: 22px;
-        box-shadow: 0 18px 50px rgba(15,23,42,0.10);
-        /* “premium yumuşaklık” */
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-    }
-
-        /* Kenarlarda yumuşak fade (kayma hissini daha smooth gösterir) */
-        #brands .brand-slider-window::before,
-        #brands .brand-slider-window::after,
-        #brands2 .brand-slider-window::before,
-        #brands2 .brand-slider-window::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 70px; /* sadece overlay, layout etkilemez */
-            z-index: 3;
-            pointer-events: none;
-        }
-
-        #brands .brand-slider-window::before,
-        #brands2 .brand-slider-window::before {
-            left: 0;
-            background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0) );
-        }
-
-        #brands .brand-slider-window::after,
-        #brands2 .brand-slider-window::after {
-            right: 0;
-            background: linear-gradient(270deg, rgba(255,255,255,0.95), rgba(255,255,255,0) );
-        }
-
-    /* Slider satırını yumuşat (ölçü değişmez, sadece efekt) */
-    #brands .brand-slider,
-    #brands2 .brand-slider {
-        will-change: transform;
-        transform: translateZ(0);
-    }
-
-    /* Logo kartları: ölçüler aynı, sadece daha soft/premium görünüm */
-    #brands .brand-item img,
-    #brands2 .brand-item img {
-        /* mevcut ölçüler korunuyor:
-           width:100%;
-           max-width:160px;
-           padding:10px;
-           border-radius:12px;
-        기억: bunlara dokunmuyoruz. */
-        /* görünüm upgrade */
-        border: 1px solid rgba(15, 23, 42, 0.06);
-        box-shadow: 0 10px 26px rgba(15, 23, 42, 0.10), 0 1px 0 rgba(255,255,255,0.6) inset;
-        background: rgba(255,255,255,0.88);
-        /* daha “premium” hissi */
-        transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
-    }
-
-        /* Hover daha rafine */
-        #brands .brand-item img:hover,
-        #brands2 .brand-item img:hover {
-            transform: translateY(-4px) scale(1.02); /* boyut kalıcı değil, sadece hover */
-            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16), 0 1px 0 rgba(255,255,255,0.7) inset;
-            filter: saturate(1.05) contrast(1.03);
-        }
-
-    /* İstersen section arka planını çok hafif yumuşat (ölçü yok) */
-    #brands.bg-light, #brands2.bg-light {
-        background: transparent !important; /* gri zeminle daha bütünleşik durur */
-    }
-
-    /* Mobilde fade overlay'i biraz daralt (layout değişmez) */
-    @@media (max-width: 768px) {
-        #brands .brand-slider-window::before, #brands .brand-slider-window::after, #brands2 .brand-slider-window::before, #brands2 .brand-slider-window::after
-
-    {
-        width: 40px;
-    }
-
-    }
-
-
-
-
-
-
-
-    /* ✅ MARKALARIMIZ ile FMCG arasını kısalt */
-    #brands2.spacer-section {
-        margin-top: 50px !important; /* 120 yerine 40: daha yakın */
-    }
-
-    /* Mobilde daha da az */
-    @@media (max-width: 768px) {
-        #brands2.spacer-section
-
-    {
-        margin-top: 25px !important;
-    }
-
-    }
-
-
-
-
-
-
-
-
-
-    /* ================================
-       ✅ STATS - CLEAN GLASS (MODERN)
-       Boyut/padding değişmez
-    ================================ */
-
-    /* Sadece stats kartlarını hedefle */
-    #stats .stats-row .card {
-        background: rgba(255,255,255,0.32) !important; /* temiz cam */
-        border: 1px solid rgba(255,255,255,0.55) !important;
-        backdrop-filter: blur(5px) saturate(160%) !important;
-        -webkit-backdrop-filter: blur(5px) saturate(160%) !important;
-        box-shadow: 0 18px 55px rgba(15,23,42,0.18) !important;
-        border-radius: 18px !important;
-        overflow: hidden;
-        position: relative;
-        transition: transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease !important;
-    }
-
-        /* Üstte çok hafif cam parlaması (gradient gibi görünmeyecek kadar soft) */
-        #stats .stats-row .card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            background: radial-gradient(circle at 20% 15%, rgba(255,255,255,0.45), transparent 55%);
-            opacity: .9;
-        }
-
-        /* İçerik hep üstte kalsın */
-        #stats .stats-row .card > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Hover: daha premium */
-        #stats .stats-row .card:hover {
-            transform: translateY(-6px) !important;
-            background: rgba(255,255,255,0.42) !important;
-            border-color: rgba(255,255,255,0.75) !important;
-            box-shadow: 0 28px 80px rgba(15,23,42,0.22) !important;
-        }
-
-        /* Yazıları daha net yap (kirli görünümü engeller) */
-        #stats .stats-row .card p {
-            color: rgba(15,23,42,0.80) !important;
-        }
-
-        /* İkonu yumuşat */
-        #stats .stats-row .card img {
-            filter: drop-shadow(0 10px 18px rgba(15,23,42,0.12));
-        }
-
-        #stats .counter {
-            font-size: 2.2rem !important; /* burayı azalt/artır */
-            line-height: 1.1;
-        }
-
-
-    /* Bootstrap'in beyaz kart rengini kesin kır */
-    #stats .card {
-        background-color: rgba(255,255,255,0.32) !important;
-    }
-
-
-
-
-
-
-
-</style>
