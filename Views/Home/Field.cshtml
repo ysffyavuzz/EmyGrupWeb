@@ -1,0 +1,716 @@
+@{
+    ViewData["Title"] = "Sahada Biz";
+}
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> L
+
+<style>
+    :root {
+        --navbar-height: 70px;
+    }
+
+    .field-page {
+        margin-top: var(--navbar-height);
+        background: #f8fafc;
+        min-height: calc(100vh - var(--navbar-height));
+    }
+
+    /* ========================================= */
+    /* HERO SECTION                              */
+    /* ========================================= */
+    .field-hero {
+        background: linear-gradient(135deg, #274472 0%, #1a3259 100%);
+        padding: 80px 0 60px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .field-hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+        border-radius: 50%;
+    }
+
+    .field-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .field-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50px;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.875rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        margin-bottom: 24px;
+    }
+
+    .field-badge i {
+        font-size: 1rem;
+    }
+
+    .field-hero h1 {
+        color: #ffffff;
+        font-size: clamp(2.25rem, 5vw, 3.25rem);
+        font-weight: 700;
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
+    }
+
+    .field-hero p {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 1.125rem;
+        line-height: 1.8;
+        max-width: 650px;
+        margin: 0 auto;
+    }
+
+    /* ========================================= */
+    /* SLIDER SECTION                            */
+    /* ========================================= */
+    .slider-section {
+        padding: 60px 0 80px;
+    }
+
+    .slider-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .slider-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .slider-header h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 8px;
+    }
+
+    .slider-header p {
+        color: #64748b;
+        font-size: 1rem;
+    }
+
+    /* Main Slider */
+    .main-slider {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        background: #000;
+    }
+
+    .slider-wrapper {
+        display: flex;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .slide {
+        min-width: 100%;
+        position: relative;
+    }
+
+    .slide img {
+        width: 100%;
+        height: 70vh;
+        max-height: 650px;
+        min-height: 400px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .slide-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 40px;
+        background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 100%);
+    }
+
+    .slide-counter {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    /* Slider Controls */
+    .slider-controls {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        display: flex;
+        gap: 12px;
+        z-index: 10;
+    }
+
+    .slider-btn {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #ffffff;
+        font-size: 1.25rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .slider-btn:hover {
+        background: rgba(255, 255, 255, 0.35);
+        transform: scale(1.05);
+    }
+
+    .slider-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    /* Progress Bar */
+    .slider-progress {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .slider-progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, #446D96, #5D8BB0);
+        transition: width 0.3s ease;
+    }
+
+    /* Thumbnail Navigation */
+    .thumbnail-nav {
+        display: flex;
+        gap: 12px;
+        margin-top: 24px;
+        overflow-x: auto;
+        padding: 10px 0;
+        scrollbar-width: none;
+    }
+
+    .thumbnail-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .thumbnail {
+        flex-shrink: 0;
+        width: 100px;
+        height: 70px;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        border: 3px solid transparent;
+        transition: all 0.2s ease;
+        opacity: 0.6;
+    }
+
+    .thumbnail:hover {
+        opacity: 0.9;
+    }
+
+    .thumbnail.active {
+        border-color: #446D96;
+        opacity: 1;
+        box-shadow: 0 4px 12px rgba(68, 109, 150, 0.3);
+    }
+
+    .thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* ========================================= */
+    /* STATS SECTION                             */
+    /* ========================================= */
+    .stats-section {
+        padding: 60px 0;
+        background: #ffffff;
+        border-top: 1px solid #e2e8f0;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 32px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .stat-item {
+        text-align: center;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #274472;
+        margin-bottom: 8px;
+        line-height: 1;
+    }
+
+    .stat-label {
+        font-size: 0.9375rem;
+        color: #64748b;
+        font-weight: 500;
+    }
+
+    /* ========================================= */
+    /* LIGHTBOX                                  */
+    /* ========================================= */
+    .field-lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.92);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        padding: 20px;
+    }
+
+    .field-lightbox.open {
+        display: flex;
+    }
+
+    .lightbox-content {
+        position: relative;
+        max-width: 90vw;
+        max-height: 90vh;
+    }
+
+    .lightbox-content img {
+        max-width: 100%;
+        max-height: 85vh;
+        object-fit: contain;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-close {
+        position: absolute;
+        top: -50px;
+        right: 0;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.15);
+        border: none;
+        color: #ffffff;
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+    }
+
+    .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.25);
+    }
+
+    .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.15);
+        border: none;
+        color: #ffffff;
+        font-size: 1.25rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+    }
+
+    .lightbox-nav:hover {
+        background: rgba(255, 255, 255, 0.25);
+    }
+
+    .lightbox-prev {
+        left: -70px;
+    }
+
+    .lightbox-next {
+        right: -70px;
+    }
+
+    /* Responsive */
+    @@media (max-width: 992px) {
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .slide img {
+            height: 50vh;
+            min-height: 350px;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .field-hero {
+            padding: 60px 0 50px;
+        }
+
+        .field-hero h1 {
+            font-size: 1.875rem;
+        }
+
+        .field-hero p {
+            font-size: 1rem;
+        }
+
+        .slide img {
+            height: 45vh;
+            min-height: 300px;
+        }
+
+        .slider-controls {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .slider-btn {
+            width: 48px;
+            height: 48px;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 55px;
+        }
+
+        .lightbox-prev {
+            left: 10px;
+        }
+
+        .lightbox-next {
+            right: 10px;
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+        }
+    }
+</style>
+
+<div class="field-page">
+
+    <!-- Hero Section -->
+    <section class="field-hero">
+        <div class="field-hero-content">
+            <div class="field-badge">
+                <i class="bi bi-camera"></i>
+                @L["Side_Menu_SahadaBiz"]
+            </div>
+            <h1>@L["Side_Menu_SahadaBiz"]</h1>
+            <p>
+                EMY Grup olarak sahada güçlü bir ekiple çalışıyoruz. Türkiye'nin dört bir yanında iş ortaklarımızla
+                birlikte kaliteli hizmet sunuyor, müşterilerimizin yanında oluyoruz. Her projede profesyonellik ve
+                güvenilirlik ilkemizdir.
+            </p>
+        </div>
+    </section>
+
+    <!-- Slider Section -->
+    <section class="slider-section">
+        <div class="slider-container">
+
+            <div class="slider-header">
+                <h2><i class="bi bi-images me-2"></i>Saha Fotoğrafları</h2>
+                <p>Projelerimizden ve saha çalışmalarımızdan kareler</p>
+            </div>
+
+            <!-- Main Slider -->
+            <div class="main-slider" id="mainSlider">
+                <div class="slider-wrapper" id="sliderWrapper">
+                    @for (int i = 1; i <= 76; i++)
+                    {
+                        int imgIndex = i;
+                        if (i == 21) imgIndex = 28;
+                        else if (i == 28) imgIndex = 21;
+
+                        <div class="slide" data-index="@i">
+                            <img src="/images/saha2/galeri/@(imgIndex).jpeg"
+                                 alt="Saha Görseli @i"
+                                 loading="@(i <= 3 ? "eager" : "lazy")" />
+                            <div class="slide-overlay">
+                                <span class="slide-counter">@i / 76</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <!-- Controls -->
+                <div class="slider-controls">
+                    <button class="slider-btn" id="prevBtn" aria-label="Önceki">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <button class="slider-btn" id="nextBtn" aria-label="Sonraki">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Progress -->
+                <div class="slider-progress">
+                    <div class="slider-progress-bar" id="progressBar"></div>
+                </div>
+            </div>
+
+            <!-- Thumbnails -->
+            <div class="thumbnail-nav" id="thumbnailNav">
+                @for (int i = 1; i <= 76; i++)
+                {
+                    int imgIndex = i;
+                    if (i == 21) imgIndex = 28;
+                    else if (i == 28) imgIndex = 21;
+
+                    <div class="thumbnail @(i == 1 ? "active" : "")" data-index="@(i - 1)">
+                        <img src="/images/saha2/galeri/@(imgIndex).jpeg"
+                             alt="Thumbnail @i"
+                             loading="lazy" />
+                    </div>
+                }
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">76+</div>
+                <div class="stat-label">Saha Fotoğrafı</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">81</div>
+                <div class="stat-label">İl Kapsamı</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Proje</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Müşteri Memnuniyeti</div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- Lightbox -->
+<div class="field-lightbox" id="fieldLightbox">
+    <div class="lightbox-content">
+        <button class="lightbox-close" id="lightboxClose">
+            <i class="bi bi-x-lg"></i>
+        </button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
+            <i class="bi bi-chevron-left"></i>
+        </button>
+        <img id="lightboxImg" src="" alt="Büyük Görsel" />
+        <button class="lightbox-nav lightbox-next" id="lightboxNext">
+            <i class="bi bi-chevron-right"></i>
+        </button>
+    </div>
+</div>
+
+<script>
+(function() {
+    const wrapper = document.getElementById('sliderWrapper');
+    const slides = wrapper.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const progressBar = document.getElementById('progressBar');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const thumbnailNav = document.getElementById('thumbnailNav');
+
+    // Lightbox elements
+    const lightbox = document.getElementById('fieldLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+
+    let currentIndex = 0;
+    const total = slides.length;
+
+    function updateSlider() {
+        wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        // Update progress
+        const progress = ((currentIndex + 1) / total) * 100;
+        progressBar.style.width = `${progress}%`;
+
+        // Update thumbnails
+        thumbnails.forEach((thumb, idx) => {
+            thumb.classList.toggle('active', idx === currentIndex);
+        });
+
+        // Scroll thumbnail into view
+        const activeThumb = thumbnails[currentIndex];
+        if (activeThumb) {
+            activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+
+        // Update buttons
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === total - 1;
+    }
+
+    function goToSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= total) index = total - 1;
+        currentIndex = index;
+        updateSlider();
+    }
+
+    function nextSlide() {
+        if (currentIndex < total - 1) {
+            currentIndex++;
+            updateSlider();
+        }
+    }
+
+    function prevSlide() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+        }
+    }
+
+    // Button events
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+
+    // Thumbnail clicks
+    thumbnails.forEach((thumb, idx) => {
+        thumb.addEventListener('click', () => goToSlide(idx));
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (lightbox.classList.contains('open')) return;
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    // Click on slide to open lightbox
+    slides.forEach((slide, idx) => {
+        slide.addEventListener('click', () => {
+            const img = slide.querySelector('img');
+            if (img) {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    // Lightbox controls
+    lightboxClose.addEventListener('click', () => {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+    });
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    });
+
+    lightboxPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        prevSlide();
+        lightboxImg.src = slides[currentIndex].querySelector('img').src;
+    });
+
+    lightboxNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        nextSlide();
+        lightboxImg.src = slides[currentIndex].querySelector('img').src;
+    });
+
+    // Keyboard for lightbox
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape') {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        if (e.key === 'ArrowRight') {
+            nextSlide();
+            lightboxImg.src = slides[currentIndex].querySelector('img').src;
+        }
+        if (e.key === 'ArrowLeft') {
+            prevSlide();
+            lightboxImg.src = slides[currentIndex].querySelector('img').src;
+        }
+    });
+
+    // Touch/Swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    wrapper.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    wrapper.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) nextSlide();
+            else prevSlide();
+        }
+    }
+
+    // Initialize
+    updateSlider();
+})();
+</script>

@@ -1,0 +1,265 @@
+@{
+    ViewData["Title"] = "Hakkımızda";
+}
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> L
+
+<style>
+    :root {
+        --navbar-height: 72px;
+    }
+
+    .about-page {
+        margin-top: var(--navbar-height);
+        background: #f8fafc;
+        min-height: calc(100vh - var(--navbar-height));
+    }
+
+    /* =============================================
+       CONTENT
+       ============================================= */
+    .about-content {
+        padding: 64px 0 80px;
+    }
+
+    .about-container {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+
+    /* =============================================
+       CARDS
+       ============================================= */
+    .about-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .about-card {
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 40px;
+        border: 1px solid #e8edf3;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .about-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 36px rgba(39,68,114,0.10);
+    }
+
+    .about-card.featured {
+        grid-column: span 2;
+        background: linear-gradient(135deg, #1e3a5f 0%, #274472 60%, #2d5282 100%);
+        border: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+        padding: 56px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .about-card.featured::after {
+        content: '';
+        position: absolute;
+        top: -80px;
+        right: -80px;
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .featured-text { position: relative; z-index: 1; }
+    .featured-image { position: relative; z-index: 1; border-radius: 14px; overflow: hidden; height: 260px; }
+    .featured-image img { width: 100%; height: 100%; object-fit: cover; }
+
+    .about-card.featured .card-label {
+        color: rgba(255,255,255,0.55);
+    }
+
+    .about-card.featured .card-title {
+        color: #ffffff;
+        font-size: 1.625rem;
+    }
+
+    .about-card.featured .card-text {
+        color: rgba(255,255,255,0.78);
+    }
+
+    .card-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #446D96;
+        margin-bottom: 14px;
+        display: block;
+    }
+
+    .card-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, rgba(68,109,150,0.10) 0%, rgba(39,68,114,0.10) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        color: #274472;
+        font-size: 1.375rem;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #0f172a;
+        letter-spacing: -0.02em;
+        margin-bottom: 14px;
+        line-height: 1.3;
+    }
+
+    .card-text {
+        color: #5a6a7e;
+        font-size: 1rem;
+        line-height: 1.8;
+        margin: 0;
+    }
+
+    /* =============================================
+       IMAGES
+       ============================================= */
+    .about-image-section {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .about-image {
+        border-radius: 18px;
+        overflow: hidden;
+        height: 260px;
+        position: relative;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .about-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .about-image:hover img {
+        transform: scale(1.05);
+    }
+
+    .about-image::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.35) 100%);
+        pointer-events: none;
+    }
+
+    /* =============================================
+       RESPONSIVE
+       ============================================= */
+    @@media (max-width: 992px) {
+        .about-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .about-card.featured {
+            grid-column: span 1;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            padding: 40px;
+        }
+
+        .featured-image {
+            height: 200px;
+        }
+
+        .about-image-section {
+            grid-template-columns: 1fr;
+        }
+
+        .about-image {
+            height: 220px;
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .about-content {
+            padding: 48px 0 60px;
+        }
+
+        .about-card {
+            padding: 28px;
+        }
+
+        .about-card.featured {
+            padding: 32px 24px;
+        }
+    }
+</style>
+
+<div class="about-page">
+    <section class="about-content">
+        <div class="about-container">
+
+            <div class="about-grid">
+
+                <!-- Hakkımızda - Featured -->
+                <div class="about-card featured">
+                    <div class="featured-text">
+                        <span class="card-label">@L["About_Hakkimizda_Baslik"]</span>
+                        <h3 class="card-title">@L["About_Hakkimizda_Baslik"]</h3>
+                        <p class="card-text">@L["About_Hakkimizda_Icerik"]</p>
+                    </div>
+                    <div class="featured-image">
+                        <img src="~/images/ihrac.jpg" alt="İhracat Operasyonu" loading="eager" />
+                    </div>
+                </div>
+
+                <!-- Misyon -->
+                <div class="about-card">
+                    <div class="card-icon"><i class="bi bi-bullseye"></i></div>
+                    <span class="card-label">@L["About_Misyon_Baslik"]</span>
+                    <h3 class="card-title">@L["About_Misyon_Baslik"]</h3>
+                    <p class="card-text">@L["About_Misyon_Icerik"]</p>
+                </div>
+
+                <!-- Vizyon -->
+                <div class="about-card">
+                    <div class="card-icon"><i class="bi bi-eye"></i></div>
+                    <span class="card-label">@L["About_Vizyon_Baslik"]</span>
+                    <h3 class="card-title">@L["About_Vizyon_Baslik"]</h3>
+                    <p class="card-text">@L["About_Vizyon_Icerik"]</p>
+                </div>
+
+            </div>
+
+            <!-- Images -->
+            <div class="about-image-section">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=75"
+                         alt="Lojistik ve İhracat" loading="lazy" />
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=75"
+                         alt="Konteyner Limanı" loading="lazy" />
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>

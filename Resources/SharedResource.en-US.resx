@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Side_Menu_AnaSayfa" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Side_Menu_Hakkimizda" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="Side_Menu_IsOrtaklarimiz" xml:space="preserve">
+    <value>Partners</value>
+  </data>
+  <data name="Side_Menu_Kataloglar" xml:space="preserve">
+    <value>Catalogs</value>
+  </data>
+  <data name="Side_Menu_SahadaBiz" xml:space="preserve">
+    <value>Events &amp; Hıghlıghts</value>
+  </data>
+  <data name="Products_Kataloglarimiz" xml:space="preserve">
+    <value>Product Catalogs</value>
+  </data>
+  <data name="Fmcg_Urunlerimiz" xml:space="preserve">
+    <value>FMCG PRODUCTS</value>
+  </data>
+  <data name="Footer_Haklar" xml:space="preserve">
+    <value>All Rights Reserved.</value>
+  </data>
+  <data name="Index_Stats_AktifUlke" xml:space="preserve">
+    <value>Countries in Operation</value>
+  </data>
+  <data name="Index_Stats_Nokta" xml:space="preserve">
+    <value>Points of Service</value>
+  </data>
+  <data name="Index_Iletisim_Baslik" xml:space="preserve">
+    <value>Get in Touch with Us</value>
+  </data>
+  <data name="Index_Iletisim_Form" xml:space="preserve">
+    <value>Contact Form</value>
+  </data>
+  <data name="Index_Iletisim_AltYazi" xml:space="preserve">
+    <value>Contact us anytime for supply, partnerships, or bulk orders.</value>
+  </data>
+  <data name="About_Vizyon_Baslik" xml:space="preserve">
+    <value>Our Vision</value>
+  </data>
+  <data name="About_Vizyon_Icerik" xml:space="preserve">
+    <value>To expand the diversity of our services through an innovative and sustainable business model, and to become a leader in our sector by creating lasting value for our business partners and all stakeholders.</value>
+  </data>
+  <data name="Contact_AltYazi" xml:space="preserve">
+    <value>You can contact us directly regarding supply, distributorship, partnerships, and bulk orders.</value>
+  </data>
+  <data name="Contact_Gonder" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Contact_Mesaj" xml:space="preserve">
+    <value>Your Message</value>
+  </data>
+  <data name="Contact_Konu" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="Contact_Eposta" xml:space="preserve">
+    <value>Email Address</value>
+  </data>
+  <data name="Contact_AdSoyad" xml:space="preserve">
+    <value>Name &amp; Surname</value>
+  </data>
+  <data name="Contact_Adres" xml:space="preserve">
+    <value>Çobançeşme, Sanayi Avenue No:44, Nish Istanbul, Türkiye</value>
+  </data>
+  <data name="Index_Stats_Cesit" xml:space="preserve">
+    <value>Product Variety</value>
+  </data>
+  <data name="Index_Stats_Depolama" xml:space="preserve">
+    <value>Warehouse Capacity</value>
+  </data>
+  <data name="Index_Stats_AktifBayilik" xml:space="preserve">
+    <value>Active Dealership Countries</value>
+  </data>
+  <data name="Side_Menu_Iletisim" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
+  <data name="Side_Menu_Fmcg" xml:space="preserve">
+    <value>FMCG</value>
+  </data>
+  <data name="Index_Slider_Markalarımız" xml:space="preserve">
+    <value>Brands</value>
+  </data>
+  <data name="About_Hakkimizda_Baslik" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="About_Hakkimizda_Icerik" xml:space="preserve">
+    <value>With 20 years of international trade experience, we are among Türkiye’s well-established foreign trade companies in sales, marketing, and distribution. Backed by our expertise in FMCG, licensed snacks and toys, cleaning, personal care, and cosmetics—along with our young and dynamic team and strong distribution network—we build successful partnerships. We are proud to be a foreign trade company that operates in full compliance with international trade regulations, has strong command of the end-to-end journey from operations to distribution and ultimately to the end consumer, is driven by a commitment to quality service and an entrepreneurial spirit, and has proven its reliability with an active presence and reach across the world.</value>
+  </data>
+  <data name="About_Misyon_Baslik" xml:space="preserve">
+    <value>Our Mission</value>
+  </data>
+  <data name="About_Misyon_Icerik" xml:space="preserve">
+    <value>To provide the highest-quality service on time, by operating with respect for individuals and society, adhering to laws and ethical values, and using our resources effectively and efficiently through a strong technological infrastructure and a competent, skilled team.</value>
+  </data>
+</root>

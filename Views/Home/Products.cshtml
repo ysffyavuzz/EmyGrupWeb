@@ -1,0 +1,328 @@
+﻿@{
+    ViewData["Title"] = "Ürün Kataloglarımız";
+}
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> L
+
+<section class="catalog-section spacer-section">
+    <div class="container py-5">
+
+        <!-- Başlık -->
+        <div class="catalog-title-wrapper text-center mb-5">
+            <h2 class="catalog-title">
+                @L["Products_Kataloglarimiz"]
+            </h2>
+            <div class="catalog-title-line"></div>
+        </div>
+
+        <!-- 6’lı Logo + Katalog Grid -->
+        <div class="row g-4 justify-content-center catalog-grid" id="catalogGrid">
+
+            <!-- 1. Şirket -->
+            <div class="col-6 col-sm-4 col-lg-2">
+                <a href="/catalogs/TargetTrade.pdf" target="_blank" class="catalog-card text-decoration-none">
+                    <div class="card border-0 shadow-sm text-center">
+                        <div class="card-body">
+                            <img src="/images/Markalar/Target.png" alt="Target Trade Kataloğu" class="catalog-logo" />
+                            <h5 class="catalog-name">Target Trade</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 2. Şirket -->
+            <div class="col-6 col-sm-4 col-lg-2">
+                <a href="/catalogs/Stepy.pdf" target="_blank" class="catalog-card text-decoration-none">
+                    <div class="card border-0 shadow-sm text-center">
+                        <div class="card-body">
+                            <img src="/images/Markalar/STEPY.png" alt="Stepy Kataloğu" class="catalog-logo" />
+                            <h5 class="catalog-name">Stepy</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 3. Şirket -->
+            <div class="col-6 col-sm-4 col-lg-2">
+                <a href="/catalogs/Besem.pdf" target="_blank" class="catalog-card text-decoration-none">
+                    <div class="card border-0 shadow-sm text-center">
+                        <div class="card-body">
+                            <img src="/images/Markalar/BesemGida.png" alt="Beşem Gıda Kataloğu" class="catalog-logo" />
+                            <h5 class="catalog-name">Beşem Gıda</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 4. Şirket -->
+            <div class="col-6 col-sm-4 col-lg-2">
+                <a href="/catalogs/Kiva.pdf" target="_blank" class="catalog-card text-decoration-none">
+                    <div class="card border-0 shadow-sm text-center">
+                        <div class="card-body">
+                            <img src="/images/Markalar/KivaKozmetik.png" alt="Kiva Kozmetik Kataloğu" class="catalog-logo" />
+                            <h5 class="catalog-name">Kiva Kozmetik</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 5. Şirket -->
+            <div class="col-6 col-sm-4 col-lg-2">
+                <a href="/catalogs/Newka.pdf" target="_blank" class="catalog-card text-decoration-none">
+                    <div class="card border-0 shadow-sm text-center">
+                        <div class="card-body">
+                            <img src="/images/Markalar/NEWKA.png" alt="Newka Kataloğu" class="catalog-logo" />
+                            <h5 class="catalog-name">Newka</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 6. Şirket -->
+            <div class="col-6 col-sm-4 col-lg-2">
+                <a href="/catalogs/Maripossa.pdf" target="_blank" class="catalog-card text-decoration-none">
+                    <div class="card border-0 shadow-sm text-center">
+                        <div class="card-body">
+                            <img src="/images/Markalar/Maripossa.png" alt="Maripossa Blanca Kataloğu" class="catalog-logo" />
+                            <h5 class="catalog-name">Maripossa Blanca</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* Navbar’dan aşağıda başlasın */
+    .spacer-section {
+        margin-top: 180px;
+    }
+
+    @@media (max-width: 768px) {
+        .spacer-section {
+            margin-top: 130px;
+        }
+    }
+
+    /* Başlık tasarımı + elit giriş */
+    .catalog-title {
+        font-size: 2.4rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-family: 'Helvetica Neue', 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(180deg, #2b2b2b 0%, #000 100%);
+        -webkit-background-clip: text;
+        color: transparent;
+        filter: drop-shadow(0 2px 5px rgba(0,0,0,0.15));
+        margin-bottom: 14px;
+        opacity: 0;
+        transform: translateY(10px);
+        animation: catTitleIn .65s ease forwards;
+    }
+
+    .catalog-title-line {
+        width: 260px;
+        height: 3px;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,0.55), rgba(0,0,0,0));
+        opacity: 0.45;
+        transform: scaleX(.86);
+        opacity: 0;
+        animation: catLineIn .75s ease forwards;
+        animation-delay: .1s;
+        transform-origin: center;
+    }
+
+    @@keyframes catTitleIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @@keyframes catLineIn {
+        to {
+            opacity: .45;
+            transform: scaleX(1);
+        }
+    }
+
+    /* Kart / logo tasarımı */
+    .catalog-card {
+        display: block;
+    }
+
+        .catalog-card .card {
+            border-radius: 18px;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: #ffffff;
+            /* premium gölge */
+            box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.06);
+            /* animasyon başlangıç */
+            opacity: 0;
+            transform: translate3d(-14px, 10px, 0) scale(0.985);
+            filter: blur(1.2px);
+            will-change: transform, opacity, filter;
+            transition: opacity .55s ease var(--d, 0ms), transform .55s cubic-bezier(.2,.8,.2,1) var(--d, 0ms), filter .55s ease var(--d, 0ms), box-shadow .25s ease, border-color .25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ekranda görünür olunca */
+        .catalog-card.is-visible .card {
+            opacity: 1;
+            transform: translate3d(0,0,0) scale(1);
+            filter: blur(0);
+        }
+
+        .catalog-card .card-body {
+            padding: 16px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+    .catalog-logo {
+        width: 70%;
+        height: auto;
+        object-fit: contain;
+        margin-bottom: 10px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        filter: saturate(1.02) contrast(1.02);
+        transition: transform .25s ease;
+    }
+
+    .catalog-name {
+        font-weight: 600;
+        font-size: 1rem;
+        color: #222;
+        margin: 0;
+        letter-spacing: .2px;
+    }
+
+    /* Hover: minimal ama elit */
+    .catalog-card:hover .card {
+        transform: translate3d(0,-6px,0) scale(1.02);
+        box-shadow: 0 18px 38px rgba(0,0,0,0.16);
+        border-color: rgba(0,0,0,0.12);
+    }
+
+    .catalog-card:hover .catalog-logo {
+        transform: scale(1.03);
+    }
+
+    /* Sheen (ışık geçişi) */
+    .catalog-card .card::after {
+        content: "";
+        position: absolute;
+        top: -40%;
+        left: -60%;
+        width: 60%;
+        height: 180%;
+        transform: rotate(18deg);
+        background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0) 100% );
+        opacity: 0;
+        transition: opacity .22s ease, left .65s ease;
+        pointer-events: none;
+    }
+
+    .catalog-card:hover .card::after {
+        opacity: .55;
+        left: 120%;
+    }
+
+    /* Reduce motion */
+    @@media (prefers-reduced-motion: reduce) {
+        .catalog-title, .catalog-title-line {
+            animation: none;
+            opacity: 1;
+            transform: none;
+        }
+
+        .catalog-card .card {
+            opacity: 1;
+            transform: none;
+            filter: none;
+            transition: none;
+        }
+
+            .catalog-card .card::after {
+                display: none;
+            }
+
+        .catalog-logo {
+            transition: none;
+        }
+    }
+</style>
+
+<script>
+    (function () {
+        const grid = document.getElementById("catalogGrid");
+        if (!grid) return;
+
+        // Bootstrap cols: .col-6 / .col-sm-4 / .col-lg-2 -> kolon sayısı breakpoint'e göre değişiyor.
+        // Biz gerçek yerleşimi ölçüp "satır satır soldan sağa" gecikme veriyoruz.
+        function getColumns() {
+            const firstCol = grid.querySelector(':scope > [class*="col-"]');
+            if (!firstCol) return 1;
+
+            const firstTop = firstCol.getBoundingClientRect().top;
+            let count = 0;
+            const children = Array.from(grid.children);
+            for (const el of children) {
+                const t = el.getBoundingClientRect().top;
+                if (Math.abs(t - firstTop) < 3) count++;
+                else break;
+            }
+            return Math.max(1, count);
+        }
+
+        function applyDelays() {
+            const cards = Array.from(grid.querySelectorAll(".catalog-card"));
+            const colCount = getColumns();
+
+            const colStep = 60;  // soldan sağa
+            const rowStep = 80;  // satır arası
+            const maxDelay = 900;
+
+            cards.forEach((a, i) => {
+                const row = Math.floor(i / colCount);
+                const col = i % colCount;
+                const d = Math.min(row * rowStep + col * colStep, maxDelay);
+                a.style.setProperty("--d", d + "ms");
+            });
+        }
+
+        applyDelays();
+        let rt;
+        window.addEventListener("resize", () => {
+            clearTimeout(rt);
+            rt = setTimeout(applyDelays, 120);
+        });
+
+        const cards = Array.from(grid.querySelectorAll(".catalog-card"));
+
+        // görünürlük: girince göster, çıkınca gizle -> tekrar tekrar animasyon
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add("is-visible");
+                else entry.target.classList.remove("is-visible");
+            });
+        }, { threshold: 0, rootMargin: "140px 0px 140px 0px" });
+
+        cards.forEach(a => io.observe(a));
+    })();
+</script>
