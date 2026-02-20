@@ -1,0 +1,357 @@
+﻿@{
+    ViewData["Title"] = "İş Ortaklarımız";
+}
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> L
+
+
+<section class="spacer-section">
+    <div class="container py-5">
+
+        <!-- Başlık -->
+        <div class="text-center mb-5">
+            <h2 class="section-title-apple">
+                @L["Side_Menu_IsOrtaklarimiz"]
+            </h2>
+        </div>
+
+        <!-- 5'li Üst Grid -->
+        <div class="partners-grid partners-grid-5 mb-5" id="partnersGridTop">
+
+            <a href="/catalogs/TargetTrade.pdf" target="_blank" class="partner-card" aria-label="Hello Kitty PDF">
+                <div class="partner-box">
+                    <img src="/images/Markalar/HelloKitty.png" alt="Hello Kitty" />
+                </div>
+            </a>
+
+            <a href="/catalogs/TargetTrade.pdf" target="_blank" class="partner-card" aria-label="Kuromi PDF">
+                <div class="partner-box">
+                    <img src="/images/Markalar/KUROMI.png" alt="Kuromi" />
+                </div>
+            </a>
+
+            <a href="/catalogs/TargetTrade.pdf" target="_blank" class="partner-card" aria-label="My Little Pony PDF">
+                <div class="partner-box">
+                    <img src="/images/Markalar/Ponny.png" alt="My Little Pony" />
+                </div>
+            </a>
+
+            <a href="/catalogs/TargetTrade.pdf" target="_blank" class="partner-card" aria-label="PJ Masks PDF">
+                <div class="partner-box">
+                    <img src="/images/Markalar/PjMasks.png" alt="PJ Masks" />
+                </div>
+            </a>
+
+            <a href="/catalogs/TargetTrade.pdf" target="_blank" class="partner-card" aria-label="Transformers PDF">
+                <div class="partner-box">
+                    <img src="/images/Markalar/TRANSFORMERS.png" alt="Transformers" />
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Divider -->
+        <div class="partners-divider"></div>
+
+        <!-- 6'lı Alt Grid -->
+        <div class="partners-grid partners-grid-6 mt-5" id="partnersGridBottom">
+
+            <a href="/catalogs/TargetTrade.pdf" target="_blank" class="partner-card" aria-label="Target Trade PDF">
+                <div class="partner-box">
+                    <img src="/images/Markalar/Target.png" alt="Target Trade" />
+                </div>
+            </a>
+
+            <a href="/catalogs/Stepy.pdf" target="_blank" class="partner-card" aria-label="Stepy PDF">
+                <div class="partner-box">
+                    <img src="/images/Markalar/STEPY.png" alt="Stepy" />
+                </div>
+            </a>
+
+            <a href="/catalogs/Besem.pdf" target="_blank" class="partner-card" aria-label="Beşem Gıda PDF">
+                <div class="partner-box">
+                    <img src="/images/Markalar/BesemGida.png" alt="Beşem Gıda" />
+                </div>
+            </a>
+
+            <a href="/catalogs/Kiva.pdf" target="_blank" class="partner-card" aria-label="Kiva Kozmetik PDF">
+                <div class="partner-box">
+                    <img src="/images/Markalar/KivaKozmetik.png" alt="Kiva Kozmetik" />
+                </div>
+            </a>
+
+            <a href="/catalogs/Newka.pdf" target="_blank" class="partner-card" aria-label="Newka PDF">
+                <div class="partner-box">
+                    <img src="/images/Markalar/NEWKA.png" alt="Newka" />
+                </div>
+            </a>
+
+            <a href="/catalogs/Maripossa.pdf" target="_blank" class="partner-card" aria-label="Maripossa Blanca PDF">
+                <div class="partner-box">
+                    <img src="/images/Markalar/Maripossa.png" alt="Maripossa Blanca" />
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* ===================================== */
+    /*   ÜST BOŞLUK (NAVBAR İÇİN)             */
+    /* ===================================== */
+    .spacer-section {
+        margin-top: 120px;
+    }
+
+    @@media (max-width: 768px) {
+        .spacer-section {
+            margin-top: 90px;
+        }
+    }
+
+    /* ===================================== */
+    /*   APPLE TARZI BAŞLIK                   */
+    /* ===================================== */
+    .section-title-apple {
+        font-size: 2.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        font-family: 'Helvetica Neue','Segoe UI','Roboto',sans-serif;
+        background: linear-gradient(180deg, #222, #000);
+        -webkit-background-clip: text;
+        color: transparent;
+        margin-bottom: 20px;
+        filter: drop-shadow(0 3px 8px rgba(0,0,0,0.18));
+    }
+
+        .section-title-apple::after {
+            content: "";
+            display: block;
+            width: 160px;
+            height: 2px;
+            margin: 16px auto 0;
+            background: linear-gradient(90deg, transparent, #000, transparent);
+            opacity: .35;
+            border-radius: 10px;
+        }
+
+    /* ===================================== */
+    /*   GRID YAPISI                          */
+    /* ===================================== */
+    .partners-grid {
+        display: grid;
+        gap: 32px;
+    }
+
+    .partners-grid-5 {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .partners-grid-6 {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    /* ===================================== */
+    /*   DIVIDER                              */
+    /* ===================================== */
+    .partners-divider {
+        width: 60%;
+        height: 2px;
+        margin: 40px auto;
+        background: linear-gradient(90deg, transparent, #000, transparent);
+        opacity: .22;
+        border-radius: 5px;
+    }
+
+    /* ===================================== */
+    /*   PARTNER LINK (KART)                  */
+    /* ===================================== */
+    .partner-card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* ===================================== */
+    /*   KATALOG SAYFASINDAKİ KART EFEKTLERİ   */
+    /*   (giriş anim + blur + gecikme + sheen)*/
+    /* ===================================== */
+    .partner-box {
+        width: 100%;
+        max-width: 190px;
+        aspect-ratio: 1 / 1;
+        background: #ffffff;
+        border-radius: 22px;
+        box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+        border: 1px solid rgba(0,0,0,0.06);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* animasyon başlangıç (catalog sayfası gibi) */
+        opacity: 0;
+        transform: translate3d(-14px, 10px, 0) scale(0.985);
+        filter: blur(1.2px);
+        will-change: transform, opacity, filter;
+        transition: opacity .55s ease var(--d, 0ms), transform .55s cubic-bezier(.2,.8,.2,1) var(--d, 0ms), filter .55s ease var(--d, 0ms), box-shadow .25s ease, border-color .25s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* ekranda görünür olunca */
+    .partner-card.is-visible .partner-box {
+        opacity: 1;
+        transform: translate3d(0,0,0) scale(1);
+        filter: blur(0);
+    }
+
+    /* Hover */
+    .partner-card:hover .partner-box {
+        transform: translate3d(0,-6px,0) scale(1.02);
+        box-shadow: 0 18px 38px rgba(0,0,0,0.16);
+        border-color: rgba(0,0,0,0.12);
+    }
+
+    /* Sheen (ışık geçişi) */
+    .partner-box::after {
+        content: "";
+        position: absolute;
+        top: -40%;
+        left: -60%;
+        width: 60%;
+        height: 180%;
+        transform: rotate(18deg);
+        background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0) 100%);
+        opacity: 0;
+        transition: opacity .22s ease, left .65s ease;
+        pointer-events: none;
+    }
+
+    .partner-card:hover .partner-box::after {
+        opacity: .55;
+        left: 120%;
+    }
+
+    /* ===================================== */
+    /*   LOGO                                 */
+    /* ===================================== */
+    .partner-box img {
+        max-width: 70%;
+        max-height: 70%;
+        object-fit: contain;
+        user-select: none;
+        pointer-events: none;
+        filter: saturate(1.02) contrast(1.02);
+        transition: transform .25s ease;
+    }
+
+    .partner-card:hover .partner-box img {
+        transform: scale(1.03);
+    }
+
+    /* ===================================== */
+    /*   RESPONSIVE                           */
+    /* ===================================== */
+    @@media (max-width: 992px) {
+        .partners-grid-5 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .partners-grid-6 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .partners-grid-5, .partners-grid-6 {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Reduce motion */
+    @@media (prefers-reduced-motion: reduce) {
+        .partner-box {
+            opacity: 1;
+            transform: none;
+            filter: none;
+            transition: none;
+        }
+
+            .partner-box::after {
+                display: none;
+            }
+
+            .partner-box img {
+                transition: none;
+            }
+    }
+</style>
+
+<script>
+    (function () {
+        const grids = [
+            document.getElementById("partnersGridTop"),
+            document.getElementById("partnersGridBottom")
+        ].filter(Boolean);
+
+        if (!grids.length) return;
+
+        function getColumnsForGrid(grid) {
+            const first = grid.querySelector(".partner-card");
+            if (!first) return 1;
+
+            const firstTop = first.getBoundingClientRect().top;
+            let count = 0;
+
+            const children = Array.from(grid.querySelectorAll(".partner-card"));
+            for (const el of children) {
+                const t = el.getBoundingClientRect().top;
+                if (Math.abs(t - firstTop) < 3) count++;
+                else break;
+            }
+            return Math.max(1, count);
+        }
+
+        function applyDelays() {
+            const colStep = 60;  // soldan sağa
+            const rowStep = 80;  // satır arası
+            const maxDelay = 900;
+
+            grids.forEach(grid => {
+                const cards = Array.from(grid.querySelectorAll(".partner-card"));
+                const colCount = getColumnsForGrid(grid);
+
+                cards.forEach((a, i) => {
+                    const row = Math.floor(i / colCount);
+                    const col = i % colCount;
+                    const d = Math.min(row * rowStep + col * colStep, maxDelay);
+                    a.style.setProperty("--d", d + "ms");
+                });
+            });
+        }
+
+        applyDelays();
+        let rt;
+        window.addEventListener("resize", () => {
+            clearTimeout(rt);
+            rt = setTimeout(applyDelays, 120);
+        });
+
+        // Görünürlük: girince göster, çıkınca gizle -> tekrar animasyon
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add("is-visible");
+                else entry.target.classList.remove("is-visible");
+            });
+        }, { threshold: 0, rootMargin: "140px 0px 140px 0px" });
+
+        grids.forEach(grid => {
+            const cards = Array.from(grid.querySelectorAll(".partner-card"));
+            cards.forEach(a => io.observe(a));
+        });
+    })();
+</script>

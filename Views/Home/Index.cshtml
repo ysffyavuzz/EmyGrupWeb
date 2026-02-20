@@ -1,0 +1,1240 @@
+@{
+    ViewData["Title"] = "Emy Grup | Ana Sayfa";
+}
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> L
+
+<!-- ========================================= -->
+<!--  PRELOADER                                -->
+<!-- ========================================= -->
+<div id="preloader">
+    <div class="preloader-content">
+        <img src="/images/emy-logo2.jpeg" id="preloaderLogo" alt="Emy Grup" />
+    </div>
+</div>
+
+<!-- ========================================= -->
+<!--  HERO SECTION - İki Büyük Görsel          -->
+<!-- ========================================= -->
+<section class="hero-section">
+    <div class="hero-bento">
+        <!-- Sol Kart - FMCG Görseli -->
+        <a asp-action="FMCG" asp-controller="Home" class="hero-card">
+            <div class="hero-card-media">
+                <img src="~/images/Index_foto_tasarim.png" alt="FMCG" />
+            </div>
+        </a>
+
+        <!-- Sağ Kart - Video -->
+        <a asp-action="Partners" asp-controller="Home" class="hero-card">
+            <div class="hero-card-media">
+                <video autoplay muted loop playsinline preload="metadata">
+                    <source src="~/images/Video/fmcgVideo.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- ========================================= -->
+<!--  STATS SECTION                            -->
+<!-- ========================================= -->
+<section class="stats-section">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <img src="~/images/index_stats/düz_dünya.png" alt="Ülkeler" />
+                </div>
+                <div class="stat-number counter" data-target="60">0</div>
+                <div class="stat-label">@L["Index_Stats_AktifUlke"]</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <img src="~/images/index_stats/bayilik_sayisi.png" alt="Bayilik" />
+                </div>
+                <div class="stat-number counter" data-target="30">0</div>
+                <div class="stat-label">@L["Index_Stats_AktifBayilik"]</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <img src="~/images/index_stats/location.png" alt="Nokta" />
+                </div>
+                <div class="stat-number counter" data-target="120000">0</div>
+                <div class="stat-label">@L["Index_Stats_Nokta"]</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <img src="~/images/index_stats/warehouse.png" alt="Depolama" />
+                </div>
+                <div class="stat-number counter" data-target="6000">0</div>
+                <div class="stat-label">@L["Index_Stats_Depolama"]</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <img src="~/images/index_stats/barcode.png" alt="Çeşit" />
+                </div>
+                <div class="stat-number counter" data-target="1500">0</div>
+                <div class="stat-label">@L["Index_Stats_Cesit"]</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================= -->
+<!--  SAHA FOTOĞRAF GALERİSİ                  -->
+<!-- ========================================= -->
+<section id="auto-galleries" class="auto-galleries-section">
+    <div class="container text-center">
+        <div class="section-header">
+<h2 class="section-title">@L["Side_Menu_SahadaBiz"]</h2>
+        </div>
+
+        <div class="gallery-row">
+
+            <!-- 1. GALERİ -->
+            <div class="gallery-card">
+                <div class="gallery-inner" id="gallery1">
+                    <img src="/images/Saha/RafGorselleri/raf1.jpeg" />
+                    <img src="/images/SAHA/FUAR/fr1.jpeg" />
+                    <img src="/images/Saha/HelloKitty/hk1.jpeg" />
+                    <img src="/images/Saha/Kibris/kibris11.jpg" />
+                    <img src="/images/Saha/RafGorselleri/raf5.jpeg" />
+                    <img src="/images/SAHA/FUAR/fr5.jpeg" />
+                    <img src="/images/Saha/HelloKitty/hk5.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf9.jpeg" />
+                    <img src="/images/SAHA/FUAR/fr9.jpeg" />
+                    <img src="/images/Saha/HelloKitty/hk9.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf13.jpeg" />
+                    <img src="/images/SAHA/FUAR/fr13.jpeg" />
+                    <img src="/images/Saha/HelloKitty/hk13.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf17.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf21.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf25.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf29.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf33.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf37.jpeg" />
+                </div>
+            </div>
+
+            <!-- 2. GALERİ -->
+            <div class="gallery-card">
+                <div class="gallery-inner" id="gallery2">
+                    <img src="/images/Saha/RafGorselleri/raf2.jpeg" />
+                    <img src="/images/SAHA/FUAR/fr2.jpeg" />
+                    <img src="/images/Saha/HelloKitty/hk2.jpeg" />
+                    <img src="/images/Saha/Kibris/kibris12.jpg" />
+                    <img src="/images/Saha/RafGorselleri/raf6.jpeg" />
+                    <img src="/images/SAHA/FUAR/fr6.jpeg" />
+                    <img src="/images/Saha/HelloKitty/hk6.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf10.jpeg" />
+                    <img src="/images/SAHA/FUAR/fr10.jpeg" />
+                    <img src="/images/Saha/HelloKitty/hk10.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf14.jpeg" />
+                    <img src="/images/SAHA/FUAR/fr14.jpeg" />
+                    <img src="/images/Saha/HelloKitty/hk14.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf18.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf22.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf26.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf30.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf34.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf38.jpeg" />
+                </div>
+            </div>
+
+            <!-- 3. GALERİ -->
+            <div class="gallery-card">
+                <div class="gallery-inner" id="gallery3">
+                    <img src="/images/Saha/RafGorselleri/raf3.jpeg" />
+                    <img src="/images/SAHA/FUAR/fr3.jpeg" />
+                    <img src="/images/Saha/HelloKitty/hk3.jpeg" />
+                    <img src="/images/Saha/Kibris/kibris13.jpg" />
+                    <img src="/images/Saha/RafGorselleri/raf7.jpeg" />
+                    <img src="/images/SAHA/FUAR/fr7.jpeg" />
+                    <img src="/images/Saha/HelloKitty/hk7.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf11.jpeg" />
+                    <img src="/images/SAHA/FUAR/fr11.jpeg" />
+                    <img src="/images/Saha/HelloKitty/hk11.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf15.jpeg" />
+                    <img src="/images/SAHA/FUAR/fr15.jpeg" />
+                    <img src="/images/Saha/HelloKitty/hk15.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf19.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf23.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf27.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf31.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf35.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf39.jpeg" />
+                </div>
+            </div>
+
+            <!-- 4. GALERİ -->
+            <div class="gallery-card">
+                <div class="gallery-inner" id="gallery4">
+                    <img src="/images/Saha/RafGorselleri/raf4.jpeg" />
+                    <img src="/images/SAHA/FUAR/fr4.jpeg" />
+                    <img src="/images/Saha/HelloKitty/hk4.jpeg" />
+                    <img src="/images/Saha/Kibris/kibris14.jpg" />
+                    <img src="/images/Saha/RafGorselleri/raf8.jpeg" />
+                    <img src="/images/SAHA/FUAR/fr8.jpeg" />
+                    <img src="/images/Saha/HelloKitty/hk8.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf12.jpeg" />
+                    <img src="/images/SAHA/FUAR/fr12.jpeg" />
+                    <img src="/images/Saha/HelloKitty/hk12.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf16.jpeg" />
+                    <img src="/images/SAHA/FUAR/fr16.jpeg" />
+                    <img src="/images/Saha/HelloKitty/hk16.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf20.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf24.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf28.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf32.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf36.jpeg" />
+                    <img src="/images/Saha/RafGorselleri/raf40.jpeg" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ========================================= -->
+<!--  BRANDS SLIDER                            -->
+<!-- ========================================= -->
+<section class="brands-section">
+    <div class="container">
+        <div class="section-header">
+<h2 class="section-title">@L["Index_Slider_Markalarımız"]</h2>
+        </div>
+
+        <div class="brands-slider-wrapper">
+            <div class="brands-fade brands-fade--left"></div>
+            <div class="brands-fade brands-fade--right"></div>
+            <div class="brands-track" id="brandSlider">
+                <div class="brand-item"><img src="/images/Markalar/HelloKitty.png" alt="Hello Kitty" /></div>
+                <div class="brand-item"><img src="/images/Markalar/KUROMI.png" alt="Kuromi" /></div>
+                <div class="brand-item"><img src="/images/Markalar/Ponny.png" alt="My Little Pony" /></div>
+                <div class="brand-item"><img src="/images/Markalar/PjMasks.png" alt="PJ Masks" /></div>
+                <div class="brand-item"><img src="/images/Markalar/TRANSFORMERS.png" alt="Transformers" /></div>
+                <div class="brand-item"><img src="/images/Markalar/STEPY.png" alt="Stepy" /></div>
+                <div class="brand-item"><img src="/images/Markalar/BesemGida.png" alt="Besem Gida" /></div>
+                <div class="brand-item"><img src="/images/Markalar/KivaKozmetik.png" alt="Kiva Kozmetik" /></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================= -->
+<!--  FMCG BRANDS SLIDER                       -->
+<!-- ========================================= -->
+<section class="brands-section brands-section--alt">
+    <div class="container">
+        <div class="section-header">
+<h2 class="section-title">@L["Side_Menu_Fmcg"]</h2>
+        </div>
+
+        <div class="brands-slider-wrapper">
+            <div class="brands-fade brands-fade--left"></div>
+            <div class="brands-fade brands-fade--right"></div>
+            <div class="brands-track brands-track--reverse" id="brandSlider2">
+                <div class="brand-item"><img src="/images/FMCG/P&G.png" alt="P&G" /></div>
+                <div class="brand-item"><img src="/images/FMCG/UNILEVER.png" alt="Unilever" /></div>
+                <div class="brand-item"><img src="/images/FMCG/NESTLE.png" alt="Nestle" /></div>
+                <div class="brand-item"><img src="/images/FMCG/FERRERO.png" alt="Ferrero" /></div>
+                <div class="brand-item"><img src="/images/FMCG/MONDELEZ.png" alt="Mondelez" /></div>
+                <div class="brand-item"><img src="/images/FMCG/PEPSICO.png" alt="Pepsico" /></div>
+                <div class="brand-item"><img src="/images/FMCG/ÜLKER.png" alt="Ülker" /></div>
+                <div class="brand-item"><img src="/images/FMCG/ETİ.png" alt="Eti" /></div>
+                <div class="brand-item"><img src="/images/FMCG/LOREAL.png" alt="Loreal" /></div>
+                <div class="brand-item"><img src="/images/FMCG/NIVEA.png" alt="Nivea" /></div>
+            </div>
+        </div>
+
+        <div class="brands-cta">
+            <a asp-action="FMCG" asp-controller="Home" class="brands-cta-btn">
+                Tüm Markaları Gör <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================= -->
+<!--  CTA SECTION                              -->
+<!-- ========================================= -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-card">
+            <div class="cta-content">
+                <h2 class="cta-title">@L["Index_Iletisim_Baslik"]</h2>
+                <p class="cta-desc">@L["Index_Iletisim_AltYazi"]</p>
+                <a asp-action="Contact" asp-controller="Home" class="cta-btn">
+                    <span>@L["Index_Iletisim_Form"]</span>
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <div class="cta-social">
+                <a href="https://www.instagram.com/emygruptr/" target="_blank" class="social-btn social-btn--instagram">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="https://wa.me/905453765235" target="_blank" class="social-btn social-btn--whatsapp">
+                    <i class="bi bi-whatsapp"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/emygruptr" target="_blank" class="social-btn social-btn--linkedin">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================= -->
+<!--  WHATSAPP FAB                             -->
+<!-- ========================================= -->
+<a class="whatsapp-fab" href="https://wa.me/905453765235" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+    <span class="whatsapp-pulse"></span>
+</a>
+
+<!-- ========================================= -->
+<!--  STYLES                                   -->
+<!-- ========================================= -->
+<style>
+    :root {
+        --navbar-height: 70px;
+    }
+
+    body {
+        background: #f8fafc !important;
+        overflow: hidden;
+    }
+
+    body.page-loaded {
+        overflow: auto;
+    }
+
+    /* ============================================
+       PRELOADER
+       ============================================ */
+    #preloader {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    .preloader-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+    }
+
+    #preloaderLogo {
+        width: min(350px, 65vw);
+        filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.08));
+        animation: preloaderLogo 2.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .preloader-progress {
+        width: 180px;
+        height: 4px;
+        background: rgba(68, 109, 150, 0.1);
+        border-radius: 100px;
+        overflow: hidden;
+    }
+
+    .preloader-bar {
+        width: 0;
+        height: 100%;
+        background: linear-gradient(90deg, #446D96, #274472);
+        border-radius: 100px;
+        animation: preloaderBar 2.3s ease-out forwards;
+    }
+
+    @@keyframes preloaderLogo {
+        0% { opacity: 0; transform: scale(0.9) translateY(20px); }
+        20% { opacity: 1; transform: scale(1) translateY(0); }
+        80% { opacity: 1; transform: scale(1) translateY(0); }
+        100% { opacity: 0; transform: scale(0.95) translateY(-20px); }
+    }
+
+    @@keyframes preloaderBar {
+        0% { width: 0; }
+        100% { width: 100%; }
+    }
+
+    body.page-loaded #preloader {
+        animation: preloaderHide 0.4s ease forwards;
+    }
+
+    @@keyframes preloaderHide {
+        to { opacity: 0; visibility: hidden; pointer-events: none; }
+    }
+
+    /* ============================================
+       HERO SECTION - İki Büyük Görsel
+       ============================================ */
+    .hero-section {
+        padding: 90px 24px 40px;
+        background: #f8fafc;
+    }
+
+    .hero-bento {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .hero-card {
+        position: relative;
+        height: 520px;
+        border-radius: 28px;
+        overflow: hidden;
+        text-decoration: none;
+        display: block;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-card:hover {
+        transform: translateY(-10px) scale(1.01);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+    }
+
+    .hero-card-media {
+        position: absolute;
+        inset: 0;
+    }
+
+    .hero-card-media img,
+    .hero-card-media video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-card:hover .hero-card-media img,
+    .hero-card:hover .hero-card-media video {
+        transform: scale(1.06);
+    }
+
+    .hero-card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg,
+            transparent 0%,
+            transparent 30%,
+            rgba(255, 255, 255, 0.4) 60%,
+            rgba(255, 255, 255, 0.85) 100%) !important;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding: 32px;
+        opacity: 1 !important;
+        transition: background 0.4s ease;
+    }
+
+    .hero-card:hover .hero-card-overlay {
+        background: linear-gradient(180deg,
+            transparent 0%,
+            transparent 20%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(255, 255, 255, 0.95) 100%) !important;
+    }
+
+    .hero-card-badge {
+        background: linear-gradient(135deg, #446D96 0%, #274472 100%);
+        color: #ffffff;
+        padding: 12px 24px;
+        border-radius: 100px;
+        font-weight: 600;
+        font-size: 0.9375rem;
+        letter-spacing: 0.02em;
+        box-shadow: 0 4px 16px rgba(68, 109, 150, 0.3);
+    }
+
+    .hero-card-arrow {
+        width: 52px;
+        height: 52px;
+        background: linear-gradient(135deg, #446D96 0%, #274472 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        color: #ffffff;
+        transform: translateX(0);
+        opacity: 1;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 4px 16px rgba(68, 109, 150, 0.3);
+    }
+
+    .hero-card:hover .hero-card-arrow {
+        transform: scale(1.1);
+        box-shadow: 0 6px 24px rgba(68, 109, 150, 0.4);
+    }
+
+    @@media (max-width: 992px) {
+        .hero-card {
+            height: 420px;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .hero-section {
+            padding: 80px 16px 32px;
+        }
+
+        .hero-bento {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .hero-card {
+            height: 300px;
+            border-radius: 20px;
+        }
+
+        .hero-card-overlay {
+            opacity: 1 !important;
+            background: linear-gradient(180deg,
+                transparent 0%,
+                transparent 20%,
+                rgba(255, 255, 255, 0.5) 50%,
+                rgba(255, 255, 255, 0.95) 100%) !important;
+        }
+
+        .hero-card-arrow {
+            opacity: 1;
+            transform: translateX(0);
+            width: 44px;
+            height: 44px;
+        }
+
+        .hero-card-badge {
+            padding: 10px 18px;
+            font-size: 0.875rem;
+        }
+    }
+
+    /* ============================================
+       STATS SECTION
+       ============================================ */
+    .stats-section {
+        padding: 64px 24px;
+        background: #f8fafc;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    .stat-card {
+        text-align: center;
+        padding: 36px 20px;
+        background: #ffffff;
+        border-radius: 20px;
+        border: 1px solid #e8edf3;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .stat-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #446D96, #274472);
+        opacity: 0;
+        transition: opacity 0.25s ease;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 36px rgba(39, 68, 114, 0.12);
+    }
+
+    .stat-card:hover::before {
+        opacity: 1;
+    }
+
+    .stat-icon {
+        margin-bottom: 16px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .stat-icon img {
+        width: 56px;
+        height: 56px;
+        object-fit: contain;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #0f172a;
+        letter-spacing: -0.03em;
+        margin-bottom: 6px;
+        line-height: 1;
+    }
+
+    .stat-label {
+        font-size: 0.875rem;
+        color: #64748b;
+        font-weight: 500;
+        line-height: 1.4;
+    }
+
+    @@media (max-width: 992px) {
+        .stats-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .stats-section {
+            padding: 48px 16px;
+        }
+
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .stat-card {
+            padding: 24px 16px;
+        }
+
+        .stat-number {
+            font-size: 1.875rem;
+        }
+
+        .stat-icon img {
+            width: 44px;
+            height: 44px;
+        }
+    }
+
+    /* ============================================
+       SECTION HEADER
+       ============================================ */
+    .section-header {
+        text-align: center;
+        margin-bottom: 48px;
+    }
+
+    .section-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: rgba(68, 109, 150, 0.08);
+        color: #274472;
+        border-radius: 50px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        margin-bottom: 16px;
+    }
+
+    .section-title {
+        font-size: clamp(1.75rem, 4vw, 2.25rem);
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 8px;
+        letter-spacing: -0.02em;
+    }
+
+    .section-desc {
+        color: #64748b;
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    /* ============================================
+       SERVICES SECTION
+       ============================================ */
+    .services-section {
+        padding: 70px 20px;
+        background: #ffffff;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .service-card {
+        position: relative;
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 28px;
+        border: 1px solid #e2e8f0;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        overflow: hidden;
+    }
+
+    .service-card:hover {
+        border-color: #446D96;
+        box-shadow: 0 12px 40px rgba(68, 109, 150, 0.12);
+        transform: translateY(-6px);
+    }
+
+    .service-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #446D96 0%, #274472 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+        color: #ffffff;
+        font-size: 1.375rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 6px;
+    }
+
+    .service-card p {
+        font-size: 0.875rem;
+        color: #64748b;
+        margin-bottom: 14px;
+        line-height: 1.5;
+    }
+
+    .service-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: #446D96;
+        transition: gap 0.2s ease;
+    }
+
+    .service-card:hover .service-link {
+        gap: 10px;
+    }
+
+    @@media (max-width: 992px) {
+        .services-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .services-section {
+            padding: 50px 20px;
+        }
+
+        .services-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .service-card {
+            padding: 24px;
+        }
+    }
+
+    /* ============================================
+       BRANDS SECTION
+       ============================================ */
+    .brands-section {
+        padding: 80px 20px;
+        background: #ffffff;
+    }
+
+    .brands-section--alt {
+        padding-top: 40px;
+        background: #f8fafc;
+    }
+
+    .brands-slider-wrapper {
+        position: relative;
+        max-width: 1300px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 16px;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        padding: 20px 0;
+    }
+
+    .brands-section--alt .brands-slider-wrapper {
+        background: #ffffff;
+    }
+
+    .brands-fade {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 60px;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .brands-fade--left {
+        left: 0;
+        background: linear-gradient(90deg, #ffffff 0%, transparent 100%);
+    }
+
+    .brands-fade--right {
+        right: 0;
+        background: linear-gradient(270deg, #ffffff 0%, transparent 100%);
+    }
+
+    .brands-track {
+        display: flex;
+        will-change: transform;
+    }
+
+    .brand-item {
+        flex: 0 0 auto;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .brand-item img {
+        max-width: 160px;
+        max-height: 90px;
+        object-fit: contain;
+        filter: grayscale(30%);
+        opacity: 0.8;
+        transition: all 0.3s ease;
+    }
+
+    .brand-item:hover img {
+        filter: grayscale(0%);
+        opacity: 1;
+    }
+
+    .brands-cta {
+        text-align: center;
+        margin-top: 32px;
+    }
+
+    .brands-cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        background: transparent;
+        border: 2px solid #274472;
+        color: #274472;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 0.9375rem;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+
+    .brands-cta-btn:hover {
+        background: #274472;
+        color: #ffffff;
+    }
+
+    @@media (max-width: 768px) {
+        .brands-section {
+            padding: 60px 20px;
+        }
+
+        .brand-item {
+            width: 120px;
+        }
+
+        .brand-item img {
+            max-width: 80px;
+            max-height: 45px;
+        }
+    }
+
+    /* ============================================
+       CTA SECTION
+       ============================================ */
+    .cta-section {
+        padding: 80px 20px;
+        background: #f8fafc;
+    }
+
+    .cta-card {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, #274472 0%, #1a3259 100%);
+        border-radius: 24px;
+        padding: 60px 48px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cta-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -30%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+        border-radius: 50%;
+    }
+
+    .cta-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .cta-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50px;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.8125rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .cta-title {
+        color: #ffffff;
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    .cta-desc {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1rem;
+        margin-bottom: 28px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 32px;
+        background: #ffffff;
+        color: #274472;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .cta-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        color: #274472;
+    }
+
+    .cta-social {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 40px;
+    }
+
+    .social-btn {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 1.25rem;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+
+    .social-btn:hover {
+        transform: translateY(-3px);
+        color: #ffffff;
+    }
+
+    .social-btn--instagram:hover { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+    .social-btn--whatsapp:hover { background: #25D366; }
+    .social-btn--linkedin:hover { background: #0077B5; }
+
+    @@media (max-width: 768px) {
+        .cta-section {
+            padding: 60px 20px;
+        }
+
+        .cta-card {
+            padding: 40px 24px;
+        }
+    }
+
+    /* ============================================
+       WHATSAPP FAB
+       ============================================ */
+    .whatsapp-fab {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        width: 60px;
+        height: 60px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff !important;
+        font-size: 28px;
+        text-decoration: none;
+        z-index: 9998;
+        box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
+        transition: all 0.3s ease;
+    }
+
+    .whatsapp-fab:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 32px rgba(37, 211, 102, 0.5);
+        color: #ffffff;
+    }
+
+    .whatsapp-pulse {
+        position: absolute;
+        inset: -6px;
+        border-radius: 20px;
+        background: rgba(37, 211, 102, 0.3);
+        animation: waPulse 2s ease-out infinite;
+        pointer-events: none;
+    }
+
+    @@keyframes waPulse {
+        0% { transform: scale(1); opacity: 0.6; }
+        100% { transform: scale(1.25); opacity: 0; }
+    }
+
+    /* ============================================
+       AUTO GALLERIES SECTION
+       ============================================ */
+    .auto-galleries-section {
+        padding: 70px 20px;
+        background: #f8fafc;
+    }
+
+    .gallery-row {
+        display: flex;
+        gap: 12px;
+        height: 600px;
+        overflow: hidden;
+        border-radius: 16px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .gallery-card {
+        flex: 1;
+        overflow: hidden;
+        border-radius: 12px;
+    }
+
+    .gallery-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        animation: galleryScrollUp 60s linear infinite;
+        will-change: transform;
+    }
+
+    .gallery-inner.reverse {
+        animation-direction: reverse;
+    }
+
+    .gallery-inner img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 10px;
+        display: block;
+        flex-shrink: 0;
+    }
+
+    @@keyframes galleryScrollUp {
+        0%   { transform: translateY(0); }
+        100% { transform: translateY(-50%); }
+    }
+
+    @@media (max-width: 768px) {
+        .gallery-row {
+            height: 300px;
+            gap: 8px;
+        }
+
+        .gallery-inner img {
+            height: 150px;
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .gallery-row {
+            height: 240px;
+        }
+
+        .gallery-card:nth-child(3),
+        .gallery-card:nth-child(4) {
+            display: none;
+        }
+
+        .gallery-inner img {
+            height: 120px;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .whatsapp-fab {
+            width: 52px;
+            height: 52px;
+            font-size: 24px;
+            right: 16px;
+            bottom: 16px;
+        }
+    }
+</style>
+
+<!-- ========================================= -->
+<!--  SCRIPTS                                  -->
+<!-- ========================================= -->
+<script>
+    // Preloader
+    window.addEventListener("load", () => {
+        setTimeout(() => {
+            document.body.classList.add("page-loaded");
+            document.querySelector("#navbarLogo")?.classList.add("visible");
+        }, 2600);
+    });
+
+    // Counter Animation
+    const counters = document.querySelectorAll(".counter");
+    let countersStarted = false;
+
+    function startCounters() {
+        counters.forEach(counter => {
+            const target = +counter.dataset.target;
+            let count = 0;
+            const update = () => {
+                const increment = target / 50;
+                if (count < target) {
+                    count += increment;
+                    counter.textContent = Math.ceil(count).toLocaleString("tr-TR");
+                    requestAnimationFrame(update);
+                } else {
+                    counter.textContent = target.toLocaleString("tr-TR") + "+";
+                }
+            };
+            update();
+        });
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !countersStarted) {
+                countersStarted = true;
+                startCounters();
+            }
+        });
+    }, { threshold: 0.3 });
+
+    counters.forEach(c => counterObserver.observe(c));
+
+    // Step-based infinite slider
+    function initStepSlider(trackId, stepSize, intervalMs) {
+        const track = document.getElementById(trackId);
+        if (!track) return;
+
+        const wrapper = track.closest('.brands-slider-wrapper');
+        const origItems = Array.from(track.children);
+        const n = origItems.length;
+
+        // Klonla - sonsuz döngü için
+        origItems.forEach(item => track.appendChild(item.cloneNode(true)));
+
+        let index = 0;
+        let moving = false;
+
+        function getItemWidth() {
+            return wrapper.clientWidth / 5;
+        }
+
+        function applyWidths() {
+            const w = getItemWidth();
+            Array.from(track.children).forEach(el => {
+                el.style.width = w + 'px';
+            });
+        }
+
+        applyWidths();
+        window.addEventListener('resize', applyWidths);
+
+        function next() {
+            if (moving) return;
+            moving = true;
+            index += stepSize;
+            const w = getItemWidth();
+            track.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            track.style.transform = `translateX(${-index * w}px)`;
+
+            setTimeout(() => {
+                if (index >= n) {
+                    track.style.transition = 'none';
+                    index = 0;
+                    track.style.transform = 'translateX(0)';
+                    requestAnimationFrame(() => requestAnimationFrame(() => { moving = false; }));
+                } else {
+                    moving = false;
+                }
+            }, 650);
+        }
+
+        setInterval(next, intervalMs);
+    }
+
+    // Saha galeri sonsuz döngü - görselleri klonla
+    ['gallery1','gallery2','gallery3','gallery4'].forEach((id, i) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.innerHTML += el.innerHTML;
+    });
+
+    // Markalar: 1er 1er kayar, her 2 saniyede
+    initStepSlider('brandSlider', 1, 2000);
+    // FMCG: 5er 5er kayar, her 2 saniyede
+    initStepSlider('brandSlider2', 5, 2000);
+</script>

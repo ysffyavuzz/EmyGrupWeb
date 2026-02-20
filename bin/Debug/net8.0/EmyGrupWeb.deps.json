@@ -1,0 +1,31 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "EmyGrupWeb/1.0.0": {
+        "runtime": {
+          "EmyGrupWeb.dll": {}
+        },
+        "resources": {
+          "en-US/EmyGrupWeb.resources.dll": {
+            "locale": "en-US"
+          },
+          "tr-TR/EmyGrupWeb.resources.dll": {
+            "locale": "tr-TR"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "EmyGrupWeb/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
