@@ -4,292 +4,127 @@
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> L
 
 <style>
-    :root {
-        --navbar-height: 70px;
+    .spacer-section {
+        margin-top: 120px;
     }
 
-    .field-page {
-        margin-top: var(--navbar-height);
-        background: #f8fafc;
-        min-height: calc(100vh - var(--navbar-height));
+    @@media (max-width: 768px) {
+        .spacer-section {
+            margin-top: 90px;
+        }
     }
 
-    /* ========================================= */
-    /* HERO SECTION                              */
-    /* ========================================= */
-    .field-hero {
-        background: linear-gradient(135deg, #274472 0%, #1a3259 100%);
-        padding: 80px 0 60px;
-        text-align: center;
-        position: relative;
+    /* ── Başlık ── */
+    .catalog-title {
+        font-size: 2.4rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-family: 'Helvetica Neue', 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(180deg, #2b2b2b 0%, #000 100%);
+        -webkit-background-clip: text;
+        color: transparent;
+        filter: drop-shadow(0 2px 5px rgba(0,0,0,0.15));
+        margin-bottom: 14px;
+        opacity: 0;
+        transform: translateY(10px);
+        animation: catTitleIn .65s ease forwards;
+    }
+
+    .catalog-title-line {
+        width: 260px;
+        height: 3px;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,0.55), rgba(0,0,0,0));
+        transform: scaleX(.86);
+        opacity: 0;
+        animation: catLineIn .75s ease forwards;
+        animation-delay: .1s;
+        transform-origin: center;
+    }
+
+    @@keyframes catTitleIn {
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @@keyframes catLineIn {
+        to { opacity: .45; transform: scaleX(1); }
+    }
+
+    /* ── Masonry Gallery ── */
+    .masonry-gallery {
+        columns: 4;
+        column-gap: 14px;
+        margin-top: 8px;
+    }
+
+    .gallery-item {
+        break-inside: avoid;
+        margin-bottom: 14px;
+        border-radius: 14px;
         overflow: hidden;
+        cursor: pointer;
+        position: relative;
+        background: #e2e8f0;
+        /* giriş animasyonu */
+        opacity: 0;
+        transform: translateY(16px) scale(0.98);
+        filter: blur(1px);
+        transition:
+            opacity .5s ease var(--d, 0ms),
+            transform .5s cubic-bezier(.2,.8,.2,1) var(--d, 0ms),
+            filter .5s ease var(--d, 0ms);
     }
 
-    .field-hero::before {
+    .gallery-item.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform .4s cubic-bezier(.2,.8,.2,1);
+    }
+
+    /* Hover overlay */
+    .gallery-item::after {
         content: '';
         position: absolute;
-        top: -50%;
-        right: -20%;
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
-        border-radius: 50%;
+        inset: 0;
+        background: rgba(0, 0, 0, 0);
+        transition: background .3s ease;
+        pointer-events: none;
     }
 
-    .field-hero-content {
-        position: relative;
-        z-index: 1;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 0 20px;
+    .gallery-item:hover::after {
+        background: rgba(0, 0, 0, 0.22);
     }
 
-    .field-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 20px;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 50px;
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 0.875rem;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        margin-bottom: 24px;
+    .gallery-item:hover img {
+        transform: scale(1.04);
     }
 
-    .field-badge i {
-        font-size: 1rem;
+    /* Responsive columns */
+    @@media (max-width: 1200px) {
+        .masonry-gallery { columns: 3; }
+    }
+    @@media (max-width: 768px) {
+        .masonry-gallery { columns: 2; column-gap: 10px; }
+        .gallery-item { margin-bottom: 10px; border-radius: 10px; }
+    }
+    @@media (max-width: 480px) {
+        .masonry-gallery { columns: 2; column-gap: 8px; }
+        .gallery-item { margin-bottom: 8px; border-radius: 8px; }
     }
 
-    .field-hero h1 {
-        color: #ffffff;
-        font-size: clamp(2.25rem, 5vw, 3.25rem);
-        font-weight: 700;
-        margin-bottom: 20px;
-        letter-spacing: -0.02em;
-    }
-
-    .field-hero p {
-        color: rgba(255, 255, 255, 0.85);
-        font-size: 1.125rem;
-        line-height: 1.8;
-        max-width: 650px;
-        margin: 0 auto;
-    }
-
-    /* ========================================= */
-    /* SLIDER SECTION                            */
-    /* ========================================= */
-    .slider-section {
-        padding: 60px 0 80px;
-    }
-
-    .slider-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-
-    .slider-header {
-        text-align: center;
-        margin-bottom: 40px;
-    }
-
-    .slider-header h2 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #0f172a;
-        margin-bottom: 8px;
-    }
-
-    .slider-header p {
-        color: #64748b;
-        font-size: 1rem;
-    }
-
-    /* Main Slider */
-    .main-slider {
-        position: relative;
-        border-radius: 24px;
-        overflow: hidden;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-        background: #000;
-    }
-
-    .slider-wrapper {
-        display: flex;
-        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .slide {
-        min-width: 100%;
-        position: relative;
-    }
-
-    .slide img {
-        width: 100%;
-        height: 70vh;
-        max-height: 650px;
-        min-height: 400px;
-        object-fit: cover;
-        display: block;
-    }
-
-    .slide-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 40px;
-        background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 100%);
-    }
-
-    .slide-counter {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 1rem;
-        font-weight: 600;
-    }
-
-    /* Slider Controls */
-    .slider-controls {
-        position: absolute;
-        bottom: 30px;
-        right: 30px;
-        display: flex;
-        gap: 12px;
-        z-index: 10;
-    }
-
-    .slider-btn {
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        color: #ffffff;
-        font-size: 1.25rem;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .slider-btn:hover {
-        background: rgba(255, 255, 255, 0.35);
-        transform: scale(1.05);
-    }
-
-    .slider-btn:disabled {
-        opacity: 0.4;
-        cursor: not-allowed;
-        transform: none;
-    }
-
-    /* Progress Bar */
-    .slider-progress {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: rgba(255, 255, 255, 0.2);
-    }
-
-    .slider-progress-bar {
-        height: 100%;
-        background: linear-gradient(90deg, #446D96, #5D8BB0);
-        transition: width 0.3s ease;
-    }
-
-    /* Thumbnail Navigation */
-    .thumbnail-nav {
-        display: flex;
-        gap: 12px;
-        margin-top: 24px;
-        overflow-x: auto;
-        padding: 10px 0;
-        scrollbar-width: none;
-    }
-
-    .thumbnail-nav::-webkit-scrollbar {
-        display: none;
-    }
-
-    .thumbnail {
-        flex-shrink: 0;
-        width: 100px;
-        height: 70px;
-        border-radius: 12px;
-        overflow: hidden;
-        cursor: pointer;
-        border: 3px solid transparent;
-        transition: all 0.2s ease;
-        opacity: 0.6;
-    }
-
-    .thumbnail:hover {
-        opacity: 0.9;
-    }
-
-    .thumbnail.active {
-        border-color: #446D96;
-        opacity: 1;
-        box-shadow: 0 4px 12px rgba(68, 109, 150, 0.3);
-    }
-
-    .thumbnail img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    /* ========================================= */
-    /* STATS SECTION                             */
-    /* ========================================= */
-    .stats-section {
-        padding: 60px 0;
-        background: #ffffff;
-        border-top: 1px solid #e2e8f0;
-    }
-
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 32px;
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-
-    .stat-item {
-        text-align: center;
-    }
-
-    .stat-number {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: #274472;
-        margin-bottom: 8px;
-        line-height: 1;
-    }
-
-    .stat-label {
-        font-size: 0.9375rem;
-        color: #64748b;
-        font-weight: 500;
-    }
-
-    /* ========================================= */
-    /* LIGHTBOX                                  */
-    /* ========================================= */
+    /* ── Lightbox ── */
     .field-lightbox {
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, 0.92);
+        background: rgba(0, 0, 0, 0.94);
         display: none;
         align-items: center;
         justify-content: center;
@@ -304,413 +139,205 @@
     .lightbox-content {
         position: relative;
         max-width: 90vw;
-        max-height: 90vh;
+        max-height: 92vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .lightbox-content img {
-        max-width: 100%;
-        max-height: 85vh;
+        max-width: 88vw;
+        max-height: 88vh;
         object-fit: contain;
-        border-radius: 16px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        border-radius: 14px;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+        display: block;
     }
 
     .lightbox-close {
-        position: absolute;
-        top: -50px;
-        right: 0;
+        position: fixed;
+        top: 20px;
+        right: 24px;
         width: 44px;
         height: 44px;
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.15);
         border: none;
-        color: #ffffff;
-        font-size: 1.5rem;
+        color: #fff;
+        font-size: 1.4rem;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.2s;
+        transition: background .2s;
+        z-index: 10000;
     }
 
-    .lightbox-close:hover {
-        background: rgba(255, 255, 255, 0.25);
+    .lightbox-close:hover { background: rgba(255,255,255,0.28); }
+
+    .lightbox-counter {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: rgba(255,255,255,0.7);
+        font-size: 0.875rem;
+        font-weight: 500;
+        letter-spacing: .05em;
+        z-index: 10000;
     }
 
     .lightbox-nav {
-        position: absolute;
+        position: fixed;
         top: 50%;
         transform: translateY(-50%);
-        width: 50px;
-        height: 50px;
+        width: 52px;
+        height: 52px;
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.15);
         border: none;
-        color: #ffffff;
-        font-size: 1.25rem;
+        color: #fff;
+        font-size: 1.3rem;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.2s;
+        transition: background .2s;
+        z-index: 10000;
     }
 
-    .lightbox-nav:hover {
-        background: rgba(255, 255, 255, 0.25);
-    }
-
-    .lightbox-prev {
-        left: -70px;
-    }
-
-    .lightbox-next {
-        right: -70px;
-    }
-
-    /* Responsive */
-    @@media (max-width: 992px) {
-        .stats-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .slide img {
-            height: 50vh;
-            min-height: 350px;
-        }
-    }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.28); }
+    .lightbox-prev { left: 20px; }
+    .lightbox-next { right: 20px; }
 
     @@media (max-width: 768px) {
-        .field-hero {
-            padding: 60px 0 50px;
-        }
-
-        .field-hero h1 {
-            font-size: 1.875rem;
-        }
-
-        .field-hero p {
-            font-size: 1rem;
-        }
-
-        .slide img {
-            height: 45vh;
-            min-height: 300px;
-        }
-
-        .slider-controls {
-            bottom: 20px;
-            right: 20px;
-        }
-
-        .slider-btn {
-            width: 48px;
-            height: 48px;
-        }
-
-        .thumbnail {
-            width: 80px;
-            height: 55px;
-        }
-
-        .lightbox-prev {
-            left: 10px;
-        }
-
-        .lightbox-next {
-            right: 10px;
-        }
+        .lightbox-prev { left: 8px; }
+        .lightbox-next { right: 8px; }
+        .lightbox-nav { width: 42px; height: 42px; font-size: 1.1rem; }
     }
 
-    @@media (max-width: 576px) {
-        .stats-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-        }
+    /* Reduce motion */
+    @@media (prefers-reduced-motion: reduce) {
+        .catalog-title, .catalog-title-line { animation: none; opacity: 1; transform: none; }
+        .gallery-item { opacity: 1; transform: none; filter: none; transition: none; }
     }
 </style>
 
-<div class="field-page">
+<section class="spacer-section">
+    <div class="container py-5">
 
-    <!-- Hero Section -->
-    <section class="field-hero">
-        <div class="field-hero-content">
-            <div class="field-badge">
-                <i class="bi bi-camera"></i>
-                @L["Side_Menu_SahadaBiz"]
-            </div>
-            <h1>@L["Side_Menu_SahadaBiz"]</h1>
-            <p>
-                EMY Grup olarak sahada güçlü bir ekiple çalışıyoruz. Türkiye'nin dört bir yanında iş ortaklarımızla
-                birlikte kaliteli hizmet sunuyor, müşterilerimizin yanında oluyoruz. Her projede profesyonellik ve
-                güvenilirlik ilkemizdir.
-            </p>
+        <!-- Başlık -->
+        <div class="catalog-title-wrapper text-center mb-5">
+            <h2 class="catalog-title">@L["Side_Menu_SahadaBiz"]</h2>
+            <div class="catalog-title-line"></div>
         </div>
-    </section>
 
-    <!-- Slider Section -->
-    <section class="slider-section">
-        <div class="slider-container">
+        <!-- Masonry Gallery -->
+        <div class="masonry-gallery" id="masonryGallery">
+            @for (int i = 1; i <= 76; i++)
+            {
+                int imgIndex = i;
+                if (i == 21) imgIndex = 28;
+                else if (i == 28) imgIndex = 21;
 
-            <div class="slider-header">
-                <h2><i class="bi bi-images me-2"></i>Saha Fotoğrafları</h2>
-                <p>Projelerimizden ve saha çalışmalarımızdan kareler</p>
-            </div>
+                string loadMode = i <= 20 ? "eager" : "lazy";
+                string decodeMode = i <= 20 ? "sync" : "async";
 
-            <!-- Main Slider -->
-            <div class="main-slider" id="mainSlider">
-                <div class="slider-wrapper" id="sliderWrapper">
-                    @for (int i = 1; i <= 76; i++)
-                    {
-                        int imgIndex = i;
-                        if (i == 21) imgIndex = 28;
-                        else if (i == 28) imgIndex = 21;
-
-                        <div class="slide" data-index="@i">
-                            <img src="/images/saha2/galeri/@(imgIndex).jpeg"
-                                 alt="Saha Görseli @i"
-                                 loading="@(i <= 3 ? "eager" : "lazy")" />
-                            <div class="slide-overlay">
-                                <span class="slide-counter">@i / 76</span>
-                            </div>
-                        </div>
-                    }
+                <div class="gallery-item" data-index="@(i - 1)">
+                    <img src="/images/saha2/galeri/@(imgIndex).jpeg"
+                         alt="Saha Görseli @i"
+                         loading="@loadMode"
+                         decoding="@decodeMode" />
                 </div>
-
-                <!-- Controls -->
-                <div class="slider-controls">
-                    <button class="slider-btn" id="prevBtn" aria-label="Önceki">
-                        <i class="bi bi-chevron-left"></i>
-                    </button>
-                    <button class="slider-btn" id="nextBtn" aria-label="Sonraki">
-                        <i class="bi bi-chevron-right"></i>
-                    </button>
-                </div>
-
-                <!-- Progress -->
-                <div class="slider-progress">
-                    <div class="slider-progress-bar" id="progressBar"></div>
-                </div>
-            </div>
-
-            <!-- Thumbnails -->
-            <div class="thumbnail-nav" id="thumbnailNav">
-                @for (int i = 1; i <= 76; i++)
-                {
-                    int imgIndex = i;
-                    if (i == 21) imgIndex = 28;
-                    else if (i == 28) imgIndex = 21;
-
-                    <div class="thumbnail @(i == 1 ? "active" : "")" data-index="@(i - 1)">
-                        <img src="/images/saha2/galeri/@(imgIndex).jpeg"
-                             alt="Thumbnail @i"
-                             loading="lazy" />
-                    </div>
-                }
-            </div>
-
+            }
         </div>
-    </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number">76+</div>
-                <div class="stat-label">Saha Fotoğrafı</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">81</div>
-                <div class="stat-label">İl Kapsamı</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">500+</div>
-                <div class="stat-label">Proje</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Müşteri Memnuniyeti</div>
-            </div>
-        </div>
-    </section>
-
-</div>
+    </div>
+</section>
 
 <!-- Lightbox -->
 <div class="field-lightbox" id="fieldLightbox">
+    <button class="lightbox-close" id="lightboxClose"><i class="bi bi-x-lg"></i></button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev"><i class="bi bi-chevron-left"></i></button>
     <div class="lightbox-content">
-        <button class="lightbox-close" id="lightboxClose">
-            <i class="bi bi-x-lg"></i>
-        </button>
-        <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
-            <i class="bi bi-chevron-left"></i>
-        </button>
         <img id="lightboxImg" src="" alt="Büyük Görsel" />
-        <button class="lightbox-nav lightbox-next" id="lightboxNext">
-            <i class="bi bi-chevron-right"></i>
-        </button>
     </div>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext"><i class="bi bi-chevron-right"></i></button>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
 </div>
 
 <script>
-(function() {
-    const wrapper = document.getElementById('sliderWrapper');
-    const slides = wrapper.querySelectorAll('.slide');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const progressBar = document.getElementById('progressBar');
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    const thumbnailNav = document.getElementById('thumbnailNav');
+(function () {
+    const gallery   = document.getElementById('masonryGallery');
+    const items     = Array.from(gallery.querySelectorAll('.gallery-item'));
+    const lightbox  = document.getElementById('fieldLightbox');
+    const lbImg     = document.getElementById('lightboxImg');
+    const lbClose   = document.getElementById('lightboxClose');
+    const lbPrev    = document.getElementById('lightboxPrev');
+    const lbNext    = document.getElementById('lightboxNext');
+    const lbCounter = document.getElementById('lightboxCounter');
+    const total     = items.length;
+    let current     = 0;
 
-    // Lightbox elements
-    const lightbox = document.getElementById('fieldLightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxClose = document.getElementById('lightboxClose');
-    const lightboxPrev = document.getElementById('lightboxPrev');
-    const lightboxNext = document.getElementById('lightboxNext');
+    /* ── stagger delay ── */
+    items.forEach((el, i) => {
+        const col   = i % 4;
+        const row   = Math.floor(i / 4);
+        const delay = Math.min(col * 55 + row * 40, 800);
+        el.style.setProperty('--d', delay + 'ms');
+    });
 
-    let currentIndex = 0;
-    const total = slides.length;
-
-    function updateSlider() {
-        wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-        // Update progress
-        const progress = ((currentIndex + 1) / total) * 100;
-        progressBar.style.width = `${progress}%`;
-
-        // Update thumbnails
-        thumbnails.forEach((thumb, idx) => {
-            thumb.classList.toggle('active', idx === currentIndex);
+    /* ── intersection observer ── */
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('is-visible');
         });
+    }, { threshold: 0.05, rootMargin: '100px 0px 100px 0px' });
 
-        // Scroll thumbnail into view
-        const activeThumb = thumbnails[currentIndex];
-        if (activeThumb) {
-            activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-        }
+    items.forEach(el => io.observe(el));
 
-        // Update buttons
-        prevBtn.disabled = currentIndex === 0;
-        nextBtn.disabled = currentIndex === total - 1;
+    /* ── lightbox helpers ── */
+    function openLightbox(idx) {
+        current = idx;
+        lbImg.src = items[idx].querySelector('img').src;
+        lbCounter.textContent = (idx + 1) + ' / ' + total;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
     }
 
-    function goToSlide(index) {
-        if (index < 0) index = 0;
-        if (index >= total) index = total - 1;
-        currentIndex = index;
-        updateSlider();
-    }
-
-    function nextSlide() {
-        if (currentIndex < total - 1) {
-            currentIndex++;
-            updateSlider();
-        }
-    }
-
-    function prevSlide() {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateSlider();
-        }
-    }
-
-    // Button events
-    nextBtn.addEventListener('click', nextSlide);
-    prevBtn.addEventListener('click', prevSlide);
-
-    // Thumbnail clicks
-    thumbnails.forEach((thumb, idx) => {
-        thumb.addEventListener('click', () => goToSlide(idx));
-    });
-
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-        if (lightbox.classList.contains('open')) return;
-        if (e.key === 'ArrowRight') nextSlide();
-        if (e.key === 'ArrowLeft') prevSlide();
-    });
-
-    // Click on slide to open lightbox
-    slides.forEach((slide, idx) => {
-        slide.addEventListener('click', () => {
-            const img = slide.querySelector('img');
-            if (img) {
-                lightboxImg.src = img.src;
-                lightbox.classList.add('open');
-                document.body.style.overflow = 'hidden';
-            }
-        });
-    });
-
-    // Lightbox controls
-    lightboxClose.addEventListener('click', () => {
+    function closeLightbox() {
         lightbox.classList.remove('open');
         document.body.style.overflow = '';
-    });
-
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) {
-            lightbox.classList.remove('open');
-            document.body.style.overflow = '';
-        }
-    });
-
-    lightboxPrev.addEventListener('click', (e) => {
-        e.stopPropagation();
-        prevSlide();
-        lightboxImg.src = slides[currentIndex].querySelector('img').src;
-    });
-
-    lightboxNext.addEventListener('click', (e) => {
-        e.stopPropagation();
-        nextSlide();
-        lightboxImg.src = slides[currentIndex].querySelector('img').src;
-    });
-
-    // Keyboard for lightbox
-    document.addEventListener('keydown', (e) => {
-        if (!lightbox.classList.contains('open')) return;
-        if (e.key === 'Escape') {
-            lightbox.classList.remove('open');
-            document.body.style.overflow = '';
-        }
-        if (e.key === 'ArrowRight') {
-            nextSlide();
-            lightboxImg.src = slides[currentIndex].querySelector('img').src;
-        }
-        if (e.key === 'ArrowLeft') {
-            prevSlide();
-            lightboxImg.src = slides[currentIndex].querySelector('img').src;
-        }
-    });
-
-    // Touch/Swipe support
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    wrapper.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    wrapper.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }, { passive: true });
-
-    function handleSwipe() {
-        const diff = touchStartX - touchEndX;
-        if (Math.abs(diff) > 50) {
-            if (diff > 0) nextSlide();
-            else prevSlide();
-        }
     }
 
-    // Initialize
-    updateSlider();
+    function navigate(dir) {
+        current = (current + dir + total) % total;
+        lbImg.src = items[current].querySelector('img').src;
+        lbCounter.textContent = (current + 1) + ' / ' + total;
+    }
+
+    /* ── events ── */
+    items.forEach((el, idx) => el.addEventListener('click', () => openLightbox(idx)));
+
+    lbClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+    lbPrev.addEventListener('click', e => { e.stopPropagation(); navigate(-1); });
+    lbNext.addEventListener('click', e => { e.stopPropagation(); navigate(1); });
+
+    document.addEventListener('keydown', e => {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape')      closeLightbox();
+        if (e.key === 'ArrowRight')  navigate(1);
+        if (e.key === 'ArrowLeft')   navigate(-1);
+    });
+
+    /* ── touch swipe for lightbox ── */
+    let tx = 0;
+    lightbox.addEventListener('touchstart', e => { tx = e.changedTouches[0].screenX; }, { passive: true });
+    lightbox.addEventListener('touchend', e => {
+        const diff = tx - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 50) navigate(diff > 0 ? 1 : -1);
+    }, { passive: true });
 })();
 </script>

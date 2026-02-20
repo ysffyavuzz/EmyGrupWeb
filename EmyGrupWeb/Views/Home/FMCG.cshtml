@@ -4,80 +4,66 @@
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> L
 
 <style>
-    :root {
-        --navbar-height: 70px;
+    /* Navbar'dan aşağıda başlasın */
+    .spacer-section {
+        margin-top: 120px;
     }
 
-    .fmcg-page {
-        margin-top: var(--navbar-height);
-        background: #f8fafc;
-        min-height: calc(100vh - var(--navbar-height));
+    @@media (max-width: 768px) {
+        .spacer-section {
+            margin-top: 90px;
+        }
     }
 
-    /* ========================================= */
-    /* HERO SECTION                              */
-    /* ========================================= */
-    .fmcg-hero {
-        background: linear-gradient(135deg, #274472 0%, #1a3259 100%);
-        padding: 70px 0 60px;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
+    /* Başlık - kataloglar tarzı */
+    .catalog-title {
+        font-size: 2.4rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-family: 'Helvetica Neue', 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(180deg, #2b2b2b 0%, #000 100%);
+        -webkit-background-clip: text;
+        color: transparent;
+        filter: drop-shadow(0 2px 5px rgba(0,0,0,0.15));
+        margin-bottom: 14px;
+        opacity: 0;
+        transform: translateY(10px);
+        animation: catTitleIn .65s ease forwards;
     }
 
-    .fmcg-hero::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -20%;
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
-        border-radius: 50%;
-    }
-
-    .fmcg-hero-content {
-        position: relative;
-        z-index: 1;
-        max-width: 700px;
+    .catalog-title-line {
+        width: 260px;
+        height: 3px;
         margin: 0 auto;
-        padding: 0 20px;
+        border-radius: 8px;
+        background: linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,0.55), rgba(0,0,0,0));
+        transform: scaleX(.86);
+        opacity: 0;
+        animation: catLineIn .75s ease forwards;
+        animation-delay: .1s;
+        transform-origin: center;
     }
 
-    .fmcg-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 20px;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 50px;
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 0.875rem;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        margin-bottom: 20px;
+    @@keyframes catTitleIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
-    .fmcg-hero h1 {
-        color: #ffffff;
-        font-size: clamp(2rem, 5vw, 2.75rem);
-        font-weight: 700;
-        margin-bottom: 16px;
-        letter-spacing: -0.02em;
-    }
-
-    .fmcg-hero p {
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 1.0625rem;
-        line-height: 1.7;
+    @@keyframes catLineIn {
+        to {
+            opacity: .45;
+            transform: scaleX(1);
+        }
     }
 
     /* ========================================= */
     /* BRANDS SECTION                            */
     /* ========================================= */
     .brands-section {
-        padding: 60px 0 80px;
+        padding: 0 0 80px;
     }
 
     .brands-container {
@@ -89,18 +75,6 @@
     .brands-header {
         text-align: center;
         margin-bottom: 48px;
-    }
-
-    .brands-header h2 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #0f172a;
-        margin-bottom: 8px;
-    }
-
-    .brands-header p {
-        color: #64748b;
-        font-size: 1rem;
     }
 
     /* Brands Grid */
@@ -143,34 +117,6 @@
         transform: scale(1.05);
     }
 
-    /* Stats */
-    .brands-stats {
-        display: flex;
-        justify-content: center;
-        gap: 60px;
-        margin-top: 60px;
-        padding-top: 40px;
-        border-top: 1px solid #e2e8f0;
-    }
-
-    .stat-item {
-        text-align: center;
-    }
-
-    .stat-number {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: #274472;
-        line-height: 1;
-        margin-bottom: 8px;
-    }
-
-    .stat-label {
-        font-size: 0.9375rem;
-        color: #64748b;
-        font-weight: 500;
-    }
-
     /* Responsive */
     @@media (max-width: 1200px) {
         .brands-grid {
@@ -182,148 +128,109 @@
         .brands-grid {
             grid-template-columns: repeat(3, 1fr);
         }
-
-        .brands-stats {
-            gap: 40px;
-        }
-    }
-
-    @@media (max-width: 768px) {
-        .fmcg-hero {
-            padding: 50px 0 45px;
-        }
-
-        .brands-stats {
-            flex-wrap: wrap;
-            gap: 32px;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-        }
     }
 
     @@media (max-width: 576px) {
         .brands-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
         }
 
         .brand-card {
-            border-radius: 12px;
-            padding: 16px;
+            border-radius: 10px;
+            padding: 10px;
+        }
+    }
+
+    @@media (prefers-reduced-motion: reduce) {
+        .catalog-title, .catalog-title-line {
+            animation: none;
+            opacity: 1;
+            transform: none;
         }
     }
 </style>
 
-<div class="fmcg-page">
+<section class="spacer-section">
+    <div class="container py-5">
 
-    <!-- Hero Section -->
-    <section class="fmcg-hero">
-        <div class="fmcg-hero-content">
-            <div class="fmcg-badge">
-                <i class="bi bi-box-seam"></i>
-                FMCG
-            </div>
-            <h1>@L["Fmcg_Urunlerimiz"]</h1>
-            <p>
-                Dünya'nın önde gelen FMCG markalarıyla çalışıyor,
-                geniş ürün yelpazemizle iş ortaklarımıza en kaliteli hizmeti sunuyoruz.
-            </p>
+        <!-- Başlık -->
+        <div class="catalog-title-wrapper text-center mb-5">
+            <h2 class="catalog-title">@L["Side_Menu_Fmcg"]</h2>
+            <div class="catalog-title-line"></div>
         </div>
-    </section>
 
-    <!-- Brands Section -->
-    <section class="brands-section">
-        <div class="brands-container">
+        <!-- Brands Section -->
+        <section class="brands-section">
+            <div class="brands-container">
 
-            <div class="brands-header">
-                <h2><i class="bi bi-grid-3x3-gap me-2"></i>İş Ortaklarımız</h2>
-                <p>Güvenilir markalarla güçlü iş birlikleri</p>
-            </div>
+                <div class="brands-grid">
+                    <!-- Row 1 -->
+                    <div class="brand-card"><img src="/images/FMCG/P&G.png" alt="P&G" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/UNILEVER.png" alt="Unilever" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/COLGATE PALMOLIVE.png" alt="Colgate Palmolive" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/NIVEA.png" alt="Nivea" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/HENKEL.png" alt="Henkel" /></div>
 
-            <div class="brands-grid">
-                <!-- Row 1 -->
-                <div class="brand-card"><img src="/images/FMCG/P&G.png" alt="P&G" /></div>
-                <div class="brand-card"><img src="/images/FMCG/UNILEVER.png" alt="Unilever" /></div>
-                <div class="brand-card"><img src="/images/FMCG/COLGATE PALMOLIVE.png" alt="Colgate Palmolive" /></div>
-                <div class="brand-card"><img src="/images/FMCG/NIVEA.png" alt="Nivea" /></div>
-                <div class="brand-card"><img src="/images/FMCG/HENKEL.png" alt="Henkel" /></div>
+                    <!-- Row 2 -->
+                    <div class="brand-card"><img src="/images/FMCG/LOREAL.png" alt="Loreal" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/JOHNSON & JOHNSON.png" alt="Johnson & Johnson" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/RECKITT BENCKISER.png" alt="Reckitt Benckiser" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/SLEEPY.png" alt="Sleepy" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/ECZACIBAŞI.png" alt="Eczacıbaşı" /></div>
 
-                <!-- Row 2 -->
-                <div class="brand-card"><img src="/images/FMCG/LOREAL.png" alt="Loreal" /></div>
-                <div class="brand-card"><img src="/images/FMCG/JOHNSON & JOHNSON.png" alt="Johnson & Johnson" /></div>
-                <div class="brand-card"><img src="/images/FMCG/RECKITT BENCKISER.png" alt="Reckitt Benckiser" /></div>
-                <div class="brand-card"><img src="/images/FMCG/SLEEPY.png" alt="Sleepy" /></div>
-                <div class="brand-card"><img src="/images/FMCG/ECZACIBAŞI.png" alt="Eczacıbaşı" /></div>
+                    <!-- Row 3 -->
+                    <div class="brand-card"><img src="/images/FMCG/EVYAP.png" alt="Evyap" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/HAYAT KİMYA.png" alt="Hayat Kimya" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/ABC.png" alt="ABC" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/NESTLE.png" alt="Nestle" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/MILKA.png" alt="Milka" /></div>
 
-                <!-- Row 3 -->
-                <div class="brand-card"><img src="/images/FMCG/EVYAP.png" alt="Evyap" /></div>
-                <div class="brand-card"><img src="/images/FMCG/HAYAT KİMYA.png" alt="Hayat Kimya" /></div>
-                <div class="brand-card"><img src="/images/FMCG/ABC.png" alt="ABC" /></div>
-                <div class="brand-card"><img src="/images/FMCG/NESTLE.png" alt="Nestle" /></div>
-                <div class="brand-card"><img src="/images/FMCG/MILKA.png" alt="Milka" /></div>
+                    <!-- Row 4 -->
+                    <div class="brand-card"><img src="/images/FMCG/RED BULL.png" alt="Red Bull" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/HARIBO.png" alt="Haribo" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/ALGIDA.png" alt="Algida" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/FERRERO.png" alt="Ferrero" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/KINDER.png" alt="Kinder" /></div>
 
-                <!-- Row 4 -->
-                <div class="brand-card"><img src="/images/FMCG/RED BULL.png" alt="Red Bull" /></div>
-                <div class="brand-card"><img src="/images/FMCG/HARIBO.png" alt="Haribo" /></div>
-                <div class="brand-card"><img src="/images/FMCG/ALGIDA.png" alt="Algida" /></div>
-                <div class="brand-card"><img src="/images/FMCG/FERRERO.png" alt="Ferrero" /></div>
-                <div class="brand-card"><img src="/images/FMCG/KINDER.png" alt="Kinder" /></div>
+                    <!-- Row 5 -->
+                    <div class="brand-card"><img src="/images/FMCG/MONDELEZ.png" alt="Mondelez" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/PEPSICO.png" alt="Pepsico" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/FRITO LAY.png" alt="Frito Lay" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/BARILLA.png" alt="Barilla" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/KELLOG'S.png" alt="Kellogg's" /></div>
 
-                <!-- Row 5 -->
-                <div class="brand-card"><img src="/images/FMCG/MONDELEZ.png" alt="Mondelez" /></div>
-                <div class="brand-card"><img src="/images/FMCG/PEPSICO.png" alt="Pepsico" /></div>
-                <div class="brand-card"><img src="/images/FMCG/FRITO LAY.png" alt="Frito Lay" /></div>
-                <div class="brand-card"><img src="/images/FMCG/BARILLA.png" alt="Barilla" /></div>
-                <div class="brand-card"><img src="/images/FMCG/KELLOG'S.png" alt="Kellogg's" /></div>
+                    <!-- Row 6 -->
+                    <div class="brand-card"><img src="/images/FMCG/DANONE.png" alt="Danone" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/VIVIDENT.png" alt="Vivident" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/LİPTON.png" alt="Lipton" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/KRAFT HEINZ.png" alt="Kraft Heinz" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/DR. OETKER.png" alt="Dr. Oetker" /></div>
 
-                <!-- Row 6 -->
-                <div class="brand-card"><img src="/images/FMCG/DANONE.png" alt="Danone" /></div>
-                <div class="brand-card"><img src="/images/FMCG/VIVIDENT.png" alt="Vivident" /></div>
-                <div class="brand-card"><img src="/images/FMCG/LİPTON.png" alt="Lipton" /></div>
-                <div class="brand-card"><img src="/images/FMCG/KRAFT HEINZ.png" alt="Kraft Heinz" /></div>
-                <div class="brand-card"><img src="/images/FMCG/DR. OETKER.png" alt="Dr. Oetker" /></div>
+                    <!-- Row 7 -->
+                    <div class="brand-card"><img src="/images/FMCG/MONSTER.png" alt="Monster" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/BEBETO.png" alt="Bebeto" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/ÜLKER.png" alt="Ülker" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/ETİ.png" alt="Eti" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/KENT.png" alt="Kent" /></div>
 
-                <!-- Row 7 -->
-                <div class="brand-card"><img src="/images/FMCG/MONSTER.png" alt="Monster" /></div>
-                <div class="brand-card"><img src="/images/FMCG/BEBETO.png" alt="Bebeto" /></div>
-                <div class="brand-card"><img src="/images/FMCG/ÜLKER.png" alt="Ülker" /></div>
-                <div class="brand-card"><img src="/images/FMCG/ETİ.png" alt="Eti" /></div>
-                <div class="brand-card"><img src="/images/FMCG/KENT.png" alt="Kent" /></div>
+                    <!-- Row 8 -->
+                    <div class="brand-card"><img src="/images/FMCG/KURUKAHVECİ MEHMET EFENDİ.png" alt="Kurukahveci Mehmet Efendi" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/FİLİZ.png" alt="Filiz" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/TADIM.png" alt="Tadım" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/KAHVE DÜNYASI.png" alt="Kahve Dünyası" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/ŞÖLEN.png" alt="Şölen" /></div>
 
-                <!-- Row 8 -->
-                <div class="brand-card"><img src="/images/FMCG/KURUKAHVECİ MEHMET EFENDİ.png" alt="Kurukahveci Mehmet Efendi" /></div>
-                <div class="brand-card"><img src="/images/FMCG/FİLİZ.png" alt="Filiz" /></div>
-                <div class="brand-card"><img src="/images/FMCG/TADIM.png" alt="Tadım" /></div>
-                <div class="brand-card"><img src="/images/FMCG/KAHVE DÜNYASI.png" alt="Kahve Dünyası" /></div>
-                <div class="brand-card"><img src="/images/FMCG/ŞÖLEN.png" alt="Şölen" /></div>
-
-                <!-- Row 9 -->
-                <div class="brand-card"><img src="/images/FMCG/TORKU.png" alt="Torku" /></div>
-                <div class="brand-card"><img src="/images/FMCG/ELVAN.png" alt="Elvan" /></div>
-                <div class="brand-card"><img src="/images/FMCG/KOSKA.png" alt="Koska" /></div>
-                <div class="brand-card"><img src="/images/FMCG/TAT.png" alt="Tat" /></div>
-                <div class="brand-card"><img src="/images/FMCG/PEYMAN.png" alt="Peyman" /></div>
-            </div>
-
-            <!-- Stats -->
-            <div class="brands-stats">
-                <div class="stat-item">
-                    <div class="stat-number">45+</div>
-                    <div class="stat-label">Marka</div>
+                    <!-- Row 9 -->
+                    <div class="brand-card"><img src="/images/FMCG/TORKU.png" alt="Torku" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/ELVAN.png" alt="Elvan" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/KOSKA.png" alt="Koska" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/TAT.png" alt="Tat" /></div>
+                    <div class="brand-card"><img src="/images/FMCG/PEYMAN.png" alt="Peyman" /></div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">1000+</div>
-                    <div class="stat-label">Ürün Çeşidi</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">81</div>
-                    <div class="stat-label">İl Dağıtım</div>
-                </div>
+
             </div>
+        </section>
 
-        </div>
-    </section>
-
-</div>
+    </div>
+</section>

@@ -26,7 +26,7 @@
 
             <a href="/catalogs/TargetTrade.pdf" target="_blank" class="partner-card" aria-label="Kuromi PDF">
                 <div class="partner-box">
-                    <img src="/images/Markalar/Kuromi.png" alt="Kuromi" />
+                    <img src="/images/Markalar/KUROMI.png" alt="Kuromi" />
                 </div>
             </a>
 
@@ -44,7 +44,7 @@
 
             <a href="/catalogs/TargetTrade.pdf" target="_blank" class="partner-card" aria-label="Transformers PDF">
                 <div class="partner-box">
-                    <img src="/images/Markalar/Transformers.png" alt="Transformers" />
+                    <img src="/images/Markalar/TRANSFORMERS.png" alt="Transformers" />
                 </div>
             </a>
 
@@ -64,7 +64,7 @@
 
             <a href="/catalogs/Stepy.pdf" target="_blank" class="partner-card" aria-label="Stepy PDF">
                 <div class="partner-box">
-                    <img src="/images/Markalar/Stepy.png" alt="Stepy" />
+                    <img src="/images/Markalar/STEPY.png" alt="Stepy" />
                 </div>
             </a>
 
@@ -82,7 +82,7 @@
 
             <a href="/catalogs/Newka.pdf" target="_blank" class="partner-card" aria-label="Newka PDF">
                 <div class="partner-box">
-                    <img src="/images/Markalar/Newka.png" alt="Newka" />
+                    <img src="/images/Markalar/NEWKA.png" alt="Newka" />
                 </div>
             </a>
 
@@ -267,8 +267,18 @@
     }
 
     @@media (max-width: 576px) {
-        .partners-grid-5, .partners-grid-6 {
-            grid-template-columns: 1fr;
+        .partners-grid-5 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .partners-grid-5 .partner-card:last-child {
+            grid-column: 1 / -1;
+            max-width: calc(50% - 16px);
+            margin: 0 auto;
+        }
+
+        .partners-grid-6 {
+            grid-template-columns: repeat(2, 1fr);
         }
     }
 

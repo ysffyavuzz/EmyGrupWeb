@@ -87,6 +87,9 @@ body {
     line-height: 1.6;
     letter-spacing: -0.011em;
     overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ============================================
@@ -583,26 +586,26 @@ button:focus-visible {
 }
 
 /* ============================================
-   NAVBAR - Clean Modern Design 2025 (AÇIK TEMA)
+   NAVBAR - Corporate Modern Design
    ============================================ */
 .navbar-toggler {
     background: transparent !important;
     box-shadow: none !important;
     outline: none !important;
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
-    border: 1px solid rgba(39, 68, 114, 0.15) !important;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
     transition: all 0.2s ease;
 }
 
 .navbar-toggler:hover {
-    background: rgba(39, 68, 114, 0.08) !important;
-    border-color: rgba(39, 68, 114, 0.25) !important;
+    background: rgba(0, 0, 0, 0.06) !important;
+    border-color: rgba(0, 0, 0, 0.28) !important;
 }
 
 .navbar-toggler:focus,
@@ -613,9 +616,9 @@ button:focus-visible {
 }
 
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(39, 68, 114, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-    width: 24px;
-    height: 24px;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(15,23,42,0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    width: 22px;
+    height: 22px;
 }
 
 /* ============================================
@@ -722,20 +725,20 @@ button:focus-visible {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 10px 16px;
-    background: rgba(39, 68, 114, 0.06);
-    border: 1px solid rgba(39, 68, 114, 0.12);
-    border-radius: 10px;
+    padding: 9px 14px;
+    background: rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
-    color: #274472;
+    color: #0f172a;
     font-size: 0.875rem;
     font-weight: 600;
 }
 
 .lang-dropdown-toggle:hover {
-    background: rgba(39, 68, 114, 0.1);
-    border-color: rgba(39, 68, 114, 0.2);
+    background: rgba(0, 0, 0, 0.10);
+    border-color: rgba(0, 0, 0, 0.22);
 }
 
 .lang-dropdown-toggle img {
@@ -755,7 +758,7 @@ button:focus-visible {
     font-size: 0.75rem;
     opacity: 0.6;
     transition: transform 0.2s ease;
-    color: #274472;
+    color: #0f172a;
 }
 
 .lang-dropdown.show .lang-dropdown-toggle i {
@@ -816,47 +819,53 @@ button:focus-visible {
 }
 
 /* ============================================
-   NAVBAR - Clean Modern Design (AÇIK TEMA)
+   NAVBAR - Corporate Modern Design
    ============================================ */
 .custom-navbar {
-    background: rgba(235, 238, 243, 0.98) !important;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    height: 76px;
+    background: #D4D4D4 !important;
+    height: 72px;
     display: flex;
     align-items: center;
-    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.10), 0 4px 24px rgba(0, 0, 0, 0.07);
     z-index: 999;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 2px solid rgba(39, 68, 114, 0.18);
 }
 
-/* Navbar Logo - BÜYÜK */
+/* Navbar Logo */
 .navbar-brand-logo {
     display: flex;
     align-items: center;
-    gap: 16px;
     text-decoration: none;
 }
 
+.navbar-brand-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navbar-side-placeholder {
+    flex: 1;
+}
+
 .navbar-brand-logo img {
-    height: 56px;
-    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
-    transition: transform 0.3s ease;
+    height: 68px;
+    transition: opacity 0.2s ease;
 }
 
 .navbar-brand-logo:hover img {
-    transform: scale(1.03);
+    opacity: 0.85;
 }
 
 .navbar-brand-text {
-    color: #274472;
-    font-size: 1.5rem;
+    color: #0f172a;
+    font-size: 1.375rem;
     font-weight: 700;
     letter-spacing: -0.02em;
 }
 
 #navbarLogo {
-    height: 56px;
+    height: 68px;
     opacity: 0;
     transform: translateY(10px);
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
@@ -934,6 +943,6 @@ button:focus-visible {
     }
 
     .offcanvas-end {
-        width: 85% !important;
+        width: 60% !important;
     }
 }

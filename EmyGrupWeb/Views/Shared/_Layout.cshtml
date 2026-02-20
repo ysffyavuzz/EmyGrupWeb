@@ -43,10 +43,12 @@
     <nav class="navbar custom-navbar fixed-top">
         <div class="container-fluid d-flex justify-content-between align-items-center px-3">
 
-            <!-- Sol: Logo + Marka -->
-            <a class="navbar-brand-logo" asp-controller="Home" asp-action="Index">
+            <!-- Sol: Boşluk (denge için) -->
+            <div class="navbar-side-placeholder"></div>
+
+            <!-- Orta: Logo -->
+            <a class="navbar-brand-logo navbar-brand-center" asp-controller="Home" asp-action="Index">
                 <img src="/images/emy-transparan-logo.png" id="navbarLogo" />
-                <span class="navbar-brand-text">EMY Grup</span>
             </a>
 
             <!-- Sağ: Dil Dropdown + Menü -->
@@ -160,7 +162,7 @@
     </div>
 
     <!-- İÇERİK -->
-    <main style="margin-top:2px;">
+    <main style="margin-top:2px; flex:1;">
         <div class="container">
             @RenderBody()
         </div>
