@@ -823,7 +823,7 @@ button:focus-visible {
    ============================================ */
 .custom-navbar {
     background: #D4D4D4 !important;
-    height: 72px;
+    height: 90px;
     display: flex;
     align-items: center;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.10), 0 4px 24px rgba(0, 0, 0, 0.07);
@@ -849,7 +849,7 @@ button:focus-visible {
 }
 
 .navbar-brand-logo img {
-    height: 68px;
+    height: 84px;
     transition: opacity 0.2s ease;
 }
 
@@ -865,7 +865,7 @@ button:focus-visible {
 }
 
 #navbarLogo {
-    height: 68px;
+    height: 84px;
     opacity: 0;
     transform: translateY(10px);
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
@@ -912,12 +912,12 @@ button:focus-visible {
    ============================================ */
 @media (max-width: 768px) {
     .custom-navbar {
-        height: 66px;
+        height: 78px;
     }
 
     .navbar-brand-logo img,
     #navbarLogo {
-        height: 46px;
+        height: 58px;
     }
 
     .navbar-brand-text {
