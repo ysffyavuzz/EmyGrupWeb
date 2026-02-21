@@ -849,7 +849,7 @@ button:focus-visible {
 }
 
 .navbar-brand-logo img {
-    height: 120px;
+    height: 90px;
     transition: opacity 0.2s ease;
 }
 

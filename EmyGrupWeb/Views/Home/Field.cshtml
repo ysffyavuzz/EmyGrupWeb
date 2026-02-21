@@ -66,20 +66,18 @@
         cursor: pointer;
         position: relative;
         background: #e2e8f0;
+        min-height: 160px;
         /* giriş animasyonu */
         opacity: 0;
-        transform: translateY(16px) scale(0.98);
-        filter: blur(1px);
+        transform: translateY(10px);
         transition:
-            opacity .5s ease var(--d, 0ms),
-            transform .5s cubic-bezier(.2,.8,.2,1) var(--d, 0ms),
-            filter .5s ease var(--d, 0ms);
+            opacity .3s ease var(--d, 0ms),
+            transform .3s cubic-bezier(.2,.8,.2,1) var(--d, 0ms);
     }
 
     .gallery-item.is-visible {
         opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
+        transform: translateY(0);
     }
 
     .gallery-item img {
@@ -219,7 +217,7 @@
     /* Reduce motion */
     @@media (prefers-reduced-motion: reduce) {
         .catalog-title, .catalog-title-line { animation: none; opacity: 1; transform: none; }
-        .gallery-item { opacity: 1; transform: none; filter: none; transition: none; }
+        .gallery-item { opacity: 1; transform: none; transition: none; }
     }
 </style>
 
@@ -279,22 +277,28 @@
     const total     = items.length;
     let current     = 0;
 
-    /* ── stagger delay ── */
+    /* ── stagger delay & immediate reveal for first viewport ── */
     items.forEach((el, i) => {
-        const col   = i % 4;
-        const row   = Math.floor(i / 4);
-        const delay = Math.min(col * 55 + row * 40, 800);
-        el.style.setProperty('--d', delay + 'ms');
+        if (i < 16) {
+            // İlk 16 öğe: kısa stagger, hemen göster
+            el.style.setProperty('--d', (i * 25) + 'ms');
+            el.classList.add('is-visible');
+        } else {
+            el.style.setProperty('--d', '0ms');
+        }
     });
 
     /* ── intersection observer ── */
     const io = new IntersectionObserver(entries => {
         entries.forEach(e => {
-            if (e.isIntersecting) e.target.classList.add('is-visible');
+            if (e.isIntersecting) {
+                e.target.classList.add('is-visible');
+                io.unobserve(e.target);
+            }
         });
-    }, { threshold: 0.05, rootMargin: '100px 0px 100px 0px' });
+    }, { threshold: 0.05, rootMargin: '200px 0px 200px 0px' });
 
-    items.forEach(el => io.observe(el));
+    items.forEach((el, i) => { if (i >= 16) io.observe(el); });
 
     /* ── lightbox helpers ── */
     function openLightbox(idx) {
