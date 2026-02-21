@@ -664,7 +664,7 @@ button:focus-visible {
     border-radius: 12px;
     text-decoration: none;
     color: #1e293b;
-    font-size: 0.9375rem;
+    font-size: 1.0625rem;
     font-weight: 500;
     letter-spacing: -0.01em;
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
@@ -849,7 +849,7 @@ button:focus-visible {
 }
 
 .navbar-brand-logo img {
-    height: 84px;
+    height: 120px;
     transition: opacity 0.2s ease;
 }
 
@@ -865,7 +865,7 @@ button:focus-visible {
 }
 
 #navbarLogo {
-    height: 84px;
+    height: 120px;
     opacity: 0;
     transform: translateY(10px);
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
@@ -880,8 +880,15 @@ button:focus-visible {
 }
 
 .offcanvas-end {
-    width: 320px !important;
-    max-width: 90vw;
+    width: 20vw !important;
+    max-width: 20vw;
+}
+
+@media (max-width: 768px) {
+    .offcanvas-end {
+        width: 60vw !important;
+        max-width: 60vw;
+    }
 }
 
 /* ============================================
@@ -917,8 +924,9 @@ button:focus-visible {
 
     .navbar-brand-logo img,
     #navbarLogo {
-        height: 58px;
+        height: 78px;
     }
+
 
     .navbar-brand-text {
         font-size: 1.25rem;

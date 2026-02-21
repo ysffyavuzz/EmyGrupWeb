@@ -213,4 +213,10 @@
   <data name="About_Misyon_Icerik" xml:space="preserve">
     <value>To provide the highest-quality service on time, by operating with respect for individuals and society, adhering to laws and ethical values, and using our resources effectively and efficiently through a strong technological infrastructure and a competent, skilled team.</value>
   </data>
+  <data name="Index_TumMarkalariGor" xml:space="preserve">
+    <value>View All Brands</value>
+  </data>
+  <data name="Contact_BiziTakipEdin" xml:space="preserve">
+    <value>Follow Us</value>
+  </data>
 </root>

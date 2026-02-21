@@ -213,4 +213,10 @@
   <data name="About_Misyon_Icerik" xml:space="preserve">
     <value>Bulunduğumuz sektörde bireylere ve topluma saygılı, yasalara ve ahlaki değerlere bağlı olarak; güçlü teknolojik alt yapımız ve yetkin kadromuz ile kaynakları etkin ve verimli kullanarak en kaliteli hizmeti tam zamanında sunmaktır.</value>
   </data>
+  <data name="Index_TumMarkalariGor" xml:space="preserve">
+    <value>Tüm Markaları Gör</value>
+  </data>
+  <data name="Contact_BiziTakipEdin" xml:space="preserve">
+    <value>Bizi Takip Edin</value>
+  </data>
 </root>

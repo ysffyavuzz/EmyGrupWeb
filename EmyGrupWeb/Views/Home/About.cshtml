@@ -5,7 +5,7 @@
 
 <style>
     :root {
-        --navbar-height: 70px;
+        --navbar-height: 72px;
     }
 
     .about-page {
@@ -14,164 +14,147 @@
         min-height: calc(100vh - var(--navbar-height));
     }
 
-    /* ========================================= */
-    /* HERO SECTION                              */
-    /* ========================================= */
-    .about-hero {
-        background: linear-gradient(135deg, #274472 0%, #1a3259 100%);
-        padding: 70px 0 60px;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .about-hero::before {
-        content: '';
-        position: absolute;
-        bottom: -30%;
-        right: -10%;
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
-        border-radius: 50%;
-    }
-
-    .about-hero-content {
-        position: relative;
-        z-index: 1;
-        max-width: 700px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-
-    .about-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 20px;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 50px;
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 0.875rem;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        margin-bottom: 20px;
-    }
-
-    .about-hero h1 {
-        color: #ffffff;
-        font-size: clamp(2rem, 5vw, 2.75rem);
-        font-weight: 700;
-        margin-bottom: 16px;
-        letter-spacing: -0.02em;
-    }
-
-    .about-hero p {
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 1.0625rem;
-        line-height: 1.7;
-    }
-
-    /* ========================================= */
-    /* CONTENT SECTION                           */
-    /* ========================================= */
+    /* =============================================
+       CONTENT
+       ============================================= */
     .about-content {
-        padding: 60px 0 80px;
+        padding: 64px 0 80px;
     }
 
     .about-container {
-        max-width: 1100px;
+        max-width: 1140px;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 0 24px;
     }
 
-    /* Cards Grid */
+    /* =============================================
+       CARDS
+       ============================================= */
     .about-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
+        gap: 20px;
     }
 
     .about-card {
         background: #ffffff;
         border-radius: 20px;
-        padding: 32px;
-        border: 1px solid #e2e8f0;
-        transition: all 0.2s ease;
+        padding: 40px;
+        border: 1px solid #e8edf3;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .about-card:hover {
-        border-color: #cbd5e1;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 36px rgba(39,68,114,0.10);
     }
 
     .about-card.featured {
         grid-column: span 2;
-        background: linear-gradient(135deg, #274472 0%, #1a3259 100%);
+        background: linear-gradient(135deg, #1e3a5f 0%, #274472 60%, #2d5282 100%);
         border: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+        padding: 56px;
+        position: relative;
+        overflow: hidden;
     }
 
-    .about-card.featured .card-icon {
-        background: rgba(255, 255, 255, 0.15);
-        color: #ffffff;
+    .about-card.featured::after {
+        content: '';
+        position: absolute;
+        top: -80px;
+        right: -80px;
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .featured-text { position: relative; z-index: 1; }
+    .featured-image { position: relative; z-index: 1; border-radius: 14px; overflow: hidden; height: 260px; }
+    .featured-image img { width: 100%; height: 100%; object-fit: cover; }
+
+    .about-card.featured .card-label {
+        color: rgba(255,255,255,0.55);
     }
 
     .about-card.featured .card-title {
         color: #ffffff;
+        font-size: 1.625rem;
     }
 
     .about-card.featured .card-text {
-        color: rgba(255, 255, 255, 0.85);
+        color: rgba(255,255,255,0.78);
+    }
+
+    .card-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #446D96;
+        margin-bottom: 14px;
+        display: block;
     }
 
     .card-icon {
-        width: 56px;
-        height: 56px;
+        width: 52px;
+        height: 52px;
         border-radius: 14px;
-        background: linear-gradient(135deg, rgba(68, 109, 150, 0.1) 0%, rgba(39, 68, 114, 0.1) 100%);
+        background: linear-gradient(135deg, rgba(68,109,150,0.10) 0%, rgba(39,68,114,0.10) 100%);
         display: flex;
         align-items: center;
         justify-content: center;
         margin-bottom: 20px;
         color: #274472;
-        font-size: 1.5rem;
+        font-size: 1.375rem;
     }
 
     .card-title {
         font-size: 1.25rem;
         font-weight: 700;
         color: #0f172a;
-        margin-bottom: 12px;
+        letter-spacing: -0.02em;
+        margin-bottom: 14px;
+        line-height: 1.3;
     }
 
     .card-text {
-        color: #64748b;
+        color: #5a6a7e;
         font-size: 1rem;
-        line-height: 1.75;
+        line-height: 1.8;
         margin: 0;
     }
 
-    /* Image Section */
+    /* =============================================
+       IMAGES
+       ============================================= */
     .about-image-section {
-        margin-top: 40px;
+        margin-top: 20px;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
 
     .about-image {
-        border-radius: 16px;
+        border-radius: 18px;
         overflow: hidden;
-        height: 220px;
+        height: 260px;
         position: relative;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     }
 
     .about-image img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.3s ease;
+        display: block;
+        transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .about-image:hover img {
@@ -182,70 +165,13 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.4) 100%);
+        background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.35) 100%);
         pointer-events: none;
     }
 
-    /* Values Section */
-    .values-section {
-        margin-top: 60px;
-        text-align: center;
-    }
-
-    .values-title {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #0f172a;
-        margin-bottom: 32px;
-    }
-
-    .values-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 24px;
-    }
-
-    .value-item {
-        padding: 24px 16px;
-        background: #ffffff;
-        border-radius: 16px;
-        border: 1px solid #e2e8f0;
-        transition: all 0.2s ease;
-    }
-
-    .value-item:hover {
-        border-color: #446D96;
-        transform: translateY(-4px);
-    }
-
-    .value-icon {
-        width: 48px;
-        height: 48px;
-        border-radius: 12px;
-        background: linear-gradient(135deg, #446D96 0%, #274472 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 16px;
-        color: #ffffff;
-        font-size: 1.25rem;
-    }
-
-    .value-title {
-        font-size: 1rem;
-        font-weight: 600;
-        color: #0f172a;
-        margin-bottom: 8px;
-    }
-
-    .value-text {
-        font-size: 0.875rem;
-        color: #64748b;
-        line-height: 1.6;
-        margin: 0;
-    }
-
-    /* Responsive */
+    /* =============================================
+       RESPONSIVE
+       ============================================= */
     @@media (max-width: 992px) {
         .about-grid {
             grid-template-columns: 1fr;
@@ -253,6 +179,13 @@
 
         .about-card.featured {
             grid-column: span 1;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            padding: 40px;
+        }
+
+        .featured-image {
+            height: 200px;
         }
 
         .about-image-section {
@@ -260,83 +193,55 @@
         }
 
         .about-image {
-            height: 200px;
-        }
-
-        .values-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @@media (max-width: 768px) {
-        .about-hero {
-            padding: 50px 0 45px;
+            height: 220px;
         }
     }
 
     @@media (max-width: 576px) {
+        .about-content {
+            padding: 48px 0 60px;
+        }
+
         .about-card {
-            padding: 24px;
+            padding: 28px;
         }
 
-        .values-grid {
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }
-
-        .value-item {
-            padding: 20px;
+        .about-card.featured {
+            padding: 32px 24px;
         }
     }
 </style>
 
 <div class="about-page">
-
-    <!-- Hero Section -->
-    <section class="about-hero">
-        <div class="about-hero-content">
-            <div class="about-badge">
-                <i class="bi bi-building"></i>
-                @L["Side_Menu_Hakkimizda"]
-            </div>
-            <h1>EMY Grup</h1>
-            <p>
-                Türkiye'nin önde gelen FMCG dağıtım ve ihracat şirketlerinden biri olarak,
-                güvenilirlik ve kalite odaklı hizmet sunuyoruz.
-            </p>
-        </div>
-    </section>
-
-    <!-- Content Section -->
     <section class="about-content">
         <div class="about-container">
 
-            <!-- Cards -->
             <div class="about-grid">
 
                 <!-- Hakkımızda - Featured -->
                 <div class="about-card featured">
-                    <div class="card-icon">
-                        <i class="bi bi-info-circle"></i>
+                    <div class="featured-text">
+                        <span class="card-label">@L["About_Hakkimizda_Baslik"]</span>
+                        <h3 class="card-title">@L["About_Hakkimizda_Baslik"]</h3>
+                        <p class="card-text">@L["About_Hakkimizda_Icerik"]</p>
                     </div>
-                    <h3 class="card-title">@L["About_Hakkimizda_Baslik"]</h3>
-                    <p class="card-text">@L["About_Hakkimizda_Icerik"]</p>
+                    <div class="featured-image">
+                        <img src="~/images/ihrac.jpg" alt="İhracat Operasyonu" loading="eager" />
+                    </div>
                 </div>
 
                 <!-- Misyon -->
                 <div class="about-card">
-                    <div class="card-icon">
-                        <i class="bi bi-bullseye"></i>
-                    </div>
+                    <div class="card-icon"><i class="bi bi-bullseye"></i></div>
+                    <span class="card-label">@L["About_Misyon_Baslik"]</span>
                     <h3 class="card-title">@L["About_Misyon_Baslik"]</h3>
                     <p class="card-text">@L["About_Misyon_Icerik"]</p>
                 </div>
 
                 <!-- Vizyon -->
                 <div class="about-card">
-                    <div class="card-icon">
-                        <i class="bi bi-eye"></i>
-                    </div>
+                    <div class="card-icon"><i class="bi bi-eye"></i></div>
+                    <span class="card-label">@L["About_Vizyon_Baslik"]</span>
                     <h3 class="card-title">@L["About_Vizyon_Baslik"]</h3>
                     <p class="card-text">@L["About_Vizyon_Icerik"]</p>
                 </div>
@@ -346,54 +251,15 @@
             <!-- Images -->
             <div class="about-image-section">
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=70"
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=75"
                          alt="Lojistik ve İhracat" loading="lazy" />
                 </div>
                 <div class="about-image">
-                    <img src="~/images/ihrac.jpg" alt="İhracat Operasyonu" loading="lazy" />
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=70"
+                    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=75"
                          alt="Konteyner Limanı" loading="lazy" />
-                </div>
-            </div>
-
-            <!-- Values -->
-            <div class="values-section">
-                <h2 class="values-title"><i class="bi bi-star me-2"></i>Değerlerimiz</h2>
-                <div class="values-grid">
-                    <div class="value-item">
-                        <div class="value-icon">
-                            <i class="bi bi-shield-check"></i>
-                        </div>
-                        <h4 class="value-title">Güvenilirlik</h4>
-                        <p class="value-text">İş ortaklarımıza ve müşterilerimize her zaman güven veririz</p>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">
-                            <i class="bi bi-award"></i>
-                        </div>
-                        <h4 class="value-title">Kalite</h4>
-                        <p class="value-text">En yüksek kalite standartlarında hizmet sunuyoruz</p>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">
-                            <i class="bi bi-lightning"></i>
-                        </div>
-                        <h4 class="value-title">Hız</h4>
-                        <p class="value-text">Hızlı teslimat ve çözüm odaklı yaklaşım</p>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">
-                            <i class="bi bi-people"></i>
-                        </div>
-                        <h4 class="value-title">İş Birliği</h4>
-                        <p class="value-text">Güçlü iş ortaklıkları ile birlikte büyüyoruz</p>
-                    </div>
                 </div>
             </div>
 
         </div>
     </section>
-
 </div>
